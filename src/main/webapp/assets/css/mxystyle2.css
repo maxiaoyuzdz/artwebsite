@@ -1,0 +1,163 @@
+/* ==================================================
+	Print Media Styles
+================================================== */
+@media print{
+    /* style 1988 */
+    .container {
+        clear: both;
+        width: 100% !important;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .header {
+        width: 100%;
+        display: block;
+    }
+
+    /*turn on print for printers*/
+    .print.logo {
+        margin: 0 auto;
+    }
+
+}
+
+
+
+
+
+/*
+***********************************************************************************
+/*	BEGIN MEDIA QUERIES
+***********************************************************************************
+ */
+/*====================================================
+******************************************************
+/*	DEVICES less than 880 pixels wide
+******************************************************
+====================================================== */
+@media only screen and (max-width: 880px){
+
+}
+/**** end max width 880px ****/
+/*====================================================
+******************************************************
+/*	DEVICES less than 800 pixels wide
+******************************************************
+====================================================== */
+@media only screen and (max-width: 800px){
+
+}
+/**** end max width 800px ****/
+/*====================================================
+******************************************************
+/*	DEVICES less than 600 pixels wide
+******************************************************
+====================================================== */
+@media only screen and (max-width: 600px){
+
+}
+/**** end max width 600 ****/
+/*====================================================
+******************************************************
+/*	DEVICES less than 767 pixels wide
+******************************************************
+====================================================== */
+@media only screen and (max-width: 767px) {
+    /* header 471 */
+    /*** Mobile Navigation Trigger ***/
+    .lt-ie9 .mobile_nav {
+        display: none
+    }
+    .mobile_nav {
+        margin: 0;
+        display: block;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        height: 40px;
+        width: 40px;
+        background: #53a3aa;
+        z-index: 1;
+    }
+    /* header 507 */
+    .no-js .mobile_nav {
+        display: none
+    }
+
+    /* header 426 */
+    .container.preheader {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0;
+        width:100%; /***!! added width***/
+    }
+    /* header 384 */
+    nav.user {
+        float: right;
+        line-height: 55px;
+    }
+
+    nav.user a {
+        margin: 0 10px 0 0;
+        padding: 0
+    }
+
+    body.tall-logo nav.user {
+        margin-left: 0;
+    }
+    /* header 459 */
+    .search-wrapper {
+        /***!!removed float right */
+        padding: 10px 0 0 0;
+        margin: 0;
+        position: absolute; /***!! changed position type*/
+        left:50px; /***!! added left position*/
+        z-index: 2;
+    }
+    /* header 454 */
+    .search #search-trigger {
+        width: 30px;
+        margin: 0;
+        top: auto;
+    }
+
+
+    .header {
+        position: relative;
+        height: auto;
+        margin-top: 50px;
+    }
+
+
+
+
+}
+/**** end max width 767 ****/
+
+/* ==================================================
+	MAIN RETINA BACKGROUND IMAGE REPLACEMENT & RETINA INFORMATION
+	http://weedygarden.net/2012/04/hi-res-retina-display-css-sprites/
+	http://www.kylejlarson.com/blog/2012/creating-retina-images-for-your-website/
+	http://www.webresourcesdepot.com/3-solutions-for-serving-high-res-images-to-retina-display-devices/
+================================================== */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min--moz-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2){
+
+}
+/* end desktop and main retina swapping */
+/*====================================================
+******************************************************
+/*	MOBILE SPECIFIC RETINA SWAPPING
+******************************************************
+====================================================== */
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+only screen and (max-width: 767px) and (-o-min-device-pixel-ratio: 3/2),
+only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2),
+only screen and (max-width: 767px) and (min-device-pixel-ratio: 2){
+
+}
+/*end mobile specific retina swapping */
