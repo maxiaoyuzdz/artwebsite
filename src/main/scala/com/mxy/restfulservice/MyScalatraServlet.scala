@@ -25,19 +25,16 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 
   get("/") {
     contentType = "text/html"
-    <html>
-      <body>
-        <h1>Hello, world!</h1>
-        Say <a href="hello-scalate">hello to Scalate</a>.
-      </body>
-    </html>
+    mustache("index.mustache",
+        "title" -> "泽雅斋--专业的艺术作品交流平台"
+    )
   }
   /**
    * format convert, anything be converted to JSON
    */
-  before() {
-    contentType = formats("json")
-  }
+//  before() {
+//    contentType = formats("json")
+//  }
   
   protected implicit val jsonFormats: Formats = DefaultFormats
 }
