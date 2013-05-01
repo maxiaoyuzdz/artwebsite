@@ -46,16 +46,21 @@
     <!-- Add to Head after Style sheet http://modernizr.com/docs/#installing  === 87724 ============= modernizr.custom.62887 -->
     <script src="assets/js/modernizr.custom.87724.js"></script><!-- js multiple backgrounds svg background size -->
   
-  <!-- templates define -->
+  <!-- templates define end -->
 {{#head}}
   {{_}}
 {{/head}}
 </head>
+
+
 <body class="tall-logo">
 
 <!-- mobile navigation trigger-->
 <h5 class="mobile_nav"><a href="javascript:void(0)">&nbsp;<span></span></a></h5>
 <!--end mobile navigation trigger-->
+
+
+
 
 <section class="container preheader">
 
@@ -79,21 +84,23 @@
 
 </section>
 
-<!-- begin .header-->
+
+<!-- =========================================================================================== -->
 <header class="header  clearfix">
+<!-- begin .header-->
+
     <img src="assets/images/print-logo.png" class="print logo" alt="name of company" />
     <div class="container">
-
-        <!-- begin #main_menu -->
+    <!-- begin #main_menu -->
         <nav id="main_menu">
             <ul class="accordmobile">
                 <li ><a href="indexmain.html">首页</a></li>
                 <li class="parent"><a href="javascript:void(0)">作品展销<i></i></a>
                     <ul>
-                        <li><a href="tall-logo.html">国画</a></li>
-                        <li><a href="alternative-header.html">书法</a></li>
-                        <li><a href="columns.html">油画</a></li>
-
+                    {{#menuitem1_section}}
+                    {{li}}
+					{{/menuitem1_section}}
+                    
                     </ul>
                 </li>
                 <li class="parent"><a href="javascript:void(0)">名家介绍<i></i></a>
@@ -101,7 +108,6 @@
                         <li><a href="portfolio-masonry.html">国画家</a></li>
                         <li><a href="portfolio-lightbox.html">书法家</a></li>
                         <li><a href="portfolio-single.html">油画家</a></li>
-
                     </ul>
                 </li>
                 <li class="parent"><a href="javascript:void(0)">媒体文章<i></i></a>
@@ -113,7 +119,6 @@
                 <li class="parent"><a href="javascript:void(0)">展览活动<i></i></a>
                     <ul>
                         <li class="active"><a href="indexmain.html">Home 1 Lemmon</a></li>
-
                     </ul>
                 </li>
                 <li class="parent"><a href="javascript:void(0)">特色服务<i></i></a>
@@ -128,24 +133,144 @@
         </nav>
         <!-- close / #main_menu -->
 
-        <!-- begin #logo -->
-        <div id="logo"> <a href="indexmain.html"><img alt="" src="assets/images/trans.gif" /><em>Crisp Responsive HTML Retina Ready Bootstrap Goodness</em><!--effing ie7 support--></a> </div>
-        <!-- end #logo -->
 
-    </div>
+<!-- begin #logo -->
+        <div id="logo"> <a href="indexmain.html"><img alt="" src="assets/images/trans.gif" /><em></em><!--effing ie7 support--></a> </div>
+        <!-- end #logo -->
+</div>
     <!-- close / .container-->
 </header>
 <!-- close /.header -->
+<!-- =========================================================================================== -->
 
 
 
 
-
-
-  
-  {{#body}}
+<!-- =========================================================================================== -->
+{{#bigadv_section}}
     {{_}}
-  {{/body}}
+{{/bigadv_section}}
+<!-- =========================================================================================== -->
+<div id="page">
+
+
+<!-- =========================================================================================== -->
+{{#slider_section}}
+    {{_}}
+{{/slider_section}}
+<!-- =========================================================================================== -->
+
+
+<!-- =========================================================================================== -->
+{{#content_section}}
+	{{_}}
+{{/content_section}}
+<!-- =========================================================================================== -->
+
+<!-- =========================================================================================== -->
+<!--begin footer -->
+<footer id="footer" class="clearfix">
+    <div class="container"><!--footer container-->
+
+        <div class="row-fluid">
+            <div class="span4">
+                <section>
+                    <h4>联系我们</h4>
+                    <p>Crisp Creative<br />
+                        1255 Nowhere Street<br />
+                        Tampa, FL 33655<br />
+                        <strong>电话:</strong> <a href="tel:8135551234" class="tele">813.555.1234</a><br />
+                        <strong>传真:</strong> 813.555.1235<br />
+                        <strong>电子邮件:</strong>
+                        <a href="mailto:email@domain.com">crisp@companydomain.com</a>
+                    </p>
+                </section>
+                <!--close section-->
+
+
+            </div>
+            <!-- close .span4 -->
+
+            <!--section containing newsletter signup and recent images-->
+            <div class="span4">
+                <section>
+                    <h4>订阅更新</h4>
+                    <p>输入邮箱地址订阅本站最新内容. 我们严格遵守国家法律不会泄漏您的个人信息.</p>
+                    <form action="yourscript.php" method="post">
+                        <div class="input-append">
+                            <input type="email" placeholder="Email Address" class="span6" name="email" />
+                            <button class="btn btn-primary">Sign Up</button>
+                        </div>
+                        <!--close input-append-->
+                    </form>
+                </section>
+                <!--close section-->
+
+                <section>
+                    <h4>最新的作品</h4>
+                    <ul class="image-widget clearfix">
+                        <li><a href="#"><img src="../demo/image-widget/1.png" alt="" /></a></li>
+                        <li><a href="#"><img src="../demo/image-widget/2.png" alt="" /></a></li>
+                        <li><a href="#"><img src="../demo/image-widget/3.png" alt="" /></a></li>
+                        <li><a href="#"><img src="../demo/image-widget/4.png" alt="" /></a></li>
+                        <li><a href="#"><img src="../demo/image-widget/5.png" alt="" /></a></li>
+                        <li><a href="#"><img src="../demo/image-widget/6.png" alt="" /></a></li>
+                        <li><a href="#"><img src="../demo/image-widget/7.png" alt="" /></a></li>
+                        <li><a href="#"><img src="../demo/image-widget/8.png" alt="" /></a></li>
+                        <li><a href="#"><img src="../demo/image-widget/9.png" alt="" /></a></li>
+                        <li><a href="#"><img src="../demo/image-widget/10.png" alt="" /></a></li>
+                        <li><a href="#"><img src="../demo/image-widget/11.png" alt="" /></a></li>
+                        <li><a href="#"><img src="../demo/image-widget/12.png" alt="" /></a></li>
+                    </ul>
+                </section>
+                <!--close section-->
+            </div>
+            <!-- close .span4 -->
+
+            <!--section containing blog posts-->
+            <div class="span4">
+                <section>
+                    <h4>最新的相关文章</h4>
+                    <ul class="footerPosts">
+                        <li><a href="blog-single.html">著名艺术家巴拉巴拉</a> <span class="meta">2012/01/23</span> </li>
+                        <li><a href="blog-single.html">某某艺术节开幕</a> <span class="meta">2012/01/23</span> </li>
+                        <li><a href="blog-single.html">产销开始</a> <span class="meta">2012/01/23</span> </li>
+                        <li><a href="blog-single.html">卖大白菜</a> <span class="meta">2012/01/23</span> </li>
+                        <li><a href="blog-single.html">不卖给你</a> <span class="meta">2012/01/23</span> </li>
+                        <li><a href="blog-single.html">收钱了</a> <span class="meta">2012/01/23</span> </li>
+                    </ul>
+                </section>
+            </div>
+            <!-- close .span4 -->
+        </div>
+        <!-- close .row-fluid-->
+    </div>
+    <!-- close footer .container-->
+
+    <!--change this to your stuff-->
+    <section class="footerCredits">
+        <div class="container">
+            <ul class="clearfix">
+                <li>? 2013 道雅斋艺术有限公司. 保有本站所有权利.</li>
+                <li><a href="sitemap.html">本站地图</a></li>
+                <li><a href="privacy.html">隐私声明</a></li>
+            </ul>
+        </div>
+        <!--footerCredits container-->
+    </section>
+    <!--close section-->
+</footer>
+<!--/.footer-->
+<!-- =========================================================================================== -->
+
+
+<!-- =========================================================================================== -->
+<span class="backToTop"><a href="#top">back to top</a></span>
+<!-- =========================================================================================== -->
+
+</div>
+  
+  
   <!-- close #page-->
 <!-- JS JQuery ================ -->
 <script src="assets/js/bootstrap.js"></script><!--transitions, tooltips, popover, buttons, modals, alert messages-->
