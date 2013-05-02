@@ -47,19 +47,21 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/") {
     contentType = "text/html"
       
+      mustache("index2.mustache","layout" -> "")
       
-      val lemonsliderdata = ArtWebSiteDataSourceObject.querylemmonslidertable
-      println("ok")
-    
-    val t = lemonsliderdata(3)
-    
-      val slidermaplist = List[Map(String -> Any)]
       
-      lemonsliderdata.foreach(f => slidermaplist + "imgsrc" -> f.imgsrc )
+//      val lemonsliderdata = ArtWebSiteDataSourceObject.querylemmonslidertable
+//      println("ok")
+//    
+//    val t = lemonsliderdata(3)
+//    
+//      val slidermaplist = List[Map(String -> Any)]
+      
+//      lemonsliderdata.foreach(f => slidermaplist + "imgsrc" -> f.imgsrc )
 
-    mustache("index.mustache",
-        "title" -> "泽雅斋--专业的艺术作品交流平台",
-        slidermaplist
+//    mustache("index.mustache",
+//        "title" -> "泽雅斋--专业的艺术作品交流平台",
+//        slidermaplist
 //        "lemmon_slider_repo" -> List(
 //            Map("imgsrc" -> t.imgsrc)
 //            )
@@ -69,7 +71,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 //	    Map("name" -> "hub","hreftarget" -> "login"),
 //	    Map("name" -> "rip","hreftarget" -> "login")
 //	  )
-    )
+//    )
     
 
   }
