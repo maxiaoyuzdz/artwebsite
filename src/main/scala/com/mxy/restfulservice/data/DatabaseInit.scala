@@ -14,6 +14,7 @@ trait DatabaseInit {
   val databaseUsername = "root"
   val databasePassword = "root"
   val databaseConnection = "jdbc:mysql://localhost:3306/artwebsitedb"
+    //artwebsitedb
 
   var cpds = new ComboPooledDataSource
 

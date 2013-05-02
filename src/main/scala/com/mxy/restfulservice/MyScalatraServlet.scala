@@ -23,6 +23,7 @@ import com.mxy.restfulservice.data.DatabaseSessionSupport
 // Data source Begin
 //==================================================
 import com.mxy.restfulservice.model.ArtWebSiteDataSourceObject
+//import com.mxy.restfulservice.model.EbusinessStore
 //==================================================
 // Data source End
 //==================================================
@@ -47,20 +48,36 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     contentType = "text/html"
       
       
+      val lemonsliderdata = ArtWebSiteDataSourceObject.querylemmonslidertable
+      println("ok")
+    
+    val t = lemonsliderdata(3)
+    
+      val slidermaplist = List[Map(String -> Any)]
       
-      
+      lemonsliderdata.foreach(f => slidermaplist + "imgsrc" -> f.imgsrc )
 
     mustache("index.mustache",
         "title" -> "泽雅斋--专业的艺术作品交流平台",
-        "show_menuitem1_section" -> true,
-        "repo" -> List(
-	    Map("name" -> "resque","hreftarget" -> "login"),
-	    Map("name" -> "hub","hreftarget" -> "login"),
-	    Map("name" -> "rip","hreftarget" -> "login")
-	  )
+        slidermaplist
+//        "lemmon_slider_repo" -> List(
+//            Map("imgsrc" -> t.imgsrc)
+//            )
+            
+//        List(
+//	    Map("name" -> "resque","hreftarget" -> "login"),
+//	    Map("name" -> "hub","hreftarget" -> "login"),
+//	    Map("name" -> "rip","hreftarget" -> "login")
+//	  )
     )
     
 
+  }
+  
+  get("/jsondata/queryproperty"){
+    contentType = formats("json")
+    ArtWebSiteDataSourceObject.querylemmonslidertable
+//    EbusinessStore.querycategory
   }
   /**
    * format convert, anything be converted to JSON

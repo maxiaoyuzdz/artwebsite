@@ -61,6 +61,24 @@
 <div class="lemmon-wrap clearfix">
     <div id="lemmon-slider" class="lemmon-slider">
         <ul>
+        {{# lemmon_slider_repo}}
+        	<li> <a href="portfolio-single.html">
+                <!--link to article/post/portfolio entry for the entire image-->
+                <img src="{{imgsrc}}" /> </a>
+                <!--end image link-->
+                <div class="summary">
+                    <!--begin summary-->
+                    <a href="portfolio-single.html">
+                        <!--begin link to article post or portfolio entry for the caption-->
+                        <h3>大灰狼</h3>
+                        <p>国画</p>
+                    </a>
+                    <!--end link to article post or portfolio entry for the caption-->
+                </div>
+                <!--end summary-->
+            </li>
+        {{/ lemmon_slider_repo}}
+        
             <li> <a href="portfolio-single.html">
                 <!--link to article/post/portfolio entry for the entire image-->
                 <img src="/assets/showwork/drawshow1.jpg" /> </a>
