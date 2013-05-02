@@ -47,8 +47,26 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/") {
     contentType = "text/html"
       
-      mustache("index2.mustache","layout" -> "")
+//      mustache("index.mustache","layout" -> "")
       
+      jade("index.jade","layout" -> "")
+      
+//      val t = Map(
+//        "title" -> "test" ,
+//         "name" -> "Chris" ,
+//         "value" -> 10000 ,
+//         "taxed_value" -> 10000 ,
+//         "in_ca" -> true
+//         ).toSeq
+//      
+//      layoutTemplate("/WEB-INF/templates/views/hello.mustache",Map(
+//        "title" -> "test" ,
+//         "name" -> "Chris" ,
+//         "value" -> 10000 ,
+//         "taxed_value" -> 10000 ,
+//         "in_ca" -> true
+//         ).toSeq:_*)
+
       
 //      val lemonsliderdata = ArtWebSiteDataSourceObject.querylemmonslidertable
 //      println("ok")

@@ -1,0 +1,531 @@
+!!! 5
+//if lt IE 7
+  html.no-js.lt-ie9.lt-ie8.lt-ie7(lang='zh-CN', dir='ltr')  
+//if IE 7
+  html.no-js.lt-ie9.lt-ie8(lang='zh-CN', dir='ltr')  
+//if IE 8
+  html.no-js.lt-ie9(lang='zh-CN', dir='ltr')  
+// [if gt IE 8] <!
+html.no-js(lang='zh-CN', dir='ltr')
+  // <![endif]
+  html(lang='zh-CN')
+    head
+      title 泽雅斋--专业的艺术作品交流平台
+      // Meta Data ================
+      meta(charset='UTF-8')
+      meta(name='description', content='This is a art work website')
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+      meta(name='apple-mobile-web-app-capable', content='yes')
+      meta(name='web version', content='2.0')
+      // CSS ================
+      link(rel='stylesheet', href='assets/css/bootstrap.css', type='text/css')
+      link(rel='stylesheet', href='assets/css/bootstrap-responsive.css', type='text/css')
+      // CSS ================
+      // <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+      // <link rel="stylesheet" href="assets/css/header-1.css" type="text/css"/>
+      // CSS ================
+      link(rel='stylesheet', href='assets/css/global.css', type='text/css')
+      link(rel='stylesheet', href='assets/css/globalmobile.css', type='text/css')
+      link(rel='stylesheet', href='assets/css/globalheader.css', type='text/css')
+      link(rel='stylesheet', href='assets/css/globalheadermobile.css', type='text/css')
+      // CSS ================
+      // lemmon slider variable width slider for images
+      link(rel='stylesheet', href='assets/css/lemmon-slider.css', type='text/css', media='screen')
+      // Icons ================
+      // For non-Retina iPhone, iPod Touch, and Android 2.1+ devices:
+      link(rel='apple-touch-icon-precomposed', href='apple-touch-icon-precomposed.png')
+      // For first- and second-generation iPad:
+      link(rel='apple-touch-icon-precomposed', sizes='72x72', href='apple-touch-icon-72x72-precomposed.png')
+      // For iPhone with high-resolution Retina display:
+      link(rel='apple-touch-icon-precomposed', sizes='114x114', href='apple-touch-icon-114x114-precomposed.png')
+      // For third-generation iPad with high-resolution Retina display:
+      link(rel='apple-touch-icon-precomposed', sizes='144x144', href='apple-touch-icon-144x144-precomposed.png')
+      link(rel='shortcut icon', href='favicon.ico')
+      // JS JQuery in the head you can use ajax if you want ================
+      script(src='assets/js/jquery.js')
+      // Add to Head after Style sheet http://modernizr.com/docs/#installing  === 87724 ============= modernizr.custom.62887
+      script(src='assets/js/modernizr.custom.87724.js')
+      // js multiple backgrounds svg background size
+    body.tall-logo
+      // mobile navigation trigger
+      h5.mobile_nav
+        a(href='javascript:void(0)')
+          span
+      // end mobile navigation trigger
+      section.container.preheader
+        // this is the login for the user
+        nav.user.clearfix
+          a(href='login.html') 用户登陆
+        // close user nav
+        // need to fix
+        .search-wrapper
+          form.search(method='post', action='someaction.php')
+            #search-trigger 搜索:
+            input#search-box(type='text', placeholder='搜索 + 回车')
+        .phone
+          a.tele(href='tel:05318888888') 联系电话：05318888888
+        // 
+      // begin .header
+      header.header.clearfix
+        img.print.logo(src='assets/images/print-logo.png', alt='name of company')
+        .container
+          // begin #main_menu
+          nav#main_menu
+            ul.accordmobile
+              li.active
+                a(href='indexmain.html') 首页
+              li.parent
+                a(href='javascript:void(0)')
+                  | 作品展销
+                  i
+                ul
+                  li
+                    a(href='tall-logo.html') 国画
+                  li
+                    a(href='alternative-header.html') 书法
+                  li
+                    a(href='columns.html') 油画
+              li.parent
+                a(href='javascript:void(0)')
+                  | 名家介绍
+                  i
+                ul
+                  li
+                    a(href='portfolio-masonry.html') 国画家
+                  li
+                    a(href='portfolio-lightbox.html') 书法家
+                  li
+                    a(href='portfolio-single.html') 油画家
+              li.parent
+                a(href='javascript:void(0)')
+                  | 媒体文章
+                  i
+                ul
+                  li
+                    a(href='blog-traditional-summary.html') Traditional Summary
+              li.parent
+                a(href='javascript:void(0)')
+                  | 展览活动
+                  i
+                ul
+                  li.active
+                    a(href='indexmain.html') Home 1 Lemmon
+              li.parent
+                a(href='javascript:void(0)')
+                  | 特色服务
+                  i
+                ul
+                  // <li><a href="blog-traditional-summary.html">退货服务</a></li>
+                  li
+                    a(href='blog-traditional-summary-3col.html') 鉴宝服务
+                  // <li><a href="blog-traditional-summary-3col.html">收购服务</a></li>
+              li
+                a(href='contact.html') 联系方式
+          // close / #main_menu
+          // begin #logo
+          #logo
+            a(href='indexmain.html')
+              img(alt='', src='assets/images/trans.gif')
+              em Crisp Responsive HTML Retina Ready Bootstrap Goodness
+              // effing ie7 support
+          // end #logo
+        // close / .container
+      // close /.header
+      // 
+      .hero-unit.center.no-border.no-padding-bottom
+        .row-fluid.clearfix.small_content_show_area
+          .span4
+            h3 最新展览
+          .span4
+            h3 最新展览
+          .span4
+            h3 最新展览
+        .row-fluid.clearfix.small_content_show_area
+          .span4
+            h3 最新展览
+          .span4
+            h3 最新展览
+          .span4
+            h3 最新展览
+      // begin #page - the container for everything but header
+      // 
+      #page
+        // begin slider
+        .lemmon-wrap.clearfix
+          #lemmon-slider.lemmon-slider
+            ul
+              li
+                a(href='portfolio-single.html')
+                  // link to article/post/portfolio entry for the entire image
+                  img(src='/assets/showwork/drawshow1.jpg', alt='')
+                // end image link
+                .summary
+                  // begin summary
+                  a(href='portfolio-single.html')
+                    // begin link to article post or portfolio entry for the caption
+                    h3 大灰狼
+                    p 国画
+                  // end link to article post or portfolio entry for the caption
+                // end summary
+              li
+                a(href='portfolio-single.html')
+                  img(src='/assets/showwork/drawshow2.jpg', alt='')
+                .summary
+                  a(href='portfolio-single.html')
+                    h3 马晓宇
+                    p 书法
+              li
+                a(href='portfolio-single.html')
+                  img(src='/assets/showwork/drawshow3.jpg', alt='')
+                .summary
+                  a(href='portfolio-single.html')
+                    h3 战神
+                    p 油画
+              li
+                a(href='portfolio-single.html')
+                  img(src='/assets/showwork/drawshow4.jpg', alt='')
+                .summary
+                  a(href='portfolio-single.html')
+                    h3 Mona Lisa
+                    p 油画
+              li
+                a(href='portfolio-single.html')
+                  img(src='/assets/showwork/drawshow5.jpg', alt='')
+                .summary
+                  a(href='portfolio-single.html')
+                    h3 大灰狼
+                    p 油画
+              li
+                a(href='portfolio-single.html')
+                  img(src='/assets/showwork/drawshow7.jpg', alt='')
+                .summary
+                  a(href='portfolio-single.html')
+                    h3 大灰狼
+                    p 油画
+              li
+                a(href='portfolio-single.html')
+                  img(src='/assets/showwork/drawshow8.jpg', alt='')
+                .summary
+                  a(href='portfolio-single.html')
+                    h3 大灰狼
+                    p 油画
+          .controls
+            a.prev-page(href='#') Prev Page
+            a.next-page(href='#') Next Page
+          // / .controls
+        // / end slider
+        // notice how sliders are outside the this main content div
+        #main-content.container.clearfix
+          h3.short_headline
+            span 签约名家推荐
+          .row-fluid
+            .span3
+              .well
+                h2 著名国画家
+                h3 马晓宇
+                p
+                  img.alignleft(src='../demo/80x80-Diego_Velazquez_028.png', alt='Velazquez')
+                  | 字什么，山东某某人，耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么
+                p.right
+                  a.btn-primary.btn.no-under-line-btn(href='#')
+                    | 详细资料
+                    i.icon-circle-arrow-right.icon-white
+              // close .well
+            .span3
+              .well
+                h2 著名书法家
+                h3 马晓宇
+                p
+                  img.alignleft(src='../demo/80x80-Diego_Velazquez_028.png', alt='Velazquez')
+                  | 字什么，山东某某人，耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么
+                p.right
+                  a.btn-primary.btn.no-under-line-btn(href='#')
+                    | 详细资料
+                    i.icon-circle-arrow-right.icon-white
+              // close .well
+            // close span4
+            .span3
+              .well
+                h2 著名瓷器家
+                h3 马晓宇
+                p
+                  img.alignleft(src='../demo/80x80-Diego_Velazquez_028.png', alt='Velazquez')
+                  | 字什么，山东某某人，耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么
+                p.right
+                  a.btn-primary.btn.no-under-line-btn(href='#')
+                    | 详细资料
+                    i.icon-circle-arrow-right.icon-white
+              // close .well
+            // close span4
+            .span3
+              .well
+                h2 著名油画家
+                h3 马晓宇
+                p
+                  img.alignleft(src='../demo/80x80-Diego_Velazquez_028.png', alt='Velazquez')
+                  | 字什么，山东某某人，耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么
+                p.right
+                  a.btn-primary.btn.no-under-line-btn(href='#')
+                    | 详细资料
+                    i.icon-circle-arrow-right.icon-white
+              // close .well
+            // close span4
+          // end row-fluid
+          h3.short_headline
+            span 力作推荐
+          // begin equalHeights columns 3
+          .row-fluid.equalHero
+            .span4
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            // close .span4
+            .span4
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            // close .span4
+            .span4
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            // close .span4
+          // close #equalHeights .featured 3 columns
+          h3.short_headline
+            span 精品展销
+          .row-fluid.equalHero
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            // close .span4
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            // close .span4
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            // close .span4
+          // close #equalHeights .featured 3 columns
+          .row-fluid.equalHero
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            // close .span4
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              div
+              p 价格：56000RMB
+            // close .span4
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            // close .span4
+          // close #equalHeights .featured 3 columns
+          .row-fluid.equalHero
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            // close .span4
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              div
+              p 价格：56000RMB
+            // close .span4
+            .span3
+              a(href='about.html')
+                img.aligncenter(src='/assets/showwork/drawshow1.jpg', alt='')
+              h3
+                a(href='about.html') 兰花图
+              p 价格：56000RMB
+            // close .span4
+        // close .container role="main-content"
+        // begin footer
+        footer#footer.clearfix
+          .container
+            // footer container
+            .row-fluid
+              .span4
+                section
+                  h4 联系我们
+                  p
+                    | Crisp Creative
+                    br
+                    | 1255 Nowhere Street
+                    br
+                    | Tampa, FL 33655
+                    br
+                    strong 电话:
+                    a.tele(href='tel:8135551234') 813.555.1234
+                    br
+                    strong 传真:
+                    | 813.555.1235
+                    br
+                    strong 电子邮件:
+                    a(href='mailto:email@domain.com') crisp@companydomain.com
+                // close section
+              // close .span4
+              // section containing newsletter signup and recent images
+              .span4
+                section
+                  h4 订阅更新
+                  p 输入邮箱地址订阅本站最新内容. 我们严格遵守国家法律不会泄漏您的个人信息.
+                  form(action='yourscript.php', method='post')
+                    .input-append
+                      input.span6(type='email', placeholder='Email Address', name='email')
+                      button.btn.btn-primary Sign Up
+                    // close input-append
+                // close section
+                section
+                  h4 最新的作品
+                  ul.image-widget.clearfix
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/1.png', alt='')
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/2.png', alt='')
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/3.png', alt='')
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/4.png', alt='')
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/5.png', alt='')
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/6.png', alt='')
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/7.png', alt='')
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/8.png', alt='')
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/9.png', alt='')
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/10.png', alt='')
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/11.png', alt='')
+                    li
+                      a(href='#')
+                        img(src='../demo/image-widget/12.png', alt='')
+                // close section
+              // close .span4
+              // section containing blog posts
+              .span4
+                section
+                  h4 最新的相关文章
+                  ul.footerPosts
+                    li
+                      a(href='blog-single.html') 著名艺术家巴拉巴拉
+                      span.meta 2012/01/23
+                    li
+                      a(href='blog-single.html') 某某艺术节开幕
+                      span.meta 2012/01/23
+                    li
+                      a(href='blog-single.html') 产销开始
+                      span.meta 2012/01/23
+                    li
+                      a(href='blog-single.html') 卖大白菜
+                      span.meta 2012/01/23
+                    li
+                      a(href='blog-single.html') 不卖给你
+                      span.meta 2012/01/23
+                    li
+                      a(href='blog-single.html') 收钱了
+                      span.meta 2012/01/23
+              // close .span4
+            // close .row-fluid
+          // close footer .container
+          // change this to your stuff
+          section.footerCredits
+            .container
+              ul.clearfix
+                li ? 2013 道雅斋艺术有限公司. 保有本站所有权利.
+                li
+                  a(href='sitemap.html') 本站地图
+                li
+                  a(href='privacy.html') 隐私声明
+            // footerCredits container
+          // close section
+        // /.footer
+        span.backToTop
+          a(href='#top') back to top
+      // close #page
+      // JS JQuery ================
+      script(src='assets/js/bootstrap.js')
+      // transitions, tooltips, popover, buttons, modals, alert messages
+      script(src='assets/js/ddsmoothmenu-min.js')
+      // desktop edge detect menu
+      script(src='assets/js/jquery.dcjqaccordion.2.7.min.js')
+      // mobile multi-level accordion menu
+      script(src='assets/js/jquery.easytabs.min.js')
+      // tabs/testimonials
+      script(src='assets/js/slide-to-top-accordion-min.js')
+      // slide to top accordion toggle
+      script(src='assets/js/jquery.easing-1.3.min.js')
+      // easing
+      script(src='assets/js/jquery.flexslider-min.js')
+      // flexslider content slider twitter slider and initializations
+      script(src='assets/js/responsive-tables.js')
+      // responsive table
+      script(src='assets/js/jquery.fitvid.js')
+      // responsive videos
+      script(src='assets/js/lemmon-slider-min.js')
+      // lemmon slider js
+      // initialize scripts / custom scripts all pages
+      script(src='assets/js/scripts.js')
