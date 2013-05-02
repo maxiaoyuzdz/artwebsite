@@ -19,6 +19,16 @@ import grizzled.slf4j.Logger
 //==================================================
 import com.mxy.restfulservice.data.DatabaseSessionSupport
 
+//==================================================
+// Data source Begin
+//==================================================
+import com.mxy.restfulservice.model.ArtWebSiteDataSourceObject
+//==================================================
+// Data source End
+//==================================================
+
+
+
 class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with JacksonJsonSupport with DatabaseSessionSupport{
   
   val logger = Logger(classOf[MyScalatraServlet]);
@@ -32,16 +42,25 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   }
   
 
+//  proecess "/" page . one get, one page 
   get("/") {
     contentType = "text/html"
+      
+      
+      
+      
+
     mustache("index.mustache",
         "title" -> "泽雅斋--专业的艺术作品交流平台",
+        "show_menuitem1_section" -> true,
         "repo" -> List(
-    Map("name" -> "resque","hreftarget" -> "login"),
-    Map("name" -> "hub","hreftarget" -> "login"),
-    Map("name" -> "rip","hreftarget" -> "login")
-  )
+	    Map("name" -> "resque","hreftarget" -> "login"),
+	    Map("name" -> "hub","hreftarget" -> "login"),
+	    Map("name" -> "rip","hreftarget" -> "login")
+	  )
     )
+    
+
   }
   /**
    * format convert, anything be converted to JSON

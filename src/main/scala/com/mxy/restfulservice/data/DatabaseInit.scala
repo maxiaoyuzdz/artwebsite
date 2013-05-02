@@ -13,7 +13,7 @@ trait DatabaseInit {
 
   val databaseUsername = "root"
   val databasePassword = "root"
-  val databaseConnection = "jdbc:mysql://localhost:3306/ebusiness"
+  val databaseConnection = "jdbc:mysql://localhost:3306/artwebsitedb"
 
   var cpds = new ComboPooledDataSource
 
