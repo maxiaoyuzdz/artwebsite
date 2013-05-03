@@ -300,3 +300,5 @@ $(document).ready(function(){
    if ( path )
           $('ul.navigation li a[href$="' + path + '"]').parents('li').addClass('active');
  });
+
+ 

@@ -4,7 +4,7 @@
       xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
       version="3.0">
 
-	  <!--
+	  <!---->
 	  <filter>
    <filter-name >cross-origin </filter-name>
    <filter-class >org.eclipse.jetty.servlets.CrossOriginFilter </filter-class>
@@ -26,7 +26,7 @@
     <filter-name >cross-origin </filter-name>
     <url-pattern >/* </url-pattern>
 </filter-mapping>
--->
+
   <!--
     This listener loads a class in the default package called Scalatra.
     That class should implement org.scalatra.LifeCycle.  Your app can be
