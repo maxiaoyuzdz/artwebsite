@@ -5,4 +5,13 @@
  * Time: 下午3:30
  * To change this template use File | Settings | File Templates.
  */
-alert("ok")
+alert("okok")
+
+var people {
+    name: 'sam'
+}
+
+var target = document.getElementById('menuitem1')
+
+var output = Mustache.render('<p>name is {{name}}</p>',people);
+target.innerHTML = output;
