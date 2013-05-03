@@ -45,66 +45,51 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 
 //  proecess "/" page . one get, one page 
   get("/") {
-    contentType = "text/html"
+	  contentType = "text/html"
+	    
+	    val scriptstring = mustache("datascript.mustache","layout" -> "")
+	    
+	    println("scriptstring = "+scriptstring)
       
-      
-      
-      
-      
-      
-      
-      mustache("index.mustache","layout" -> "")
-      
-//      jade("index.jade","layout" -> "")
-      
-//      val t = Map(
-//        "title" -> "test" ,
-//         "name" -> "Chris" ,
-//         "value" -> 10000 ,
-//         "taxed_value" -> 10000 ,
-//         "in_ca" -> true
-//         ).toSeq
-//      
-//      layoutTemplate("/WEB-INF/templates/views/hello.mustache",Map(
-//        "title" -> "test" ,
-//         "name" -> "Chris" ,
-//         "value" -> 10000 ,
-//         "taxed_value" -> 10000 ,
-//         "in_ca" -> true
-//         ).toSeq:_*)
-
-      
-//      val lemonsliderdata = ArtWebSiteDataSourceObject.querylemmonslidertable
-//      println("ok")
-//    
-//    val t = lemonsliderdata(3)
-//    
-//      val slidermaplist = List[Map(String -> Any)]
-      
-//      lemonsliderdata.foreach(f => slidermaplist + "imgsrc" -> f.imgsrc )
-
-//    mustache("index.mustache",
-//        "title" -> "泽雅斋--专业的艺术作品交流平台",
-//        slidermaplist
-//        "lemmon_slider_repo" -> List(
-//            Map("imgsrc" -> t.imgsrc)
-//            )
-            
-//        List(
-//	    Map("name" -> "resque","hreftarget" -> "login"),
-//	    Map("name" -> "hub","hreftarget" -> "login"),
-//	    Map("name" -> "rip","hreftarget" -> "login")
-//	  )
-//    )
-    
+//      mustache("index.mustache","layout" -> "",
+//          "whichpage" -> "indexpage",
+//          "mainparameter" -> "first",
+//          "replacescript" -> scriptstring)
+	    mustache("index.mustache","layout" -> "",
+          "whichpage" -> "indexpage",
+          "mainparameter" -> "first")
+          
 
   }
-  
+  /**
+   * json data interface
+   */
   get("/jsondata/queryproperty"){
     contentType = formats("json")
     ArtWebSiteDataSourceObject.querylemmonslidertable
-//    EbusinessStore.querycategory
+
   }
+  
+  
+/**
+ * script generate interface
+ * /assets/{{whichpage}}/js/datascript.js
+ */
+  
+  
+  get("/assets/:whichpage/:outparameter/datascript.js"){
+    //contentType = "text/html"//text/html //application/x-javascript
+    
+    val whichpage = params("whichpage")
+    val mainparameter = params("outparameter")
+    
+    println(whichpage+ " + "+ mainparameter)
+
+    
+    mustache("datascript.mustache","layout" -> "")
+  }
+  
+  
   /**
    * format convert, anything be converted to JSON
    */

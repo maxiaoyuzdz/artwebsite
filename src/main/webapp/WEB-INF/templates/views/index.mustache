@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--><html class="no-js" lang="zh-CN" dir="ltr"><!--<![endif]-->
 <html lang="zh-CN">
 <head>
-    <title>泽雅斋--专业的艺术作品交流平台</title>
+    <title>泽雅斋--专业的艺术作品交流平台11</title>
 
     <!-- Meta Data ================ -->
     <meta charset="UTF-8" />
@@ -52,6 +52,8 @@
 
 </head>
 <body class="tall-logo">
+
+
 
 
 
@@ -508,7 +510,7 @@
 </footer>
 <!--/.footer-->
 
-<span class="backToTop"><a href="#top">back to top</a></span>
+<span class="backToTop" id="menuitem1"><a href="#top">back to top</a></span>
 
 
 
@@ -527,9 +529,14 @@
 
 <script src="assets/js/lemmon-slider-min.js"></script><!-- lemmon slider js -->
 
-
+<script src="assets/js/mustache.js"></script>
 <!--initialize scripts / custom scripts all pages-->
 <script src="assets/js/scripts.js"></script>
+<!--fixed or no fixed script-->
+<script src="/assets/{{whichpage}}/{{mainparameter}}/datascript.js" type="text/javascript"></script>
+<script>
+    {{replacescript}}
+</script>
 </body>
 
 </html>

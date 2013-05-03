@@ -10,7 +10,7 @@ import collection.mutable
 trait RestfulserviceStack extends ScalatraServlet with ScalateSupport {
 
   /* wire up the precompiled templates */
-  override protected def defaultTemplatePath: List[String] = List("/WEB-INF/templates/views")
+  override protected def defaultTemplatePath: List[String] = List("/WEB-INF/templates/views","/WEB-INF/templates/js")
   override protected def createTemplateEngine(config: ConfigT) = {
     val engine = super.createTemplateEngine(config)
     engine.layoutStrategy = new DefaultLayoutStrategy(engine,
