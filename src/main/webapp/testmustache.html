@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div id="content"></div>
+
+<script src="assets/js/mustache.js"></script>
+<script>
+    var people = {
+        name:'sam',
+        age:18
+    }
+
+    var output = Mustache.render('name is : {{name}} and age is {{age}}', people);
+    var target = document.getElementById('content');
+    target.innerHTML = output;
+</script>
+
+</body>
+</html>

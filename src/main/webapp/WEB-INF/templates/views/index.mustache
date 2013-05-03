@@ -47,6 +47,7 @@
 
     <!-- JS JQuery in the head you can use ajax if you want ================ -->
     <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/mustache.js"></script>
     <!-- Add to Head after Style sheet http://modernizr.com/docs/#installing  === 87724 ============= modernizr.custom.62887 -->
     <script src="assets/js/modernizr.custom.87724.js"></script><!-- js multiple backgrounds svg background size -->
 
@@ -502,6 +503,7 @@
                 <li>? 2013 道雅斋艺术有限公司. 保有本站所有权利.</li>
                 <li><a href="sitemap.html">本站地图</a></li>
                 <li><a href="privacy.html">隐私声明</a></li>
+                <li id="menuitem1"></li>
             </ul>
         </div>
         <!--footerCredits container-->
@@ -510,10 +512,14 @@
 </footer>
 <!--/.footer-->
 
-<span class="backToTop" id="menuitem1"><a href="#top">back to top</a></span>
+<span class="backToTop" ><a href="#top">back to top</a></span>
 
 
 
+</div>
+<div class="hidden">
+<p id="pagename" value = "{{pagename}}" ></p>
+<p id="pageparameter" value = "{{parametervalue}}" ></p>
 </div>
 <!-- close #page-->
 <!-- JS JQuery ================ -->
@@ -529,14 +535,15 @@
 
 <script src="assets/js/lemmon-slider-min.js"></script><!-- lemmon slider js -->
 
-<script src="assets/js/mustache.js"></script>
+
 <!--initialize scripts / custom scripts all pages-->
 <script src="assets/js/scripts.js"></script>
+
 <!--fixed or no fixed script-->
-<script src="/assets/{{whichpage}}/{{mainparameter}}/datascript.js" type="text/javascript"></script>
-<script>
-    {{replacescript}}
-</script>
+<script src="assets/js/pagejs/{{jsfilename}}.js"></script>
+
+
+<!--<script src="assets/js/pagejs/index.js"></script>-->
 </body>
 
 </html>

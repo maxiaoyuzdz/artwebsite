@@ -47,19 +47,30 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/") {
 	  contentType = "text/html"
 	    
-	    val scriptstring = mustache("datascript.mustache","layout" -> "")
+//	    val scriptstring = mustache("datascript.mustache","layout" -> "",
+//	        "showindexscript" -> true)
 	    
-	    println("scriptstring = "+scriptstring)
-      
-//      mustache("index.mustache","layout" -> "",
-//          "whichpage" -> "indexpage",
-//          "mainparameter" -> "first",
-//          "replacescript" -> scriptstring)
-	    mustache("index.mustache","layout" -> "",
-          "whichpage" -> "indexpage",
-          "mainparameter" -> "first")
-          
 
+      
+//	        mustache("index.mustache","layout" -> "",
+//          "replacescript" -> scriptstring
+//          )
+
+	    mustache("index.mustache","layout" -> "",
+	        "pagename" -> "23",
+	        "parametervalue" -> "22",
+	        "jsfilename" -> "index"
+          )
+          
+//          test
+          
+//          mustache("testmustache.mustache","layout" -> "")
+
+  }
+  
+  get("/test"){
+    contentType = "text/html"
+      mustache("testmustache.mustache","layout" -> "")
   }
   /**
    * json data interface
@@ -78,15 +89,15 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   
   
   get("/assets/:whichpage/:outparameter/datascript.js"){
-    //contentType = "text/html"//text/html //application/x-javascript
+    contentType = "text"//text/html //application/x-javascript
     
-    val whichpage = params("whichpage")
-    val mainparameter = params("outparameter")
+//    val whichpage = params("whichpage")
+//    val mainparameter = params("outparameter")
     
-    println(whichpage+ " + "+ mainparameter)
+
 
     
-    mustache("datascript.mustache","layout" -> "")
+    mustache("datascript.mustache","layout" -> "","showindexscript" -> true)
   }
   
   
