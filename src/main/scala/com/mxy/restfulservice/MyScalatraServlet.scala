@@ -47,9 +47,15 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/") {
     contentType = "text/html"
       
-//      mustache("index.mustache","layout" -> "")
       
-      jade("index.jade","layout" -> "")
+      
+      
+      
+      
+      
+      mustache("index.mustache","layout" -> "")
+      
+//      jade("index.jade","layout" -> "")
       
 //      val t = Map(
 //        "title" -> "test" ,

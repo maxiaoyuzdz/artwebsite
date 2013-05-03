@@ -36,7 +36,7 @@ object ArtWebSiteDataSourceObject extends Schema{
       )
   )
   
-  def querylemmonslidertable = from(lemmonslidertabledata)((item) =>  select(item)).toList
+  def querylemmonslidertable = from(lemmonslidertabledata)((item) =>  where(item.slidertype === "A") select(item)).toList
   
   ///
 //  val productCategories = table[ProductCategoryTable]("productcategorytable")
