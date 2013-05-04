@@ -45,25 +45,13 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 
 //  proecess "/" page . one get, one page 
   get("/") {
-	  contentType = "text/html"
-	    
-	    val scriptstring = mustache("datascript.mustache","layout" -> "")
-	    
-
-      
-//	        mustache("index.mustache","layout" -> "",
-//          "replacescript" -> scriptstring
-//          )
+	  	contentType = "text/html"
 
 	    mustache("index.mustache","layout" -> "",
-	        "pagename" -> "23",
-	        "parametervalue" -> "22",
-	        "replacedscriptsection" -> scriptstring
+	        "pagename" -> "what",
+	        "parametervalue" -> 33
+	        
           )
-          
-//          test
-          
-//          mustache("testmustache.mustache","layout" -> "")
 
   }
   

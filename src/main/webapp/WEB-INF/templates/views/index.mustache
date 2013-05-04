@@ -179,7 +179,9 @@
 <div class="lemmon-wrap clearfix">
     <div id="lemmon-slider" class="lemmon-slider">
         <ul>
-        	
+        	<li id="slidertest">
+
+        	</li>
         
         
             <li> <a href="portfolio-single.html">
@@ -503,7 +505,7 @@
                 <li>? 2013 道雅斋艺术有限公司. 保有本站所有权利.</li>
                 <li><a href="sitemap.html">本站地图</a></li>
                 <li><a href="privacy.html">隐私声明</a></li>
-                <li id="menuitem1"></li>
+
             </ul>
         </div>
         <!--footerCredits container-->
@@ -540,9 +542,28 @@
     var pagename = {{pagename}};
     var pageparameter = {{parametervalue}};
 </script>
-<script src="assets/js/scripts.js">
-    {{replacedscriptsection}}
+    {{=<% %>=}}
+<script>
+
+
+
+    //slidertest
+    var sliderdata = {
+        hrefvalue:  "portfolio-single.html",
+        imgvalue:   "/assets/showwork/drawshow6.jpg",
+        h3value:    "tt11",
+        pvalue:     "tt22"
+    };
+
+    var output2 = Mustache.render('<a href="{{hrefvalue}}"><img src="{{imgvalue}}"" /></a><div class="summary"><a href="{{hrefvalue}}"><h3>{{h3value}}</h3><p>{{pvalue}}</p></a></div>',sliderdata);
+
+    var target2 = document.getElementById('slidertest');
+    target2.innerHTML = output2;
+
+
+
 </script>
+<%={{ }}=%>
 
 
 </body>
