@@ -1,12 +1,12 @@
-{{#showindexscript}}
 
 
-    var people {
-    name: 'sam';
-    }
+{{=<% %>=}}
+    var people = {
+    name:pagename,
+    age:pageparameter
+    };
 
+    var output = Mustache.render('name is : {{name}} and age is {{age}}', people);
     var target = document.getElementById('menuitem1');
-
-    alert('okok');
-
-{{/showindexscript}}
+    target.innerHTML = output;
+<%={{ }}=%>

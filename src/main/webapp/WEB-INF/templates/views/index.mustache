@@ -536,28 +536,13 @@
 <script src="assets/js/scripts.js"></script>
 
 <!--fixed or no fixed script-->
-<!--<script src="assets/js/pagejs/{{jsfilename}}.js"></script>-->
-<!-- this code is processed by server -->
 <script>
     var pagename = {{pagename}};
     var pageparameter = {{parametervalue}};
 </script>
-<!--this code is running on browser-->
-{{=<% %>=}}
-<script>
-    var people = {
-        name:pagename,
-        age:pageparameter
-    };
-
-    var output = Mustache.render('name is : {{name}} and age is {{age}}', people);
-    var target = document.getElementById('menuitem1');
-    target.innerHTML = output;
-
-
-//    alert('ok123 ' + pagename + ' '+ pageparameter);
+<script src="assets/js/scripts.js">
+    {{replacedscriptsection}}
 </script>
-<%={{ }}=%>
 
 
 </body>
