@@ -516,11 +516,7 @@
 
 
 
-</div>
-<div class="hidden">
-<p id="pagename" value = "{{pagename}}" ></p>
-<p id="pageparameter" value = "{{parametervalue}}" ></p>
-</div>
+
 <!-- close #page-->
 <!-- JS JQuery ================ -->
 <script src="assets/js/bootstrap.js"></script><!--transitions, tooltips, popover, buttons, modals, alert messages-->
@@ -541,17 +537,17 @@
 
 <!--fixed or no fixed script-->
 <!--<script src="assets/js/pagejs/{{jsfilename}}.js"></script>-->
-
+<!-- this code is processed by server -->
 <script>
     var pagename = {{pagename}};
     var pageparameter = {{parametervalue}};
 </script>
-
+<!--this code is running on browser-->
 {{=<% %>=}}
 <script>
     var people = {
-        name:'sam',
-        age:18
+        name:pagename,
+        age:pageparameter
     };
 
     var output = Mustache.render('name is : {{name}} and age is {{age}}', people);
@@ -559,7 +555,7 @@
     target.innerHTML = output;
 
 
-    alert('ok123 ' + pagename + ' '+ pageparameter);
+//    alert('ok123 ' + pagename + ' '+ pageparameter);
 </script>
 <%={{ }}=%>
 
