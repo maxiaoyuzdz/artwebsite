@@ -178,71 +178,8 @@
 <!--begin slider -->
 <div class="lemmon-wrap clearfix">
     <div id="lemmon-slider" class="lemmon-slider">
-        <ul>
-        	<li id="slidertest">
+        <ul id="slidertest">
 
-        	</li>
-        
-        
-            <li> <a href="portfolio-single.html">
-                <!--link to article/post/portfolio entry for the entire image-->
-                <img src="/assets/showwork/drawshow1.jpg" alt="" /> </a>
-                <!--end image link-->
-                <div class="summary">
-                    <!--begin summary-->
-                    <a href="portfolio-single.html">
-                        <!--begin link to article post or portfolio entry for the caption-->
-                        <h3>大灰狼</h3>
-                        <p>国画</p>
-                    </a>
-                    <!--end link to article post or portfolio entry for the caption-->
-                </div>
-                <!--end summary-->
-            </li>
-            <li> <a href="portfolio-single.html"> <img src="/assets/showwork/drawshow2.jpg" alt="" /></a>
-                <div class="summary"> <a href="portfolio-single.html">
-                    <h3>马晓宇</h3>
-                    <p>书法</p>
-                    </a>
-                </div>
-            </li>
-            <li> <a href="portfolio-single.html"> <img src="/assets/showwork/drawshow3.jpg" alt="" /></a>
-                <div class="summary"> <a href="portfolio-single.html">
-                    <h3>战神</h3>
-                    <p>油画</p>
-                    </a>
-                </div>
-            </li>
-            <li> <a href="portfolio-single.html"> <img src="/assets/showwork/drawshow4.jpg" alt="" /></a>
-                <div class="summary"> <a href="portfolio-single.html">
-                    <h3>Mona Lisa</h3>
-                    <p>油画</p>
-                    </a>
-                </div>
-            </li>
-            <li> <a href="portfolio-single.html"> <img src="/assets/showwork/drawshow5.jpg" alt="" /></a>
-                <div class="summary"> <a href="portfolio-single.html">
-                    <h3>大灰狼</h3>
-                    <p>油画</p>
-                    </a>
-                </div>
-            </li>
-
-            <li> <a href="portfolio-single.html"> <img src="/assets/showwork/drawshow7.jpg" alt="" /></a>
-                <div class="summary"> <a href="portfolio-single.html">
-                    <h3>大灰狼</h3>
-                    <p>油画</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <a href="portfolio-single.html"> <img src="/assets/showwork/drawshow8.jpg" alt="" /></a>
-                <div class="summary"> <a href="portfolio-single.html">
-                    <h3>大灰狼</h3>
-                    <p>油画</p>
-                    </a>
-                </div>
-            </li>
         </ul>
     </div>
 
@@ -545,20 +482,70 @@
     {{=<% %>=}}
 <script>
 
-
-
     //slidertest
-    var sliderdata = {
+
+    var sliderdataarry = {
+        "stooges":[
+    {
         hrefvalue:  "portfolio-single.html",
-        imgvalue:   "/assets/showwork/drawshow6.jpg",
-        h3value:    "tt11",
+        imgvalue:   "/assets/showwork/drawshow1.jpg",
+        h3value:    "tt1",
         pvalue:     "tt22"
+    },
+    {
+        hrefvalue:  "portfolio-single.html",
+        imgvalue:   "/assets/showwork/drawshow2.jpg",
+        h3value:    "tt2",
+        pvalue:     "tt22"
+    },
+    {
+        hrefvalue:  "portfolio-single.html",
+        imgvalue:   "/assets/showwork/drawshow3.jpg",
+        h3value:    "tt3",
+        pvalue:     "tt22"
+    },
+            {
+                hrefvalue:  "portfolio-single.html",
+                imgvalue:   "/assets/showwork/drawshow4.jpg",
+                h3value:    "tt1",
+                pvalue:     "tt22"
+            },
+            {
+                hrefvalue:  "portfolio-single.html",
+                imgvalue:   "/assets/showwork/drawshow5.jpg",
+                h3value:    "tt2",
+                pvalue:     "tt22"
+            },
+            {
+                hrefvalue:  "portfolio-single.html",
+                imgvalue:   "/assets/showwork/drawshow6.jpg",
+                h3value:    "tt3",
+                pvalue:     "tt22"
+            }
+            ]
+
     };
 
-    var output2 = Mustache.render('<a href="{{hrefvalue}}"><img src="{{imgvalue}}"" /></a><div class="summary"><a href="{{hrefvalue}}"><h3>{{h3value}}</h3><p>{{pvalue}}</p></a></div>',sliderdata);
+
+    var output2 = Mustache.render('{{#stooges}}<li><a href="{{hrefvalue}}"><img src="{{imgvalue}}"" /></a><div class="summary"><a href="{{hrefvalue}}"><h3>{{h3value}}</h3><p>{{pvalue}}</p></a></div></li>{{/stooges}}',sliderdataarry);
 
     var target2 = document.getElementById('slidertest');
     target2.innerHTML = output2;
+
+
+
+    $.getJSON('/jsondata/queryproperty',
+    function(data)
+    {
+      var res = {};
+        res.stooges = data;
+
+        var output2 = Mustache.render('{{#stooges}}<li><a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div></li>{{/stooges}}',res);
+
+        var target2 = document.getElementById('slidertest');
+        target2.innerHTML = output2;
+    }
+    );
 
 
 
