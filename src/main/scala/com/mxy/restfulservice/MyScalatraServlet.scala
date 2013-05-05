@@ -63,10 +63,14 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 
   }
   
-  
+  /**
+   * Original Html Code output
+   */
   get("/testhtml"){
     contentType = "text/html"
-  
+  /**
+   * Html Begin
+   */
 
 <html lang="zh-CN">
 <head>
@@ -593,6 +597,10 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 </body>
 
 </html>
+      
+/**
+ * Html end
+ */
   }
   
   
