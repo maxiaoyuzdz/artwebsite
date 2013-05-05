@@ -19,17 +19,12 @@ case class LemmonSliderObeject(
 }
 
 
-//case class ProductCategoryTable(val id:Int, 
-//    val name:String,
-//    val parentId:Int, 
-//    val parentName:String) extends KeyedEntity[Int]{
-//  def this() = this(0,"",0,"")
-//}
+
 
 
 object ArtWebSiteDataSourceObject extends Schema{
   //lemmonslidertable
-  val lemmonslidertabledata = table[LemmonSliderObeject]("lemmonslidertable")
+  val lemmonslidertabledata = table[LemmonSliderObeject]("bestlemmonslidertable")
   
   on(lemmonslidertabledata)(item =>declare(
       item.id	is(primaryKey, autoIncremented)
@@ -38,17 +33,7 @@ object ArtWebSiteDataSourceObject extends Schema{
   
   def querylemmonslidertable = from(lemmonslidertabledata)((item) =>  where(item.slidertype === "A") select(item)).toList
   
-  ///
-//  val productCategories = table[ProductCategoryTable]("productcategorytable")
-//  
-//  
-//  
-//  on(productCategories)(item =>declare(
-//      item.id	is(primaryKey, autoIncremented)
-//      )
-//  )
-//  
-//  def querycategory = from(productCategories)((item) => select(item)).toList
+
   
 
 }

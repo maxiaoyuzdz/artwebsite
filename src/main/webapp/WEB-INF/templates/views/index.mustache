@@ -178,7 +178,7 @@
 <!--begin slider -->
 <div class="lemmon-wrap clearfix">
     <div id="lemmon-slider" class="lemmon-slider">
-        <ul id="slidertest">
+        <ul id="indexslider">
 
         </ul>
     </div>
@@ -481,73 +481,23 @@
 </script>
     {{=<% %>=}}
 <script>
-
-    //slidertest
-
-    var sliderdataarry = {
-        "stooges":[
-    {
-        hrefvalue:  "portfolio-single.html",
-        imgvalue:   "/assets/showwork/drawshow1.jpg",
-        h3value:    "tt1",
-        pvalue:     "tt22"
-    },
-    {
-        hrefvalue:  "portfolio-single.html",
-        imgvalue:   "/assets/showwork/drawshow2.jpg",
-        h3value:    "tt2",
-        pvalue:     "tt22"
-    },
-    {
-        hrefvalue:  "portfolio-single.html",
-        imgvalue:   "/assets/showwork/drawshow3.jpg",
-        h3value:    "tt3",
-        pvalue:     "tt22"
-    },
-            {
-                hrefvalue:  "portfolio-single.html",
-                imgvalue:   "/assets/showwork/drawshow4.jpg",
-                h3value:    "tt1",
-                pvalue:     "tt22"
-            },
-            {
-                hrefvalue:  "portfolio-single.html",
-                imgvalue:   "/assets/showwork/drawshow5.jpg",
-                h3value:    "tt2",
-                pvalue:     "tt22"
-            },
-            {
-                hrefvalue:  "portfolio-single.html",
-                imgvalue:   "/assets/showwork/drawshow6.jpg",
-                h3value:    "tt3",
-                pvalue:     "tt22"
-            }
-            ]
-
-    };
-
-
-    var output2 = Mustache.render('{{#stooges}}<li><a href="{{hrefvalue}}"><img src="{{imgvalue}}"" /></a><div class="summary"><a href="{{hrefvalue}}"><h3>{{h3value}}</h3><p>{{pvalue}}</p></a></div></li>{{/stooges}}',sliderdataarry);
-
-    var target2 = document.getElementById('slidertest');
-    target2.innerHTML = output2;
-
-
-
-    $.getJSON('/jsondata/queryproperty',
+    //slider
+    $.getJSON('/jsondata/querylemmonsliderdata',
     function(data)
     {
-      var res = {};
-        res.stooges = data;
+        var res = {};
+        res.storages = data;
 
-        var output2 = Mustache.render('{{#stooges}}<li><a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div></li>{{/stooges}}',res);
+        var output2 = Mustache.render(
+                '{{#storages}}<li><a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div></li>{{/storages}}',
+                res);
 
-        var target2 = document.getElementById('slidertest');
+        var target2 = document.getElementById('indexslider');
         target2.innerHTML = output2;
     }
     );
 
-
+    //famous people
 
 </script>
 <%={{ }}=%>
