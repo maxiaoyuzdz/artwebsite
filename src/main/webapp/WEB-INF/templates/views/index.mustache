@@ -144,7 +144,7 @@
 <!-- close /.header -->
 <!---->
 
-<div class="hero-unit center no-border no-padding-bottom ">
+<div class="hero-unit center no-border no-padding-bottom hidden">
 
     <div class="row-fluid clearfix small_content_show_area ">
         <div class="span4">
@@ -195,13 +195,13 @@
 <!--notice how sliders are outside the this main content div-->
 <div class="container clearfix" id="main-content" >
     <h3 class="short_headline"><span>签约名家推荐</span></h3>
-    <div class="row-fluid">
+    <div class="row-fluid" id="indexbestfamouspeople">
 
 
         <div class="span3">
             <div class="well">
-                <h2>著名国画家</h2>
-                <h3>马晓宇</h3>
+                <h2>著名国画家1</h2>
+                <h3>马晓宇1</h3>
                 <p> <img class="alignleft" src="../demo/80x80-Diego_Velazquez_028.png" alt="Velazquez" /> 字什么，山东某某人，耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么</p>
                 <p class="right"><a href="#" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p>
             </div>
@@ -210,18 +210,8 @@
 
         <div class="span3">
             <div class="well">
-                <h2>著名书法家</h2>
-                <h3>马晓宇</h3>
-                <p> <img class="alignleft" src="../demo/80x80-Diego_Velazquez_028.png" alt="Velazquez" /> 字什么，山东某某人，耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么</p>
-                <p class="right"><a href="#" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p>
-            </div>
-            <!--close .well -->
-        </div>
-        <!--close span4-->
-        <div class="span3">
-            <div class="well">
-                <h2>著名瓷器家</h2>
-                <h3>马晓宇</h3>
+                <h2>著名书法家1</h2>
+                <h3>马晓宇1</h3>
                 <p> <img class="alignleft" src="../demo/80x80-Diego_Velazquez_028.png" alt="Velazquez" /> 字什么，山东某某人，耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么</p>
                 <p class="right"><a href="#" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p>
             </div>
@@ -230,8 +220,18 @@
         <!--close span4-->
         <div class="span3">
             <div class="well">
-                <h2>著名油画家</h2>
-                <h3>马晓宇</h3>
+                <h2>著名瓷器家1</h2>
+                <h3>马晓宇1</h3>
+                <p> <img class="alignleft" src="../demo/80x80-Diego_Velazquez_028.png" alt="Velazquez" /> 字什么，山东某某人，耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么</p>
+                <p class="right"><a href="#" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p>
+            </div>
+            <!--close .well -->
+        </div>
+        <!--close span4-->
+        <div class="span3">
+            <div class="well">
+                <h2>著名油画家1</h2>
+                <h3>马晓宇1</h3>
                 <p> <img class="alignleft" src="../demo/80x80-Diego_Velazquez_028.png" alt="Velazquez" />字什么，山东某某人，耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么耕耘什么什么什么</p>
                 <p class="right"><a href="#" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p>
             </div>
@@ -498,6 +498,23 @@
     );
 
     //famous people
+
+
+    $.getJSON('/jsondata/querybestfamouspeopledata',
+            function(data)
+            {
+                var res = {};
+                res.storages = data;
+
+                var output = Mustache.render(
+                        '{{#storages}}<div class="span3"><div class="well"><h2>{{h0}}</h2><h3>{{h1}}</h3><p><img class="alignleft" src="{{imgsrc}}" />{{p}}</p><p class="right"><a href="{{href}}" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p></div></div>{{/storages}}',
+                        res);
+
+                var target = document.getElementById('indexbestfamouspeople');
+                target.innerHTML = output;
+            }
+    );
+
 
 </script>
 <%={{ }}=%>

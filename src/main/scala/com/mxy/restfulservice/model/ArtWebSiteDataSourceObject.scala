@@ -14,11 +14,22 @@ case class LemmonSliderObeject(
     val imgsrc:String,
     val h:String,
     val p:String,
-    val slidertype:String) extends KeyedEntity[Int]{
+    val datatype:String) extends KeyedEntity[Int]{
   def this() = this(0,"","","","","A")
 }
 
-
+case class BestFamousPeopleObejct(
+    val id:Int,
+    val h0:String,
+    val h1:String,
+    val imgsrc:String,
+    val p:String,
+    val href:String,
+    val datatype:String) extends KeyedEntity[Int]{
+  
+  def this() = this(0,"","","","","","A")
+  
+}
 
 
 
@@ -31,7 +42,17 @@ object ArtWebSiteDataSourceObject extends Schema{
       )
   )
   
-  def querylemmonslidertable = from(lemmonslidertabledata)((item) =>  where(item.slidertype === "A") select(item)).toList
+  def querylemmonslidertable = from(lemmonslidertabledata)((item) =>  where(item.datatype === "A") select(item)).toList
+  
+  //bestfamouspeopeltable bestfamouspeopletable
+  val bestfamouspeopletabledata = table[BestFamousPeopleObejct]("bestfamouspeopletable")
+  
+  on(bestfamouspeopletabledata)(item =>declare(
+      item.id	is(primaryKey, autoIncremented)
+      )
+  )
+  
+  def querybestfamouspeopletable = from(bestfamouspeopletabledata)((item) =>  where(item.datatype === "A") select(item)).toList
   
 
   
