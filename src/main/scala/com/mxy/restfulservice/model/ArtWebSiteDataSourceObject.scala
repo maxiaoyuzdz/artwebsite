@@ -31,6 +31,16 @@ case class BestFamousPeopleObejct(
   
 }
 
+case class BestWorkShowObject(
+    val id:Int,
+    val href:String,
+    val imgsrc:String,
+    val name:String,
+    val price:Int,
+    val datatype:String) extends KeyedEntity[Int]{
+  def this() = this(0,"","","",0,"A")
+}
+
 
 
 object ArtWebSiteDataSourceObject extends Schema{
@@ -54,7 +64,15 @@ object ArtWebSiteDataSourceObject extends Schema{
   
   def querybestfamouspeopletable = from(bestfamouspeopletabledata)((item) =>  where(item.datatype === "A") select(item)).toList
   
-
+  //
+  val bestworkshowtabledata = table[BestWorkShowObject]("bestworkshowtable")
+  
+  on(bestworkshowtabledata)(item =>declare(
+      item.id	is(primaryKey, autoIncremented)
+      )
+  )
+  
+  def querybestworkshowtable = from(bestworkshowtabledata)((item) =>  where(item.datatype === "A") select(item)).toList
   
 
 }

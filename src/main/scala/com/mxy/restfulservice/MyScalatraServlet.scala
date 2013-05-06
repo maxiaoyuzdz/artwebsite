@@ -61,6 +61,11 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     contentType = formats("json")
     ArtWebSiteDataSourceObject.querybestfamouspeopletable
   }
+  
+  get("/jsondata/querybestworkshowdata"){
+    contentType = formats("json")
+    ArtWebSiteDataSourceObject.querybestworkshowtable
+  }
 
   /**
    * format convert, anything be converted to JSON

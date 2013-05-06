@@ -144,7 +144,7 @@
 <!-- close /.header -->
 <!---->
 
-<div class="hero-unit center no-border no-padding-bottom hidden">
+<div class="hero-unit center no-border no-padding-bottom ">
 
     <div class="row-fluid clearfix small_content_show_area ">
         <div class="span4">
@@ -202,7 +202,7 @@
 
     <h3 class="short_headline"><span>力作推荐</span></h3>
     <!-- begin equalHeights columns 3 -->
-    <div class="row-fluid equalHero">
+    <div class="row-fluid equalHero" id="indexbestworkshow">
         <div class="span4"> <a href="about.html"><img src="/assets/showwork/drawshow1.jpg" class="aligncenter" alt="" /></a>
             <h3><a href="about.html">兰花图</a></h3>
             <p>价格：56000RMB</p>
@@ -223,7 +223,7 @@
     </div>
     <!-- close #equalHeights .featured 3 columns -->
 
-    <h3 class="short_headline"><span>精品展销</span></h3>
+    <h3 class="short_headline"><span>国画</span></h3>
 
 
     <div class="row-fluid equalHero">
@@ -251,6 +251,8 @@
         </div>
         <!-- close .span4 -->
     </div>
+
+    <h3 class="short_headline"><span>油画</span></h3>
 
     <!-- close #equalHeights .featured 3 columns -->
     <div class="row-fluid equalHero">
@@ -279,6 +281,8 @@
         </div>
         <!-- close .span4 -->
     </div>
+
+    <h3 class="short_headline"><span>书法</span></h3>
 
     <!-- close #equalHeights .featured 3 columns -->
     <div  class="row-fluid equalHero">
@@ -466,6 +470,21 @@
                         res);
 
                 var target = document.getElementById('indexbestfamouspeople');
+                target.innerHTML = output;
+            }
+    );
+    //indexbestworkshow
+    $.getJSON('/jsondata/querybestworkshowdata',
+            function(data)
+            {
+                var res = {};
+                res.storages = data;
+
+                var output = Mustache.render(
+                        '{{#storages}}<div class="span4"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>{{/storages}}',
+                        res);
+
+                var target = document.getElementById('indexbestworkshow');
                 target.innerHTML = output;
             }
     );
