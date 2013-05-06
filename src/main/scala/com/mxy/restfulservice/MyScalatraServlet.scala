@@ -64,7 +64,12 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   
   get("/jsondata/querybestworkshowdata"){
     contentType = formats("json")
-    ArtWebSiteDataSourceObject.querybestworkshowtable
+    ArtWebSiteDataSourceObject.querybestworkshowtable(9)
+  }
+  
+  get("/jsondata/querytest"){
+    contentType = formats("json")
+    ArtWebSiteDataSourceObject.querytest
   }
 
   /**
