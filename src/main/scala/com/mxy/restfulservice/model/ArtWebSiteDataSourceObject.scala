@@ -37,12 +37,22 @@ case class WorkShowObject(
     val id:Int,
     val href:String,
     val imgsrc:String,
+    val smallimgsrc:String,
     val name:String,
     val price:Int,
     val level:Int,
     val worktype:String,
     val datatype:String) extends KeyedEntity[Int]{
-  def this() = this(0,"","","",0,5,"","A")
+  def this() = this(0,"","","","",0,5,"","A")
+}
+
+case class HrefAndSmallImgsrcWorkShowObject(
+     val id:Int,
+    val href:String,
+    
+    val smallimgsrc:String
+    )extends KeyedEntity[Int]{
+  def this() = this(0,"","")
 }
 
 
@@ -69,17 +79,33 @@ object ArtWebSiteDataSourceObject extends Schema{
   def querybestfamouspeopletable = from(bestfamouspeopletabledata)((item) =>  where(item.datatype === "A") select(item)).toList
   
   //
-  val bestworkshowtabledata = table[WorkShowObject]("bestworkshowtable")
+  val workshowtabledata = table[WorkShowObject]("workshowtable")
   
-  on(bestworkshowtabledata)(item =>declare(
+  
+  
+  on(workshowtabledata)(item =>declare(
       item.id	is(primaryKey, autoIncremented)
       )
   )
   
-  def querybestworkshowtable(rlevel:Int) = from(bestworkshowtabledata)((item) =>  where((item.datatype === "A") and (item.level === rlevel) ) select(item)).toList
+  def querybestworkshowtable(rlevel:Int) = from(workshowtabledata)((item) =>  where((item.datatype === "A") and (item.level === rlevel) ) select(item)).toList
   
   
-  def querytest = from(bestworkshowtabledata)((item) =>  select(item) orderBy(item.id desc)).page(3, 5).toList
+  def queryartfromworkshowtable(arttype:String,length:Int) = from(workshowtabledata)((item) => where(item.worktype === arttype) select(item) orderBy(item.id desc)).page(0, length).toList
+  
+  //
+  val hrefandsmallimgsrcworkshowobjecttabledata = table[HrefAndSmallImgsrcWorkShowObject]("workshowtable")
+  
+  on(lemmonslidertabledata)(item =>declare(
+      item.id	is(primaryKey, autoIncremented)
+      )
+  )
+  
+  def newestworksmallshow(length:Int) = from(hrefandsmallimgsrcworkshowobjecttabledata)((w) =>  select((w)) orderBy(w.id desc)).page(0, length).toList
+  
+  
+  // test for page
+  def querytest = from(workshowtabledata)((item) =>  select(item) orderBy(item.id desc)).page(3, 5).toList
   
 
 }
