@@ -43,8 +43,29 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	contentType = "text/html"
 
 	    mustache("index.mustache","layout" -> "",
-	        "pagename" -> "what",
-	        "parametervalue" -> 33
+	        "pagenumber" -> 0,
+	        "parametervalue" -> 2344567
+        )
+  }
+  
+  get("/artshow/:arttype") {
+	  	contentType = "text/html"
+	  	  
+	  	println(params("arttype"))
+	  	
+	  	val showtype = params("arttype")
+	  	val pagenumber = showtype match{
+	  	  case "guohua" => 2
+	  	  case "youhua" => 3
+	  	  case "shufa" => 4
+	  	  //if no match
+//	  	  case _ => 0
+	  	}
+	  	println(pagenumber)
+	  	
+	    mustache("show.mustache","layout" -> "",
+	        "pagenumber" -> pagenumber,
+	        "parametervalue" -> 0
           )
   }
   
