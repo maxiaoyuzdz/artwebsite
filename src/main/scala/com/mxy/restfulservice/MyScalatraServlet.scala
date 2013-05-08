@@ -42,10 +42,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/") {
 	  	contentType = "text/html"
 
-	    mustache("index.mustache","layout" -> "",
-	        "pagenumber" -> 0,
-	        "parametervalue" -> 2344567
-        )
+	    mustache("index.mustache","layout" -> "")
   }
   
   get("/artshow/:arttype") {
@@ -55,23 +52,31 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	
 	  	val showtype = params("arttype")
 	  	val pagenumber = showtype match{
-	  	  case "guohua" => 2
-	  	  case "youhua" => 3
-	  	  case "shufa" => 4
-	  	  //if no match
-//	  	  case _ => 0
+	  	  case "guohua" => 1
+	  	  case "youhua" => 2
+	  	  case "shufa" => 3
+//	  	  if no match
+	  	  case _ => 0
 	  	}
-	  	println(pagenumber)
+	  	
+//	  	if(pagenumber == 0) redirect("/notfound")
 	  	
 	    mustache("show.mustache","layout" -> "",
 	        "pagenumber" -> pagenumber,
-	        "parametervalue" -> 0
+	        "parametervalue" -> "'test'"
           )
   }
+  
+//  notFound {
+//	  <h1>Not found. Bummer.</h1>
+//  }
   
   
   /**
    * json data interface
+   */
+  /**
+   * index
    */
   get("/jsondata/querylemmonsliderdata"){
     contentType = formats("json")
@@ -109,10 +114,9 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   }
   
   
-  get("/jsondata/querytest"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.querytest
-  }
+  /**
+   * show
+   */
 
   /**
    * format convert, anything be converted to JSON
