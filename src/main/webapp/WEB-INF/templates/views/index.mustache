@@ -168,6 +168,12 @@
 <div class="lemmon-wrap clearfix">
     <div id="lemmon-slider" class="lemmon-slider">
         <ul id="indexslider">
+            <li id="indexslideritem1"></li>
+            <li id="indexslideritem2"></li>
+            <li id="indexslideritem3"></li>
+            <li id="indexslideritem4"></li>
+            <li id="indexslideritem5"></li>
+            <li id="indexslideritem6"></li>
 
         </ul>
     </div>
@@ -331,21 +337,7 @@
 
 {{=<% %>=}}
 <script>
-    //slider
-    $.getJSON('/jsondata/querylemmonsliderdata',
-    function(data)
-    {
-        var res = {};
-        res.storages = data;
 
-        var output2 = Mustache.render(
-                '{{#storages}}<li><a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div></li>{{/storages}}',
-                res);
-
-        var target2 = document.getElementById('indexslider');
-        target2.innerHTML = output2;
-    }
-    );
 
     //famous people
 
@@ -424,6 +416,95 @@
                 target.innerHTML = output;
             }
     );
+
+    //slider  indexslideritem1
+    $.getJSON('/jsondata/querylemmonsliderdata1',
+            function(data)
+            {
+                var res = {};
+                res.storages = data;
+
+                var output = Mustache.render(
+                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
+                        res);
+
+                var target = document.getElementById('indexslideritem1');
+                target.innerHTML = output;
+            }
+    );
+    $.getJSON('/jsondata/querylemmonsliderdata2',
+            function(data)
+            {
+                var res = {};
+                res.storages = data;
+
+                var output = Mustache.render(
+                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
+                        res);
+
+                var target = document.getElementById('indexslideritem2');
+                target.innerHTML = output;
+            }
+    );
+    $.getJSON('/jsondata/querylemmonsliderdata3',
+            function(data)
+            {
+                var res = {};
+                res.storages = data;
+
+                var output = Mustache.render(
+                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
+                        res);
+
+                var target = document.getElementById('indexslideritem3');
+                target.innerHTML = output;
+            }
+    );
+    $.getJSON('/jsondata/querylemmonsliderdata4',
+            function(data)
+            {
+                var res = {};
+                res.storages = data;
+
+                var output = Mustache.render(
+                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
+                        res);
+
+                var target = document.getElementById('indexslideritem4');
+                target.innerHTML = output;
+            }
+    );
+    $.getJSON('/jsondata/querylemmonsliderdata5',
+            function(data)
+            {
+                var res = {};
+                res.storages = data;
+
+                var output = Mustache.render(
+                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
+                        res);
+
+                var target = document.getElementById('indexslideritem5');
+                target.innerHTML = output;
+            }
+    );
+    $.getJSON('/jsondata/querylemmonsliderdata6',
+            function(data)
+            {
+                var res = {};
+                res.storages = data;
+
+                var output = Mustache.render(
+                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
+                        res);
+
+                var target = document.getElementById('indexslideritem6');
+                target.innerHTML = output;
+            }
+    );
+
+
+
     //newestworkshow
     $.getJSON('/jsondata/querynewestworksmallshow',
             function(data)

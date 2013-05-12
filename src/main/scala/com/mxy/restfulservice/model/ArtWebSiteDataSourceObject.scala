@@ -67,6 +67,12 @@ object ArtWebSiteDataSourceObject extends Schema{
   )
   
   def querylemmonslidertable = from(lemmonslidertabledata)((item) =>  where(item.datatype === "A") select(item)).toList
+  def querylemmonslidertable1 = from(lemmonslidertabledata)((item) =>  where(item.id === 1) select(item)).toList
+  def querylemmonslidertable2 = from(lemmonslidertabledata)((item) =>  where(item.id === 2) select(item)).toList
+  def querylemmonslidertable3 = from(lemmonslidertabledata)((item) =>  where(item.id === 3) select(item)).toList
+  def querylemmonslidertable4 = from(lemmonslidertabledata)((item) =>  where(item.id === 4) select(item)).toList
+  def querylemmonslidertable5 = from(lemmonslidertabledata)((item) =>  where(item.id === 5) select(item)).toList
+  def querylemmonslidertable6 = from(lemmonslidertabledata)((item) =>  where(item.id === 6) select(item)).toList
   
   //bestfamouspeopeltable bestfamouspeopletable
   val bestfamouspeopletabledata = table[BestFamousPeopleObejct]("bestfamouspeopletable")

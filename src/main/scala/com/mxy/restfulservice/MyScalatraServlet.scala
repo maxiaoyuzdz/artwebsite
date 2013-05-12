@@ -83,30 +83,74 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     ArtWebSiteDataSourceObject.querylemmonslidertable
 
   }
+  get("/jsondata/querylemmonsliderdata1"){
+    contentType = formats("json")
+    ArtWebSiteDataSourceObject.querylemmonslidertable1
+
+  }
+  get("/jsondata/querylemmonsliderdata2"){
+    contentType = formats("json")
+    ArtWebSiteDataSourceObject.querylemmonslidertable2
+
+  }
+  get("/jsondata/querylemmonsliderdata3"){
+    contentType = formats("json")
+    ArtWebSiteDataSourceObject.querylemmonslidertable3
+
+  }
+  get("/jsondata/querylemmonsliderdata4"){
+    contentType = formats("json")
+    ArtWebSiteDataSourceObject.querylemmonslidertable4
+
+  }
+  get("/jsondata/querylemmonsliderdata5"){
+    contentType = formats("json")
+    ArtWebSiteDataSourceObject.querylemmonslidertable5
+
+  }
+  get("/jsondata/querylemmonsliderdata6"){
+    contentType = formats("json")
+    ArtWebSiteDataSourceObject.querylemmonslidertable6
+
+  }
+  /**
+   * 
+   */
   get("/jsondata/querybestfamouspeopledata"){
     contentType = formats("json")
     ArtWebSiteDataSourceObject.querybestfamouspeopletable
   }
-  
+  /**
+   * 
+   */
   get("/jsondata/querybestworkshowdata"){
     contentType = formats("json")
     ArtWebSiteDataSourceObject.querybestworkshowtable(9)
   }
-  //
+  /**
+   * 
+   */
   get("/jsondata/queryguohuadata"){
     contentType = formats("json")
     ArtWebSiteDataSourceObject.queryartfromworkshowtable("G",4)
   }
-  //
+  /**
+   * 
+   */
   get("/jsondata/queryyouhuadata"){
     contentType = formats("json")
     ArtWebSiteDataSourceObject.queryartfromworkshowtable("Y",4)
   }
-  //
+  /**
+   * 
+   */
   get("/jsondata/queryshufadata"){
     contentType = formats("json")
     ArtWebSiteDataSourceObject.queryartfromworkshowtable("S",4)
   }
+  /**
+   * 
+   */
   //newestworksmallshow
   get("/jsondata/querynewestworksmallshow"){
     contentType = formats("json")
