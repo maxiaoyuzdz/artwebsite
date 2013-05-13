@@ -42,8 +42,9 @@ case class WorkShowObject(
     val price:Int,
     val level:Int,
     val worktype:String,
-    val datatype:String) extends KeyedEntity[Int]{
-  def this() = this(0,"","","","",0,5,"","A")
+    val datatype:String,
+    val desc:String) extends KeyedEntity[Int]{
+  def this() = this(0,"","","","",0,5,"","A","some description")
 }
 
 case class HrefAndSmallImgsrcWorkShowObject(
@@ -110,8 +111,10 @@ object ArtWebSiteDataSourceObject extends Schema{
   def newestworksmallshow(length:Int) = from(hrefandsmallimgsrcworkshowobjecttabledata)((w) =>  select((w)) orderBy(w.id desc)).page(0, length).toList
   
   
+  
+  
   // test for page
-  def querytest = from(workshowtabledata)((item) =>  select(item) orderBy(item.id desc)).page(3, 5).toList
+  def querytest = from(workshowtabledata)((item) =>  select(item.id, item.href) orderBy(item.id desc)).page(0, 5).toList.map(item => (item._1, item._2.substring(0,9)))
   
 
 }

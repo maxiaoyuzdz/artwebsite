@@ -417,6 +417,22 @@
             }
     );
 
+    //newestworkshow
+    $.getJSON('/jsondata/querynewestworksmallshow',
+            function(data)
+            {
+                var res = {};
+                res.storages = data;
+
+                var output = Mustache.render(
+                        '{{#storages}}<li><a href="{{href}}"><img src="{{smallimgsrc}}" alt="" /></a></li>{{/storages}}',
+                        res);
+
+                var target = document.getElementById('newestworkshow');
+                target.innerHTML = output;
+            }
+    );
+
     //slider  indexslideritem1
     $.getJSON('/jsondata/querylemmonsliderdata1',
             function(data)
@@ -505,21 +521,7 @@
 
 
 
-    //newestworkshow
-    $.getJSON('/jsondata/querynewestworksmallshow',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
 
-                var output = Mustache.render(
-                        '{{#storages}}<li><a href="{{href}}"><img src="{{smallimgsrc}}" alt="" /></a></li>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('newestworkshow');
-                target.innerHTML = output;
-            }
-    );
 
 
 </script>

@@ -145,7 +145,7 @@
     <div class="row-fluid">
         <div class="filter-box clearfix"><span id="filter">Filter<i class="icon-sort"></i></span>
             <ul class='sort' id="option">
-                <li><a class="active" href="#" data-filter="*">全部</a></li>
+                <li><a  href="#" data-filter="*">全部</a></li>
                 <li><a href="#" data-filter=".letter-press">花鸟</a></li>
                 <li><a href="#" data-filter=".identity">山水</a></li>
                 <li><a href="#" data-filter=".motion">书法</a></li>
@@ -155,7 +155,7 @@
                 <li><a href="#" data-filter=".shufa">书法</a></li>
             </ul>
         </div>
-        <ul class="gallery four_col clearfix">
+        <ul class="gallery four_col clearfix" id="gallerylist">
             <!-- three_col four_col two_col -->
             <li class="shufa featured art"> <a class="hover" href="portfolio-single-no-slider.html"> <img src="../demo/portfolio/t-typography.jpg" alt="" /><span class="plus"></span></a>
                 <div class="entry-summary">
@@ -389,17 +389,15 @@
 <script src="/assets/js/scripts.js"></script>
 
 <script>
-    var pagenumber = {{pagenumber}};
-    var pageparameter = {{parametervalue}};
+    var pagetype = {{pagetype}};
+    var pageparameter = {{pageparameter}};
 </script>
 
 {{=<% %>=}}
 
 <script>
     //check which show page should load
-
-
-
+    //fix data get
     //newestworkshow
     $.getJSON('/jsondata/querynewestworksmallshow',
             function(data)
@@ -415,6 +413,11 @@
                 target.innerHTML = output;
             }
     );
+
+    //start page data load
+    var pagenumber = 0;
+    //gallerylist
+
 
 
 

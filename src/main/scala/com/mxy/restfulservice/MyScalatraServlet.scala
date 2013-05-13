@@ -48,22 +48,22 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/artshow/:arttype") {
 	  	contentType = "text/html"
 	  	  
-	  	println(params("arttype"))
+
 	  	
 	  	val showtype = params("arttype")
-	  	val pagenumber = showtype match{
-	  	  case "guohua" => 1
-	  	  case "youhua" => 2
-	  	  case "shufa" => 3
-//	  	  if no match
-	  	  case _ => 0
+	  	val pageparameter = showtype match{
+	  	  case "guohua" => "'G'"
+	  	  case "youhua" => "'Y'"
+	  	  case "shufa" => "'S'"
+
+	  	  case _ => "'no'"
 	  	}
 	  	
-//	  	if(pagenumber == 0) redirect("/notfound")
+
 	  	
 	    mustache("show.mustache","layout" -> "",
-	        "pagenumber" -> pagenumber,
-	        "parametervalue" -> "'test'"
+	        "pagetype" -> "'art'",
+	        "pageparameter" -> pageparameter
           )
   }
   
@@ -76,7 +76,17 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
    * json data interface
    */
   /**
-   * index
+   * Fix data
+   */
+  /**
+   * art
+   */
+  get("/jsondata/querynewestworksmallshow"){
+    contentType = formats("json")
+    ArtWebSiteDataSourceObject.newestworksmallshow(12)
+  }
+  /**
+   * index page
    */
   get("/jsondata/querylemmonsliderdata"){
     contentType = formats("json")
@@ -159,15 +169,30 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   
   
   /**
-   * show
+   * show page
    */
+  
 
   /**
    * format convert, anything be converted to JSON
    */
+  get("/jsondata/artshowdata/queryartwork/:worktype/:pagenumber"){
+    contentType = formats("json")
+
+    val worktype = params("worktype")//G Y S
+    val pagenumber = Integer.getInteger(params("pagenumber"))//1,2,3
+    
+    
+    
+  }
 //  before() {
 //    contentType = formats("json")
 //  }
+  get("/jsondata/artshowdata/test"){
+    contentType = formats("json")
+
+    ArtWebSiteDataSourceObject.querytest
+  }
   
   protected implicit val jsonFormats: Formats = DefaultFormats
 }
