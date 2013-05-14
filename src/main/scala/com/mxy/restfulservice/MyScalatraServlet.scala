@@ -180,9 +180,11 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     contentType = formats("json")
 
     val worktype = params("worktype")//G Y S
-    val pagenumber = Integer.getInteger(params("pagenumber"))//1,2,3
+    val pagenumber = Integer.parseInt(params("pagenumber"))//1,2,3
     
+
     
+    ArtWebSiteDataSourceObject.querywork(worktype,pagenumber,15)
     
   }
 //  before() {
@@ -191,7 +193,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/jsondata/artshowdata/test"){
     contentType = formats("json")
 
-    ArtWebSiteDataSourceObject.querytest
+    ArtWebSiteDataSourceObject.querywork("G",0,15)
   }
   
   protected implicit val jsonFormats: Formats = DefaultFormats

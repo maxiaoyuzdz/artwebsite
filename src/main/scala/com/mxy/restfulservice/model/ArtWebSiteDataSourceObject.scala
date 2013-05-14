@@ -43,8 +43,12 @@ case class WorkShowObject(
     val level:Int,
     val worktype:String,
     val datatype:String,
-    val desc:String) extends KeyedEntity[Int]{
-  def this() = this(0,"","","","",0,5,"","A","some description")
+    val desc:String,
+    val category:String,
+    val author:String,
+    val authorpinxie:String,
+    val catehorypinxie:String) extends KeyedEntity[Int]{
+  def this() = this(0,"","","","",0,5,"","A","some description","","","","")
 }
 
 case class HrefAndSmallImgsrcWorkShowObject(
@@ -110,7 +114,8 @@ object ArtWebSiteDataSourceObject extends Schema{
   
   def newestworksmallshow(length:Int) = from(hrefandsmallimgsrcworkshowobjecttabledata)((w) =>  select((w)) orderBy(w.id desc)).page(0, length).toList
   
-  
+  //
+  def querywork(worktype:String,pagenumber:Int,pagelength:Int) = from(workshowtabledata)((item) => where(item.worktype === worktype) select(item) orderBy(item.id desc)).page(pagenumber, pagelength).toList
   
   
   // test for page
