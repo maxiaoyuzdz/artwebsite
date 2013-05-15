@@ -161,37 +161,28 @@
 
 
 
-        <ul class="gallery four_col clearfix" >
-            {{#repo}}
+        <ul class="gallery four_col clearfix" id="gallerylistcontent">
 
-                <li class="shufa featured art">
-                    <a class="hover" href="portfolio-single-no-slider.html">
-                        <img src="{{imgsrc}}" alt="" /><span class="plus"></span></a>
+            {{#repo}}
+                <li class="{{categorypinxie}}">
+                    <a class="hover" href="{{href}}">
+                        <img src="{{imgsrc}}" alt="" />
+                        <span class="plus"></span>
+                    </a>
+                    <div class="entry-summary">
+                        <h4><a href="{{href}}">{{name}}</a></h4>
+                        <p>价格：{{price}}RMB</p>
+                        <div class="categories">
+                            <a href="#">{{category}}</a>
+                        </div>
+                        <span class="credit"><a href="http://www.flickr.com/photos/adactio/{{authorpinxie}}" target="_blank">作者：{{author}}</a></span>
+                    </div>
                 </li>
             {{/repo}}
 
 
 
-            <li class="shufa featured art">
-                <a class="hover" href="portfolio-single-no-slider.html">
-                    <img src="../demo/portfolio/t-typography.jpg" alt="" /><span class="plus"></span></a>
-            </li>
-            <li class="shufa featured art">
-                <a class="hover" href="portfolio-single-no-slider.html">
-                    <img src="../demo/portfolio/t-typography.jpg" alt="" /><span class="plus"></span></a>
-            </li>
-            <li class="shufa featured art">
-                <a class="hover" href="portfolio-single-no-slider.html">
-                    <img src="../demo/portfolio/t-typography.jpg" alt="" /><span class="plus"></span></a>
-            </li>
-            <li class="shufa featured art">
-                <a class="hover" href="portfolio-single-no-slider.html">
-                    <img src="../demo/portfolio/t-typography.jpg" alt="" /><span class="plus"></span></a>
-            </li>
-            <li class="shufa featured art">
-                <a class="hover" href="portfolio-single-no-slider.html">
-                    <img src="../demo/portfolio/t-typography.jpg" alt="" /><span class="plus"></span></a>
-            </li>
+
 
 
         </ul>
@@ -342,7 +333,6 @@
     //start page data load
     var pagenumber = 0;
     //gallerylist
-
 
 
 
