@@ -130,6 +130,9 @@
 <div id="page">
 
 
+
+
+
 <!--notice how sliders and are outside the this main content div-->
 <div class="container clearfix" id="main-content">
 
@@ -156,11 +159,18 @@
             </ul>
         </div>
 
-        <ul class="gallery four_col clearfix" id="gallerylistcontent">
-            <li class="shufa featured art">
-                <a class="hover" href="portfolio-single-no-slider.html">
-                    <img src="../demo/portfolio/t-typography.jpg" alt="" /><span class="plus"></span></a>
-            </li>
+
+
+        <ul class="gallery four_col clearfix" >
+            {{#repo}}
+
+                <li class="shufa featured art">
+                    <a class="hover" href="portfolio-single-no-slider.html">
+                        <img src="{{imgsrc}}" alt="" /><span class="plus"></span></a>
+                </li>
+            {{/repo}}
+
+
 
             <li class="shufa featured art">
                 <a class="hover" href="portfolio-single-no-slider.html">
@@ -332,23 +342,7 @@
     //start page data load
     var pagenumber = 0;
     //gallerylist
-    $.getJSON('/jsondata/artshowdata/queryartwork/G/0',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
 
-                var output = Mustache.render(
-                        '{{#storages}}<li class="shufa featured art">
-                    <a class="hover" href="portfolio-single-no-slider.html">
-                        <img src="{{imgsrc}}" alt="" /><span class="plus"></span></a>
-            </li>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('gallerylistcontent');
-                target.innerHTML = output;
-            }
-    );
 
 
 

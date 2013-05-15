@@ -59,11 +59,18 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	  case _ => "'no'"
 	  	}
 	  	
+	  	
+//	  	val queryres = ArtWebSiteDataSourceObject.querywork("G",0,15)
+	  	
+	  	
+	  	
 
 	  	
 	    mustache("show.mustache","layout" -> "",
 	        "pagetype" -> "'art'",
-	        "pageparameter" -> pageparameter
+	        "pageparameter" -> pageparameter,
+	        "test" -> <h2>TEST</h2>,
+	        "repo" -> ArtWebSiteDataSourceObject.querywork("G",0,15)
           )
   }
   
