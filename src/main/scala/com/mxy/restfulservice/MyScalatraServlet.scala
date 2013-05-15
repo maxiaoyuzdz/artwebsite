@@ -41,36 +41,63 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 //  proecess "/" page . one get, one page 
   get("/") {
 	  	contentType = "text/html"
+	  	  //querylemmonslider
+	  	val sliderres = ArtWebSiteDataSourceObject.querylemmonslidertable
+	  	
+	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  	
+	  	val famouspeopleres = ArtWebSiteDataSourceObject.querybestfamouspeopletable
+	  	
+	  	val indexbestworkshowres = ArtWebSiteDataSourceObject.querybestworkshowtable(9)
+	  	
+	  	val indexguohualistres = ArtWebSiteDataSourceObject.queryartfromworkshowtable("G",4)
+	  	
+	  	val indexyouhualistres = ArtWebSiteDataSourceObject.queryartfromworkshowtable("Y",4)
+	  	
+	  	val indexshufalistres = ArtWebSiteDataSourceObject.queryartfromworkshowtable("S",4)
 
-	    mustache("index.mustache","layout" -> "")
+	    mustache("index.mustache","layout" -> "",
+	        "lemmonsliderrepo" -> sliderres,
+	        "newestwork" -> newestworkres,
+	        "famouspeople" -> famouspeopleres,
+	        "indexbestworkshow" -> indexbestworkshowres,
+	        "indexguohualist" -> indexguohualistres,
+	        "indexyouhualist" -> indexyouhualistres,
+	        "indexshufalist" -> indexshufalistres
+	        )
   }
   
-  get("/artshow/:arttype") {
+  
+  get("/artshow/:arttype"){
+    redirect("/artshow/" + params("arttype")+"/0/page")
+  }
+  		
+  
+  
+  get("/artshow/:arttype/:pagenumber/page") {
 	  	contentType = "text/html"
 	  	  
+	  	var pagenumber = Integer.parseInt(params("pagenumber"))
+	  	
+	  	if(pagenumber <= 0)
+	  	  pagenumber = 0
 
 	  	
 	  	val showtype = params("arttype")
 	  	val pageparameter = showtype match{
-	  	  case "guohua" => "'G'"
-	  	  case "youhua" => "'Y'"
-	  	  case "shufa" => "'S'"
-
-	  	  case _ => "'no'"
+	  	  case "guohua" => "G"
+	  	  case "youhua" => "Y"
+	  	  case "shufa" => "S"
+	  	  case _ => "N"
 	  	}
 	  	
+	  	if(pageparameter == "N") redirect("/")
 	  	
-//	  	val queryres = ArtWebSiteDataSourceObject.querywork("G",0,15)
-	  	
-	  	
-	  	
-
+	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
 	  	
 	    mustache("show.mustache","layout" -> "",
-	        "pagetype" -> "'art'",
-	        "pageparameter" -> pageparameter,
-	        "test" -> <h2>TEST</h2>,
-	        "repo" -> ArtWebSiteDataSourceObject.querywork("G",0,15)
+	        "newestwork" -> newestworkres
+//	        "repo" -> ArtWebSiteDataSourceObject.querywork(showtype,pagenumber,15)
           )
   }
   

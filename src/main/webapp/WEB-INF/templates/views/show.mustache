@@ -240,7 +240,10 @@
 
                 <section>
                     <h4>最新的作品</h4>
-                    <ul class="image-widget clearfix" id="newestworkshow">
+                    <ul class="image-widget clearfix">
+                        {{#newestwork}}
+                            <li><a href="{{href}}"><img src="{{smallimgsrc}}" alt="" /></a></li>
+                        {{/newestwork}}
 
                     </ul>
                 </section>
@@ -304,44 +307,9 @@
 <!--initialize scripts / custom scripts all pages-->
 <script src="/assets/js/scripts.js"></script>
 
-<script>
-    var pagetype = {{pagetype}};
-    var pageparameter = {{pageparameter}};
-</script>
-
-{{=<% %>=}}
-
-<script>
-    //check which show page should load
-    //fix data get
-    //newestworkshow
-    $.getJSON('/jsondata/querynewestworksmallshow',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<li><a href="{{href}}"><img src="{{smallimgsrc}}" alt="" /></a></li>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('newestworkshow');
-                target.innerHTML = output;
-            }
-    );
-
-    //start page data load
-    var pagenumber = 0;
-    //gallerylist
 
 
 
-
-
-
-
-</script>
-<%={{ }}=%>
 </body>
 
 

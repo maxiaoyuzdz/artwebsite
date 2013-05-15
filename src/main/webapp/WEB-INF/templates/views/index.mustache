@@ -168,12 +168,17 @@
 <div class="lemmon-wrap clearfix">
     <div id="lemmon-slider" class="lemmon-slider">
         <ul id="indexslider">
-            <li id="indexslideritem1"></li>
-            <li id="indexslideritem2"></li>
-            <li id="indexslideritem3"></li>
-            <li id="indexslideritem4"></li>
-            <li id="indexslideritem5"></li>
-            <li id="indexslideritem6"></li>
+            {{#lemmonsliderrepo}}
+                <li> <a href="{{href}}">
+                    <img src="{{imgsrc}}" alt="" /> </a>
+                    <div class="summary">
+                        <a href="{{href}}">
+                            <h3>{{h}}</h3>
+                            <p>{{p}}</p>
+                        </a>
+                    </div>
+                </li>
+            {{/lemmonsliderrepo}}
 
         </ul>
     </div>
@@ -190,14 +195,20 @@
 <!--notice how sliders are outside the this main content div-->
 <div class="container clearfix" id="main-content" >
     <h3 class="short_headline"><span>签约名家推荐</span></h3>
-    <div class="row-fluid" id="indexbestfamouspeople">
+    <div class="row-fluid">
+        {{#famouspeople}}
+            <div class="span3"><div class="well"><h2>{{h0}}</h2><h3>{{h1}}</h3><p><img class="alignleft" src="{{imgsrc}}" />{{p}}</p><p class="right"><a href="{{href}}" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p></div></div>
+        {{/famouspeople}}
 
     </div>
     <!-- end row-fluid-->
 
     <h3 class="short_headline"><span>力作推荐</span></h3>
     <!-- begin equalHeights columns 3 -->
-    <div class="row-fluid equalHero" id="indexbestworkshow">
+    <div class="row-fluid equalHero">
+        {{#indexbestworkshow}}
+            <div class="span4"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
+        {{/indexbestworkshow}}
 
     </div>
     <!-- close #equalHeights .featured 3 columns -->
@@ -205,21 +216,28 @@
     <h3 class="short_headline"><span>国画</span></h3>
 
 
-    <div class="row-fluid equalHero" id="indexguohualist">
-
+    <div class="row-fluid equalHero">
+        {{#indexguohualist}}
+            <div class="span3"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
+        {{/indexguohualist}}
     </div>
 
     <h3 class="short_headline"><span>油画</span></h3>
 
     <!-- close #equalHeights .featured 3 columns -->
-    <div class="row-fluid equalHero" id="indexyouhualist">
-
+    <div class="row-fluid equalHero">
+        {{#indexyouhualist}}
+            <div class="span3"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
+        {{/indexyouhualist}}
     </div>
 
     <h3 class="short_headline"><span>书法</span></h3>
 
     <!-- close #equalHeights .featured 3 columns -->
-    <div  class="row-fluid equalHero" id="indexshufalist">
+    <div  class="row-fluid equalHero">
+        {{#indexshufalist}}
+            <div class="span3"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
+        {{/indexshufalist}}
 
     </div>
 
@@ -266,7 +284,10 @@
 
                 <section>
                     <h4>最新的作品</h4>
-                    <ul class="image-widget clearfix" id="newestworkshow">
+                    <ul class="image-widget clearfix">
+                        {{#newestwork}}
+                            <li><a href="{{href}}"><img src="{{smallimgsrc}}" alt="" /></a></li>
+                        {{/newestwork}}
 
                     </ul>
                 </section>
@@ -335,197 +356,6 @@
 
 <!--fixed or no fixed script-->
 
-{{=<% %>=}}
-<script>
-
-
-    //famous people
-
-
-    $.getJSON('/jsondata/querybestfamouspeopledata',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<div class="span3"><div class="well"><h2>{{h0}}</h2><h3>{{h1}}</h3><p><img class="alignleft" src="{{imgsrc}}" />{{p}}</p><p class="right"><a href="{{href}}" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p></div></div>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('indexbestfamouspeople');
-                target.innerHTML = output;
-            }
-    );
-    //indexbestworkshow
-    $.getJSON('/jsondata/querybestworkshowdata',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<div class="span4"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('indexbestworkshow');
-                target.innerHTML = output;
-            }
-    );
-    //indexguohualist
-    $.getJSON('/jsondata/queryguohuadata',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<div class="span3"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('indexguohualist');
-                target.innerHTML = output;
-            }
-    );
-    //indexyouhualist
-    $.getJSON('/jsondata/queryyouhuadata',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<div class="span3"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('indexyouhualist');
-                target.innerHTML = output;
-            }
-    );
-    //indexshufalist
-    $.getJSON('/jsondata/queryshufadata',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<div class="span3"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('indexshufalist');
-                target.innerHTML = output;
-            }
-    );
-
-    //newestworkshow
-    $.getJSON('/jsondata/querynewestworksmallshow',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<li><a href="{{href}}"><img src="{{smallimgsrc}}" alt="" /></a></li>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('newestworkshow');
-                target.innerHTML = output;
-            }
-    );
-
-    //slider  indexslideritem1
-    $.getJSON('/jsondata/querylemmonsliderdata1',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('indexslideritem1');
-                target.innerHTML = output;
-            }
-    );
-    $.getJSON('/jsondata/querylemmonsliderdata2',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('indexslideritem2');
-                target.innerHTML = output;
-            }
-    );
-    $.getJSON('/jsondata/querylemmonsliderdata3',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('indexslideritem3');
-                target.innerHTML = output;
-            }
-    );
-    $.getJSON('/jsondata/querylemmonsliderdata4',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('indexslideritem4');
-                target.innerHTML = output;
-            }
-    );
-    $.getJSON('/jsondata/querylemmonsliderdata5',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('indexslideritem5');
-                target.innerHTML = output;
-            }
-    );
-    $.getJSON('/jsondata/querylemmonsliderdata6',
-            function(data)
-            {
-                var res = {};
-                res.storages = data;
-
-                var output = Mustache.render(
-                        '{{#storages}}<a href="{{href}}"><img src="{{imgsrc}}"" /></a><div class="summary"><a href="{{href}}"><h3>{{h}}</h3><p>{{p}}</p></a></div>{{/storages}}',
-                        res);
-
-                var target = document.getElementById('indexslideritem6');
-                target.innerHTML = output;
-            }
-    );
-
-
-
-
-
-
-</script>
-<%={{ }}=%>
 
 
 </body>
