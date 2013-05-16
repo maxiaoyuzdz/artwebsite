@@ -68,22 +68,18 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   }
   
   
-  get("/artshow/:arttype"){
-    redirect("/artshow/" + params("arttype")+"/0/page")
-  }
-  		
   
-  
-  get("/artshow/:arttype/:pagenumber/page") {
+  get("/artshow/:arttype/page/:pagenumber") {
 	  	contentType = "text/html"
 	  	  
-	  	var pagenumber = Integer.parseInt(params("pagenumber"))
+	  	var currentpagenumber = Integer.parseInt(params("pagenumber"))
 	  	
-	  	if(pagenumber <= 0)
-	  	  pagenumber = 0
-
+	  	if(currentpagenumber <= 0)
+	  	  currentpagenumber = 1
+	  	    
 	  	
 	  	val showtype = params("arttype")
+	  	
 	  	val pageparameter = showtype match{
 	  	  case "guohua" => "G"
 	  	  case "youhua" => "Y"
@@ -95,9 +91,38 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	
 	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
 	  	
+	  	
+	  	val showworkres = ArtWebSiteDataSourceObject.querywork(pageparameter,currentpagenumber - 1,2)
+	  	
+	  	val categorylist = ArtWebSiteDataSourceObject.querycategorypinxie(pageparameter)
+	  	
+	  	
+	  	
+//	  	val tn = ArtWebSiteDataSourceObject.getpagenumberrange(pageparameter)(0)
+	  	val pageamount = ArtWebSiteDataSourceObject.getpagenumberrange(pageparameter)(0).measures.toInt
+	  	
+	  	var pl = ArtWebSiteDataSourceObject.querypagenum(pageamount)
+	  	
+//	  	val p1 = pl(0)
+//	  	val p2 = pl(1)
+//	  	val p3 = pl(22)
+//	  	val p4 = pl.length
+	  	
+	  	for(i <- (0 to pl.length-1)){
+	  	  if(i == currentpagenumber-1){
+//	  	    println(pl(i).id)
+	  	    pl(i).iscurrentpage = true
+	  	    pl(i).isnotcurrentpage = false
+	  	  }
+	  	}
+	  	
+	  	
 	    mustache("show.mustache","layout" -> "",
-	        "newestwork" -> newestworkres
-//	        "repo" -> ArtWebSiteDataSourceObject.querywork(showtype,pagenumber,15)
+	        "newestwork" -> newestworkres,
+	        "gallerylist" -> showworkres,
+	        "categorylist" -> categorylist,
+	        
+	        "menulist" -> pl
           )
   }
   
@@ -227,7 +252,12 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/jsondata/artshowdata/test"){
     contentType = formats("json")
 
-    ArtWebSiteDataSourceObject.querywork("G",0,15)
+    
+    val tn = ArtWebSiteDataSourceObject.querytest2(0)
+    val tt:Int = tn.measures.toInt
+//    ArtWebSiteDataSourceObject.querypagenum
+	
+    
   }
   
   protected implicit val jsonFormats: Formats = DefaultFormats

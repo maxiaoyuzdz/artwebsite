@@ -47,7 +47,7 @@
 
     <!-- JS JQuery in the head you can use ajax if you want ================ -->
     <script src="/assets/js/jquery.js"></script>
-    <script src="/assets/js/mustache.js"></script>
+
     <!-- Add to Head after Style sheet http://modernizr.com/docs/#installing  === 87724 ============= modernizr.custom.62887 -->
     <script src="/assets/js/modernizr.custom.87724.js"></script><!-- js multiple backgrounds svg background size -->
 
@@ -133,14 +133,14 @@
 
 
 
-<!--notice how sliders and are outside the this main content div-->
+    <!--notice how sliders and are outside the this main content div-->
 <div class="container clearfix" id="main-content">
 
     <div class="pagination pagination-right gallery-pagination pagination-mini">
         <ul>
             <li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
-            <li class=""><span>3</span></li>
+            <li class="active"><span>3</span></li>
             <li><a href="#">4</a></li>
             <li><a href="#">Next</a></li>
         </ul>
@@ -151,19 +151,17 @@
         <div class="filter-box clearfix"><span id="filter">Filter<i class="icon-sort"></i></span>
             <ul class='sort' id="option">
                 <li><a  href="#" data-filter="*">全部</a></li>
-                <li><a href="#" data-filter=".shanshui">花鸟</a></li>
-                <li><a href="#" data-filter=".huaniao">山水</a></li>
-                <li><a href="#" data-filter=".shufa">书法</a></li>
-                <li><a href="#" data-filter=".shanshui">油画</a></li>
-
+    {{#categorylist}}
+                <li><a href="#" data-filter=".{{_2}}">{{_1}}</a></li>
+    {{/categorylist}}
             </ul>
         </div>
 
 
 
-        <ul class="gallery four_col clearfix" id="gallerylistcontent">
+        <ul class="gallery four_col clearfix" >
 
-            {{#repo}}
+            {{#gallerylist}}
                 <li class="{{categorypinxie}}">
                     <a class="hover" href="{{href}}">
                         <img src="{{imgsrc}}" alt="" />
@@ -178,7 +176,7 @@
                         <span class="credit"><a href="http://www.flickr.com/photos/adactio/{{authorpinxie}}" target="_blank">作者：{{author}}</a></span>
                     </div>
                 </li>
-            {{/repo}}
+            {{/gallerylist}}
 
 
 
@@ -188,11 +186,11 @@
         </ul>
         <div class="pagination pagination-centered gallery-pagination-footer pagination-mini">
             <ul>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li class="active"><span>3</span></li>
-                <li><a href="#">4</a></li>
+                {{#menulist}}
+                    <li {{#iscurrentpage}} class="active" {{/iscurrentpage}}>{{#iscurrentpage}}<span>{{/iscurrentpage}}{{#isnotcurrentpage}} <a href="#"> {{/isnotcurrentpage}}{{id}}{{#iscurrentpage}}</span>{{/iscurrentpage}}{{#isnotcurrentpage}} </a> {{/isnotcurrentpage}}</li>
+                {{/menulist}}
                 <li><a href="#">Next</a></li>
+
             </ul>
         </div>
     </div>
@@ -307,7 +305,9 @@
 <!--initialize scripts / custom scripts all pages-->
 <script src="/assets/js/scripts.js"></script>
 
+<script>
 
+</script>
 
 
 </body>

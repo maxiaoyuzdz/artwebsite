@@ -47,7 +47,7 @@ case class WorkShowObject(
     val category:String,
     val author:String,
     val authorpinxie:String,
-    val catehorypinxie:String) extends KeyedEntity[Int]{
+    val categorypinxie:String) extends KeyedEntity[Int]{
   def this() = this(0,"","","","",0,5,"","A","some description","","","","")
 }
 
@@ -58,6 +58,13 @@ case class HrefAndSmallImgsrcWorkShowObject(
     val smallimgsrc:String
     )extends KeyedEntity[Int]{
   def this() = this(0,"","")
+}
+
+case class PagenumberControlObject(
+    val id:Int,
+    var iscurrentpage:Boolean,
+    var isnotcurrentpage:Boolean) extends KeyedEntity[Int]{
+  def this() = this(0,false,true)
 }
 
 
@@ -117,9 +124,23 @@ object ArtWebSiteDataSourceObject extends Schema{
   //
   def querywork(worktype:String,pagenumber:Int,pagelength:Int) = from(workshowtabledata)((item) => where(item.worktype === worktype) select(item) orderBy(item.id desc)).page(pagenumber, pagelength).toList
   
+  def querycategorypinxie(worktype:String) = from(workshowtabledata)((item) => where(item.worktype === worktype) select(item.category,item.categorypinxie)).distinct.toList
+  
+  //page control
+  val pagenumbercontroldata = table[PagenumberControlObject]("workshowpagenumcontroltable")
+  on(pagenumbercontroldata)(item =>declare(
+      item.id	is(primaryKey, autoIncremented)
+      )
+  )
+  def querypagenum(limit:Int) = from(pagenumbercontroldata)(item => where(item.id lte limit) select(item)).toList
+  
+  def getpagenumberrange(worktype:String) = from(workshowtabledata)(item => where(item.worktype === worktype) compute(count(item.id))).toList
+  
   
   // test for page
   def querytest = from(workshowtabledata)((item) =>  select(item.id, item.href) orderBy(item.id desc)).page(0, 5).toList.map(item => (item._1, item._2.substring(0,9)))
+  def querytest2 = from(workshowtabledata)(item => where(item.worktype === "G") compute(count(item.id))).toList
+  
   
 
 }
