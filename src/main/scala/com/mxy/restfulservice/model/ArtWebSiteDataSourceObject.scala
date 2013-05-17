@@ -63,8 +63,9 @@ case class HrefAndSmallImgsrcWorkShowObject(
 case class PagenumberControlObject(
     val id:Int,
     var iscurrentpage:Boolean,
-    var isnotcurrentpage:Boolean) extends KeyedEntity[Int]{
-  def this() = this(0,false,true)
+    var isnotcurrentpage:Boolean,
+    var href:String) extends KeyedEntity[Int]{
+  def this() = this(0,false,true,"")
 }
 
 

@@ -72,6 +72,8 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/artshow/:arttype/page/:pagenumber") {
 	  	contentType = "text/html"
 	  	  
+	  	val eachpagehasnum = 16
+	  	  
 	  	var currentpagenumber = Integer.parseInt(params("pagenumber"))
 	  	
 	  	if(currentpagenumber <= 0)
@@ -88,41 +90,64 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	}
 	  	
 	  	if(pageparameter == "N") redirect("/")
-	  	
+	  	/**
+	  	 * fix data for the footer
+	  	 */
 	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
-	  	
-	  	
-	  	val showworkres = ArtWebSiteDataSourceObject.querywork(pageparameter,currentpagenumber - 1,2)
-	  	
+	  	/**
+	  	 * main content
+	  	 */
+	  	val showworkres = ArtWebSiteDataSourceObject.querywork(pageparameter,currentpagenumber - 1,eachpagehasnum)
+	  	/**
+	  	 * category list match main content
+	  	 */
 	  	val categorylist = ArtWebSiteDataSourceObject.querycategorypinxie(pageparameter)
 	  	
+	  	/**
+	  	 * make the page number list
+	  	 */
+	  	//get the entercounter worktype has how many works
+	  	val workamount = ArtWebSiteDataSourceObject.getpagenumberrange(pageparameter)(0).measures.toInt
+	  	 
+	  	/**
+	  	 * get the default page number list
+	  	 * for example, each page has 16 works
+	  	 * how many page  = workamount / 16
+	  	 * if % != 0
+	  	 */
+	  	var bigpagenumber = workamount / eachpagehasnum
+	  	val smallpagenumber = workamount % eachpagehasnum
+	  	if(smallpagenumber != 0) 
+	  	  bigpagenumber = bigpagenumber + 1
 	  	
+	  	var pagenumberlistmenuitem = ArtWebSiteDataSourceObject.querypagenum(bigpagenumber)
 	  	
-//	  	val tn = ArtWebSiteDataSourceObject.getpagenumberrange(pageparameter)(0)
-	  	val pageamount = ArtWebSiteDataSourceObject.getpagenumberrange(pageparameter)(0).measures.toInt
-	  	
-	  	var pl = ArtWebSiteDataSourceObject.querypagenum(pageamount)
-	  	
-//	  	val p1 = pl(0)
-//	  	val p2 = pl(1)
-//	  	val p3 = pl(22)
-//	  	val p4 = pl.length
-	  	
-	  	for(i <- (0 to pl.length-1)){
+
+	  	for(i <- (0 to pagenumberlistmenuitem.length-1)){
 	  	  if(i == currentpagenumber-1){
-//	  	    println(pl(i).id)
-	  	    pl(i).iscurrentpage = true
-	  	    pl(i).isnotcurrentpage = false
+	  	    pagenumberlistmenuitem(i).iscurrentpage = true
+	  	    pagenumberlistmenuitem(i).isnotcurrentpage = false
+	  	    pagenumberlistmenuitem(i).href = "/artshow/"+showtype+"/page/" + pagenumberlistmenuitem(i).href
 	  	  }
 	  	}
+	  	
+	  	/**
+	  	 * Next href
+	  	 * bigpagenumber
+	  	 */
+	  	val lastpagenumber = pagenumberlistmenuitem(pagenumberlistmenuitem.length -1).id
+	  	var nextver = 0
+	  	if(currentpagenumber < lastpagenumber)
+	  	  nextver = 1
+	  	val nexthref = "/artshow/"+showtype+"/page/" + (currentpagenumber+nextver)
 	  	
 	  	
 	    mustache("show.mustache","layout" -> "",
 	        "newestwork" -> newestworkres,
 	        "gallerylist" -> showworkres,
 	        "categorylist" -> categorylist,
-	        
-	        "menulist" -> pl
+	        "nexthref" -> nexthref,
+	        "menulist" -> pagenumberlistmenuitem
           )
   }
   
