@@ -73,6 +73,9 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	contentType = "text/html"
 	  	  
 	  	val eachpagehasnum = 16
+	  	
+	  	val pagerefname = "listpage"
+	  	val pagetyperefname = "artshow"
 	  	  
 	  	var currentpagenumber = Integer.parseInt(params("pagenumber"))
 	  	
@@ -127,7 +130,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	  if(i == currentpagenumber-1){
 	  	    pagenumberlistmenuitem(i).iscurrentpage = true
 	  	    pagenumberlistmenuitem(i).isnotcurrentpage = false
-	  	    pagenumberlistmenuitem(i).href = "/artshow/"+showtype+"/page/" + pagenumberlistmenuitem(i).href
+	  	    pagenumberlistmenuitem(i).href = "/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/" + pagenumberlistmenuitem(i).href
 	  	  }
 	  	}
 	  	
@@ -139,7 +142,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	var nextver = 0
 	  	if(currentpagenumber < lastpagenumber)
 	  	  nextver = 1
-	  	val nexthref = "/artshow/"+showtype+"/page/" + (currentpagenumber+nextver)
+	  	val nexthref = "/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/" + (currentpagenumber+nextver)
 	  	
 	  	
 	    mustache("show.mustache","layout" -> "",
