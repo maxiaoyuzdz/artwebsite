@@ -345,7 +345,7 @@
     }
 
     .tall-logo #logo {
-        background-image: url(../images/retina/tall-logo-mobile_@2x.png);
+        background-image: url(../images/retina/tall-logo-mobile-zeyazhai_@2x.png);
         -moz-background-size: 170px 185px; /*w & h of total image 72dpi image*/
         -ie-background-size: 170px 185px;
         -o-background-size: 170px 185px;
@@ -385,7 +385,7 @@
 @media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (-o-min-device-pixel-ratio: 3/2), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2) {
 
     .tall-logo #logo {
-        background-image: url(../images/retina/tall-logo-mobile_@2x.png);
+        background-image: url(../images/retina/tall-logo-mobile-zeyazhai_@2x.png);
         -moz-background-size: 78px 85px; /*w & h of total image 72dpi image*/
         -ie-background-size: 78px 85px;
         -o-background-size: 78px 85px;
@@ -410,3 +410,4 @@
 
 
 
+         
