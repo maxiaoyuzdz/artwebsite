@@ -107,7 +107,7 @@
 
     /* tall header for taller logo mobile */
     .tall-logo #logo {
-        background-image: url(../images/tall-logo-mobile-zeyazhai.png); /*notice that this image changes on mobile */
+        background-image: url(../images/tall-logo-mobile.png); /*notice that this image changes on mobile */
         background-color: transparent !important;
         background-position: 0 0;
         position: relative;

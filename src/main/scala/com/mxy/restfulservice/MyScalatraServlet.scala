@@ -69,7 +69,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   
   
   
-  get("/artshow/:arttype/page/:pagenumber") {
+  get("/artshow/:arttype/listpage/:pagenumber") {
 	  	contentType = "text/html"
 	  	  
 	  	val eachpagehasnum = 16
