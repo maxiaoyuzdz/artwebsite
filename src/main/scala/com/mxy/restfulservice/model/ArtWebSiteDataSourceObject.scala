@@ -136,6 +136,10 @@ object ArtWebSiteDataSourceObject extends Schema{
   def querypagenum(limit:Int) = from(pagenumbercontroldata)(item => where(item.id lte limit) select(item)).toList
   
   def getpagenumberrange(worktype:String) = from(workshowtabledata)(item => where(item.worktype === worktype) compute(count(item.id))).toList
+  //work show
+  def getworkbyid(id:Int) = from(workshowtabledata)(item => where(item.id === id) select(item)).toList
+      
+  
   
   
   // test for page

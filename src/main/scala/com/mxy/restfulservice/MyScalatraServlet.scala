@@ -23,6 +23,7 @@ import com.mxy.restfulservice.data.DatabaseSessionSupport
 // Data source Begin
 //==================================================
 import com.mxy.restfulservice.model.ArtWebSiteDataSourceObject
+import com.mxy.restfulservice.model.WorkShowObject
 
 
 class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with JacksonJsonSupport with DatabaseSessionSupport{
@@ -152,6 +153,26 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	        "nexthref" -> nexthref,
 	        "menulist" -> pagenumberlistmenuitem
           )
+  }
+  
+  get("/workshow/:workid"){
+    contentType = "text/html"
+      val workid = Integer.parseInt(params("workid"))
+      
+//      ArtWebSiteDataSourceObject.getworkbyid(workid)
+//      println(res(0).id)
+      val res = ArtWebSiteDataSourceObject.getworkbyid(workid)(0)
+      
+      mustache("artwork.mustache","layout" -> "",
+	        "picname" -> res.name,
+	        "imgsrc" -> res.imgsrc
+          )
+      
+      
+      
+    
+    
+    
   }
   
 //  notFound {
