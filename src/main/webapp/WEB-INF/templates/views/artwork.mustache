@@ -63,12 +63,12 @@
 <section class="container preheader ">
 
     <!--this is the login for the user-->
-    <nav class="user clearfix">
+    <nav class="user clearfix ">
         <a href="login.html">用户登陆</a>
     </nav>
     <!--close user nav-->
     <!-- need to fix -->
-    <div class="search-wrapper">
+    <div class="search-wrapper ">
         <form class="search" method="post" action="someaction.php">
             <div id="search-trigger">搜索:</div>
             <input id="search-box" type="text" placeholder="搜索 + 回车">
@@ -80,7 +80,6 @@
 
 
 </section>
-
 
 <!-- begin .header-->
 <header class="header  clearfix">
@@ -100,9 +99,9 @@
                 </li>
                 <li class="parent"><a href="javascript:void(0)">艺术家介绍<i></i></a>
                     <ul>
-                        <li><a href="portfolio-masonry.html">国画家</a></li>
-                        <li><a href="portfolio-lightbox.html">书法家</a></li>
-                        <li><a href="portfolio-single.html">油画家</a></li>
+                        <li><a href="/peopleshow/guohua/listpage/1">国画家</a></li>
+                        <li><a href="/peopleshow/youhua/listpage/1">油画家</a></li>
+                        <li><a href="/peopleshow/shufa/listpage/1">书法家</a></li>
                     </ul>
                 </li>
 
@@ -146,7 +145,7 @@
                 <div id="slider" class="flexslider">
                     <ul class="slides">
                         <li><!--for SINGLE IMAGES change fancyme to fancysingle and remove data-fancybox-group tag-->
-                            <a class="zoom-image fancysingle" href="#">View Larger Image</a> <img src="{{imgsrc}}" alt=""></li>
+                            <a class="zoom-image " href="#">查看大图</a> <img src="{{imgsrc}}" alt=""></li>
                     </ul>
                 </div>
                 <!-- End Slider -->
@@ -155,13 +154,14 @@
             <!-- close span7 primary-column-->
 
             <section class="span4 project-description" role="project-description">
-                <p>巴拉巴拉巴拉介绍</p>
+                <p>{{desc}}</p>
                 <h6>画家:</h6>
-                <p><a href="http://www.flickr.com/photos/adactio/5817823805/" target="_blank">某某某</a></p>
-                <h6>风格:</h6>
-                <p>山水, 水墨</p>
+                <p><a href="http://www.flickr.com/photos/adactio/5817823805/" target="_blank">{{author}}</a></p>
                 <h6>分类:</h6>
-                <p> <a href="#">中国画</a> </p>
+                <p>{{category}}</p>
+                <h6>价格:</h6>
+                <p>{{price}} RMB</p>
+
                 <h6> <a href="#" class="btn btn-very-subtle">购买 &rarr;</a> </h6>
                 <h6> <a href="#" class="btn btn-very-subtle">寄存 &rarr;</a> </h6>
                 <h6> <a href="#" class="btn btn-very-subtle">赠送 &rarr;</a> </h6>
@@ -186,7 +186,7 @@
         <div class="container"><!--footer container-->
 
             <div class="row-fluid">
-                <div class="span4">
+                <div class="span4 ">
                     <section>
                         <h4>联系我们</h4>
                         <p>Crisp Creative<br />
@@ -203,6 +203,8 @@
 
                 </div>
                 <!-- close .span4 -->
+
+
 
                 <!--section containing newsletter signup and recent images-->
                 <div class="span4">
@@ -256,7 +258,7 @@
         <section class="footerCredits">
             <div class="container">
                 <ul class="clearfix">
-                    <li>© 2013 道雅斋艺术有限公司. 保有本站所有权利.</li>
+                    <li>@ 2013 泽雅斋艺术网. 保有本站所有权利.</li>
                     <li><a href="sitemap.html">本站地图</a></li>
                     <li><a href="privacy.html">隐私声明</a></li>
 
@@ -268,7 +270,8 @@
     </footer>
     <!--/.footer-->
 
-    <span class="backToTop"><a href="#top">back to top</a></span> </div>
+    <span class="backToTop"><a href="#top">back to top</a></span>
+</div>
 <!-- close #page-->
 
 <!-- JS JQuery ================ -->
@@ -282,12 +285,15 @@
 <script src="/assets/js/responsive-tables.js"></script><!--responsive table-->
 <script src="/assets/js/jquery.fitvid.js"></script><!-- responsive videos -->
 
-<script src="/assets/js/fancybox/source/jquery.fancybox.pack.js"></script><!--main fancybox-->
-<script src="/assets/js/fancybox/source/helpers/jquery.fancybox-media.js"></script><!--fancybox media-->
-<script src="/assets/js/fancybox/source/helpers/jquery.fancybox-buttons.js"></script><!--fancybox buttons-->
-<script src="/assets/js/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script><!--fancybox thumbs-->
-<script src="/assets/js/fancybox_init.js"></script><!--fancybox load-->
+
 <!--initialize scripts / custom scripts all pages-->
 <script src="/assets/js/scripts.js"></script>
+
+
+
+
 </body>
+
+
+<!---->
 </html>

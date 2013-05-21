@@ -70,7 +70,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   
   
   
-  get("/artshow/:arttype/listpage/:pagenumber") {
+  get("/artshow/:category/listpage/:pagenumber") {
 	  	contentType = "text/html"
 	  	  
 	  	val eachpagehasnum = 16
@@ -84,7 +84,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	  currentpagenumber = 1
 	  	    
 	  	
-	  	val showtype = params("arttype")
+	  	val showtype = params("category")
 	  	
 	  	val pageparameter = showtype match{
 	  	  case "guohua" => "G"
@@ -157,6 +157,12 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   
   get("/workshow/:workid"){
     contentType = "text/html"
+      /**
+	  	 * fix data for the footer
+	  	 */
+	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  	
+      
       val workid = Integer.parseInt(params("workid"))
       
 //      ArtWebSiteDataSourceObject.getworkbyid(workid)
@@ -164,17 +170,55 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       val res = ArtWebSiteDataSourceObject.getworkbyid(workid)(0)
       
       mustache("artwork.mustache","layout" -> "",
+          "newestwork" -> newestworkres,
 	        "picname" -> res.name,
-	        "imgsrc" -> res.imgsrc
+	        "imgsrc" -> res.imgsrc,
+	        "desc" -> res.desc,
+	        "author" -> res.author,
+	        "category" -> res.category,
+	        "price" -> res.price
           )
-      
-      
-      
-    
-    
     
   }
-  
+  /**
+   * 
+   */
+  get("/peopleshow/:category/listpage/:pagenumber"){
+    contentType = "text/html"
+	  	  
+	  	val eachpagehasnum = 16
+	  	
+	  	val pagerefname = "listpage"
+	  	val pagetyperefname = "peopleshow"
+	  	  
+	  	var currentpagenumber = Integer.parseInt(params("pagenumber"))
+	  	
+	  	if(currentpagenumber <= 0)
+	  	  currentpagenumber = 1
+	  	    
+	  	
+	  	val showtype = params("category")
+	  	
+	  	val pageparameter = showtype match{
+	  	  case "guohua" => "G"
+	  	  case "youhua" => "Y"
+	  	  case "shufa" => "S"
+	  	  case _ => "N"
+	  	}
+    
+    	if(pageparameter == "N") redirect("/")
+    	
+    	/**
+	  	 * fix data for the footer
+	  	 */
+	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  	
+	  	mustache("people.mustache","layout" -> "",
+	  	    "newestwork" -> newestworkres
+          
+          )
+    
+  }
 //  notFound {
 //	  <h1>Not found. Bummer.</h1>
 //  }
