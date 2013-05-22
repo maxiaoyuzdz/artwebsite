@@ -127,7 +127,10 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	var pagenumberlistmenuitem = ArtWebSiteDataSourceObject.querypagenum(bigpagenumber)
 	  	
 
-	  	for(i <- (0 to pagenumberlistmenuitem.length-1)){
+	  	var pagenumberlistmenuitemrange = pagenumberlistmenuitem.length-1 
+	  	if(pagenumberlistmenuitemrange < 0) pagenumberlistmenuitemrange = 0
+	  	
+	  	for(i <- (0 to pagenumberlistmenuitemrange)){
 	  	  if(i == currentpagenumber-1){
 	  	    pagenumberlistmenuitem(i).iscurrentpage = true
 	  	    pagenumberlistmenuitem(i).isnotcurrentpage = false
@@ -165,9 +168,13 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       
       val workid = Integer.parseInt(params("workid"))
       
-//      ArtWebSiteDataSourceObject.getworkbyid(workid)
-//      println(res(0).id)
+
       val res = ArtWebSiteDataSourceObject.getworkbyid(workid)(0)
+      
+      
+      
+      
+      
       
       mustache("artwork.mustache","layout" -> "",
           "newestwork" -> newestworkres,
@@ -185,6 +192,15 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
    */
   get("/peopleshow/:category/listpage/:pagenumber"){
     contentType = "text/html"
+      
+      
+      /**
+	  	 * fix data for the footer
+	  	 */
+	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  	/**
+       * fix end
+       */
 	  	  
 	  	val eachpagehasnum = 16
 	  	
@@ -208,13 +224,69 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     
     	if(pageparameter == "N") redirect("/")
     	
-    	/**
-	  	 * fix data for the footer
+    	
+	  	
+	  	/**
+	  	 * main content
 	  	 */
-	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  	val showpeoples = ArtWebSiteDataSourceObject.querypeoplelistbyworktype(pageparameter,currentpagenumber - 1,eachpagehasnum)
+	  	
+	  	/**
+	  	 * category list match main content
+	  	 */
+	  	val categorylist = ArtWebSiteDataSourceObject.querypeoplecategorylist(pageparameter)
+	  	/**
+	  	 * make the page number list
+	  	 */
+	  	//get the entercounter worktype has how many works
+	  	val workamount = ArtWebSiteDataSourceObject.querypeoplelistpagenumberamount(pageparameter)(0).measures.toInt
+	  	/**
+	  	 * get the default page number list
+	  	 * for example, each page has 16 works
+	  	 * how many page  = workamount / 16
+	  	 * if % != 0
+	  	 */
+	  	var bigpagenumber = workamount / eachpagehasnum
+	  	val smallpagenumber = workamount % eachpagehasnum
+	  	if(smallpagenumber != 0) 
+	  	  bigpagenumber = bigpagenumber + 1
+	  	
+	  	var pagenumberlistmenuitem = ArtWebSiteDataSourceObject.querypagenum(bigpagenumber)
+	  	
+	  	var pagenumberlistmenuitemrange = pagenumberlistmenuitem.length-1 
+	  	if(pagenumberlistmenuitemrange < 0) pagenumberlistmenuitemrange = 0
+	  	
+	  	
+	  	for(i <- (0 to pagenumberlistmenuitemrange)){
+	  	  if(i == currentpagenumber-1){
+	  	    pagenumberlistmenuitem(i).iscurrentpage = true
+	  	    pagenumberlistmenuitem(i).isnotcurrentpage = false
+	  	    pagenumberlistmenuitem(i).href = "/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/" + pagenumberlistmenuitem(i).href
+	  	  }
+	  	}
+    	
+    	/**
+	  	 * Next href
+	  	 * bigpagenumber
+	  	 */
+	  	val lastpagenumber = pagenumberlistmenuitem(pagenumberlistmenuitem.length -1).id
+	  	var nextver = 0
+	  	if(currentpagenumber < lastpagenumber)
+	  	  nextver = 1
+	  	val nexthref = "/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/" + (currentpagenumber+nextver)
+	  	
+	  	/**
+	  	 * 
+	  	 */
+	  	
+	  	
 	  	
 	  	mustache("people.mustache","layout" -> "",
-	  	    "newestwork" -> newestworkres
+	  	    "newestwork" -> newestworkres,
+	  	    "menulist" -> pagenumberlistmenuitem,
+	  	    "nexthref" -> nexthref,
+	  	    "categorylist" -> categorylist,
+	  	    "peoplelist" -> showpeoples
           
           )
     
@@ -349,6 +421,14 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     val tn = ArtWebSiteDataSourceObject.querytest2(0)
     val tt:Int = tn.measures.toInt
 //    ArtWebSiteDataSourceObject.querypagenum
+	
+    
+  }
+    get("/jsondata/test3"){
+    contentType = formats("json")
+
+    
+    ArtWebSiteDataSourceObject.querytest3
 	
     
   }

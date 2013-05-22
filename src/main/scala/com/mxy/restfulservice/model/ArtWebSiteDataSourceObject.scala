@@ -69,6 +69,19 @@ case class PagenumberControlObject(
 }
 
 
+case class PeopleObject(
+    val id:Int,
+    val author:String,
+    val authorpinxie:String,
+    val worktype:String,
+    val desc:String,
+    val title:String,
+    val category:String,
+    val categorypinxie:String) extends KeyedEntity[Int]{
+  def this() = this(0,"","","","","","","")
+  
+}
+
 
 object ArtWebSiteDataSourceObject extends Schema{
   //lemmonslidertable
@@ -139,12 +152,22 @@ object ArtWebSiteDataSourceObject extends Schema{
   //work show
   def getworkbyid(id:Int) = from(workshowtabledata)(item => where(item.id === id) select(item)).toList
       
+  //people
+  val peopleobjecttabledata = table[PeopleObject]("peopletable")
   
+  on(peopleobjecttabledata)(item =>declare(
+      item.id	is(primaryKey, autoIncremented)
+      )
+  )
   
+  def querypeoplelistbyworktype(worktype:String,pagenumber:Int,pagelength:Int) = from(peopleobjecttabledata)((item => where(item.worktype === worktype) select(item))).page(0, 15).toList
+  def querypeoplecategorylist(worktype:String) = from(peopleobjecttabledata)((item) => where(item.worktype === worktype) select(item.category,item.categorypinxie)).distinct.toList
+  def querypeoplelistpagenumberamount(worktype:String) = from(peopleobjecttabledata)(item => where(item.worktype === worktype) compute(count(item.id))).toList
   
   // test for page
   def querytest = from(workshowtabledata)((item) =>  select(item.id, item.href) orderBy(item.id desc)).page(0, 5).toList.map(item => (item._1, item._2.substring(0,9)))
   def querytest2 = from(workshowtabledata)(item => where(item.worktype === "G") compute(count(item.id))).toList
+  def querytest3 = from(peopleobjecttabledata)((item => select(item))).toList
   
   
 
