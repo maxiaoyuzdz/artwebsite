@@ -73,27 +73,32 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/artshow/:category/listpage/:pagenumber") {
 	  	contentType = "text/html"
 	  	  
-	  	val eachpagehasnum = 16
+	  	val eachpagehasnum = 2
 	  	
 	  	val pagerefname = "listpage"
 	  	val pagetyperefname = "artshow"
 	  	  
-	  	var currentpagenumber = Integer.parseInt(params("pagenumber"))
-	  	
-	  	if(currentpagenumber <= 0)
-	  	  currentpagenumber = 1
-	  	    
-	  	
 	  	val showtype = params("category")
+	  	  
+	  	val currentpagenumber = Integer.parseInt(params("pagenumber"))
 	  	
-	  	val pageparameter = showtype match{
+	  	if(currentpagenumber <= 0){
+	  	  redirect("/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/1")
+	  	}
+	  	
+	  	
+	  	val pagecontentcategory = showtype match{
 	  	  case "guohua" => "G"
 	  	  case "youhua" => "Y"
 	  	  case "shufa" => "S"
 	  	  case _ => "N"
 	  	}
 	  	
-	  	if(pageparameter == "N") redirect("/")
+	  	if(pagecontentcategory == "N") redirect("/")
+	  	
+	  	
+	  	
+	  	
 	  	/**
 	  	 * fix data for the footer
 	  	 */
@@ -101,60 +106,64 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	/**
 	  	 * main content
 	  	 */
-	  	val showworkres = ArtWebSiteDataSourceObject.querywork(pageparameter,currentpagenumber - 1,eachpagehasnum)
+	  	val showworkres = ArtWebSiteDataSourceObject.querywork(pagecontentcategory,currentpagenumber - 1,eachpagehasnum)
 	  	/**
 	  	 * category list match main content
 	  	 */
-	  	val categorylist = ArtWebSiteDataSourceObject.querycategorypinxie(pageparameter)
+	  	val categorylist = ArtWebSiteDataSourceObject.querycategorypinxie(pagecontentcategory)
 	  	
 	  	/**
 	  	 * make the page number list
 	  	 */
 	  	//get the entercounter worktype has how many works
-	  	val workamount = ArtWebSiteDataSourceObject.getpagenumberrange(pageparameter)(0).measures.toInt
-	  	 
-	  	/**
-	  	 * get the default page number list
-	  	 * for example, each page has 16 works
-	  	 * how many page  = workamount / 16
-	  	 * if % != 0
-	  	 */
-	  	var bigpagenumber = workamount / eachpagehasnum
-	  	val smallpagenumber = workamount % eachpagehasnum
-	  	if(smallpagenumber != 0) 
-	  	  bigpagenumber = bigpagenumber + 1
+	  	val workamount = ArtWebSiteDataSourceObject.getpagenumberrange(pagecontentcategory)(0).measures.toInt
 	  	
-	  	var pagenumberlistmenuitem = ArtWebSiteDataSourceObject.querypagenum(bigpagenumber)
-	  	
-
-	  	var pagenumberlistmenuitemrange = pagenumberlistmenuitem.length-1 
-	  	if(pagenumberlistmenuitemrange < 0) pagenumberlistmenuitemrange = 0
-	  	
-	  	for(i <- (0 to pagenumberlistmenuitemrange)){
-	  	  if(i == currentpagenumber-1){
-	  	    pagenumberlistmenuitem(i).iscurrentpage = true
-	  	    pagenumberlistmenuitem(i).isnotcurrentpage = false
-	  	    pagenumberlistmenuitem(i).href = "/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/" + pagenumberlistmenuitem(i).href
-	  	  }
+	  	val pageamountyushu = workamount % eachpagehasnum match{
+	  	  case 0 => 0
+	  	  case _ => 1
 	  	}
 	  	
+	  	
+	  	val pageamountzongshu = workamount / eachpagehasnum + pageamountyushu
+	  	
+	  	if(currentpagenumber > pageamountzongshu) redirect("/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/1")
+	  	
 	  	/**
-	  	 * Next href
-	  	 * bigpagenumber
+	  	 * last page href
 	  	 */
-	  	val lastpagenumber = pagenumberlistmenuitem(pagenumberlistmenuitem.length -1).id
-	  	var nextver = 0
-	  	if(currentpagenumber < lastpagenumber)
-	  	  nextver = 1
-	  	val nexthref = "/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/" + (currentpagenumber+nextver)
+	  	
+	  	val lastpagenumber = (currentpagenumber - 1)match{
+	  	  case 0 => 1
+	  	  case _ => currentpagenumber - 1
+	  	} 
+	  	val lastpagehref = "/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/"+ lastpagenumber
+	  	
+	  	/**
+	  	 * next page href
+	  	 */
+	  	var nextpagenumber = currentpagenumber + 1
+	  	if(nextpagenumber > pageamountzongshu) 
+	  	  nextpagenumber = pageamountzongshu
+	  	
+	  	
+	  	
+	  	
+	  	val nextpagehref = "/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/"+ nextpagenumber
+	  	
+	  	
+	  	 
 	  	
 	  	
 	    mustache("show.mustache","layout" -> "",
 	        "newestwork" -> newestworkres,
 	        "gallerylist" -> showworkres,
 	        "categorylist" -> categorylist,
-	        "nexthref" -> nexthref,
-	        "menulist" -> pagenumberlistmenuitem
+	        //page control
+	        "pageamountzongshu" -> pageamountzongshu,
+	        "currentpagenumber" -> currentpagenumber,
+	        "lastpagehref" -> lastpagehref,
+	        "nextpagehref" -> nextpagehref
+	        
           )
   }
   
@@ -235,56 +244,13 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	 * category list match main content
 	  	 */
 	  	val categorylist = ArtWebSiteDataSourceObject.querypeoplecategorylist(pageparameter)
-	  	/**
-	  	 * make the page number list
-	  	 */
-	  	//get the entercounter worktype has how many works
-	  	val workamount = ArtWebSiteDataSourceObject.querypeoplelistpagenumberamount(pageparameter)(0).measures.toInt
-	  	/**
-	  	 * get the default page number list
-	  	 * for example, each page has 16 works
-	  	 * how many page  = workamount / 16
-	  	 * if % != 0
-	  	 */
-	  	var bigpagenumber = workamount / eachpagehasnum
-	  	val smallpagenumber = workamount % eachpagehasnum
-	  	if(smallpagenumber != 0) 
-	  	  bigpagenumber = bigpagenumber + 1
 	  	
-	  	var pagenumberlistmenuitem = ArtWebSiteDataSourceObject.querypagenum(bigpagenumber)
-	  	
-	  	var pagenumberlistmenuitemrange = pagenumberlistmenuitem.length-1 
-	  	if(pagenumberlistmenuitemrange < 0) pagenumberlistmenuitemrange = 0
-	  	
-	  	
-	  	for(i <- (0 to pagenumberlistmenuitemrange)){
-	  	  if(i == currentpagenumber-1){
-	  	    pagenumberlistmenuitem(i).iscurrentpage = true
-	  	    pagenumberlistmenuitem(i).isnotcurrentpage = false
-	  	    pagenumberlistmenuitem(i).href = "/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/" + pagenumberlistmenuitem(i).href
-	  	  }
-	  	}
-    	
-    	/**
-	  	 * Next href
-	  	 * bigpagenumber
-	  	 */
-	  	val lastpagenumber = pagenumberlistmenuitem(pagenumberlistmenuitem.length -1).id
-	  	var nextver = 0
-	  	if(currentpagenumber < lastpagenumber)
-	  	  nextver = 1
-	  	val nexthref = "/"+pagetyperefname+"/"+showtype+"/"+pagerefname+"/" + (currentpagenumber+nextver)
-	  	
-	  	/**
-	  	 * 
-	  	 */
 	  	
 	  	
 	  	
 	  	mustache("people.mustache","layout" -> "",
 	  	    "newestwork" -> newestworkres,
-	  	    "menulist" -> pagenumberlistmenuitem,
-	  	    "nexthref" -> nexthref,
+	  	    
 	  	    "categorylist" -> categorylist,
 	  	    "peoplelist" -> showpeoples
           
