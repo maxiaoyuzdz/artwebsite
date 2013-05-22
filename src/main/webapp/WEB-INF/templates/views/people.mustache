@@ -138,10 +138,11 @@
 
     <div class="pagination pagination-right gallery-pagination pagination-mini">
         <ul>
-            {{#menulist}}
-                <li {{#iscurrentpage}} class="active" {{/iscurrentpage}}>{{#iscurrentpage}}<span>{{/iscurrentpage}}{{#isnotcurrentpage}} <a href="{{href}}"> {{/isnotcurrentpage}}{{id}}{{#iscurrentpage}}</span>{{/iscurrentpage}}{{#isnotcurrentpage}} </a> {{/isnotcurrentpage}}</li>
-            {{/menulist}}
-            <li><a href="{{nexthref}}">下一页</a></li>
+            <li><a href="{{lastpagehref}}">上一页</a></li>
+
+            <li><a href="#">当前第 {{currentpagenumber}} 页 / 共 {{pageamountzongshu}} 页</a></li>
+
+            <li><a href="{{nextpagehref}}">下一页</a></li>
         </ul>
     </div>
 
@@ -177,10 +178,11 @@
         </ul>
         <div class="pagination pagination-centered gallery-pagination-footer pagination-mini">
             <ul>
-                {{#menulist}}
-                    <li {{#iscurrentpage}} class="active" {{/iscurrentpage}}>{{#iscurrentpage}}<span>{{/iscurrentpage}}{{#isnotcurrentpage}} <a href="{{href}}"> {{/isnotcurrentpage}}{{id}}{{#iscurrentpage}}</span>{{/iscurrentpage}}{{#isnotcurrentpage}} </a> {{/isnotcurrentpage}}</li>
-                {{/menulist}}
-                <li><a href="{{nexthref}}">下一页</a></li>
+                <li><a href="{{lastpagehref}}">上一页</a></li>
+
+                <li><a href="#">当前第 {{currentpagenumber}} 页 / 共 {{pageamountzongshu}} 页</a></li>
+
+                <li><a href="{{nextpagehref}}">下一页</a></li>
 
             </ul>
         </div>
@@ -198,13 +200,11 @@
         <div class="row-fluid">
             <div class="span4">
                 <section>
-                    <h4>联系我们</h4>
-                    <p>Crisp Creative<br>
-                        1255 Nowhere Street<br>
-                        Tampa, FL 33655<br>
-                        <strong>电话:</strong> <a href="tel:8135551234" class="tele">813.555.1234</a><br>
-                        <strong>传真:</strong> 813.555.1235<br>
-                        <strong>电子邮件:</strong> <a href="mailto:zeyazhai@163.com">zeyazhai@163.com</a> </p>
+                    <h4>投稿邮箱</h4>
+                    <p>
+                        <strong>电子邮件:</strong>
+                        <a href="mailto:zeyazhai@163.com">zeyazhai@163.com</a>
+                    </p>
                 </section>
                 <!--close section-->
 

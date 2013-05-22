@@ -148,7 +148,7 @@ object ArtWebSiteDataSourceObject extends Schema{
   )
   def querypagenum(limit:Int) = from(pagenumbercontroldata)(item => where(item.id lte limit) select(item)).toList
   
-  def getpagenumberrange(worktype:String) = from(workshowtabledata)(item => where(item.worktype === worktype) compute(count(item.id))).toList
+  def queryartworkpagenumberrange(worktype:String) = from(workshowtabledata)(item => where(item.worktype === worktype) compute(count(item.id))).toList
   //work show
   def getworkbyid(id:Int) = from(workshowtabledata)(item => where(item.id === id) select(item)).toList
       
@@ -160,9 +160,10 @@ object ArtWebSiteDataSourceObject extends Schema{
       )
   )
   
-  def querypeoplelistbyworktype(worktype:String,pagenumber:Int,pagelength:Int) = from(peopleobjecttabledata)((item => where(item.worktype === worktype) select(item))).page(0, 15).toList
+  def querypeoplelistbyworktype(worktype:String,pagenumber:Int,pagelength:Int) = from(peopleobjecttabledata)((item => where(item.worktype === worktype) select(item))).page(pagenumber, pagelength).toList
   def querypeoplecategorylist(worktype:String) = from(peopleobjecttabledata)((item) => where(item.worktype === worktype) select(item.category,item.categorypinxie)).distinct.toList
   def querypeoplelistpagenumberamount(worktype:String) = from(peopleobjecttabledata)(item => where(item.worktype === worktype) compute(count(item.id))).toList
+  def querypeoplepagenumberrange(worktype:String) = from(peopleobjecttabledata)(item => where(item.worktype === worktype) compute(count(item.id))).toList
   
   // test for page
   def querytest = from(workshowtabledata)((item) =>  select(item.id, item.href) orderBy(item.id desc)).page(0, 5).toList.map(item => (item._1, item._2.substring(0,9)))
