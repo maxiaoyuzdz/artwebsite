@@ -164,10 +164,13 @@ object ArtWebSiteDataSourceObject extends Schema{
   def querypeoplecategorylist(worktype:String) = from(peopleobjecttabledata)((item) => where(item.worktype === worktype) select(item.category,item.categorypinxie)).distinct.toList
   def querypeoplelistpagenumberamount(worktype:String) = from(peopleobjecttabledata)(item => where(item.worktype === worktype) compute(count(item.id))).toList
   def querypeoplepagenumberrange(worktype:String) = from(peopleobjecttabledata)(item => where(item.worktype === worktype) compute(count(item.id))).toList
+  
   /**
    * show artist by id
    */
   def queryartistbyid(id:Int) = from(peopleobjecttabledata)(item => where(item.id === id) select(item)).toList
+  def queryartistworkbyatuhorpinxie(pinxie:String) = from(workshowtabledata)(item => where(item.authorpinxie === pinxie) select(item)).toList 
+  
   // test for page
   def querytest = from(workshowtabledata)((item) =>  select(item.id, item.href) orderBy(item.id desc)).page(0, 5).toList.map(item => (item._1, item._2.substring(0,9)))
   def querytest2 = from(workshowtabledata)(item => where(item.worktype === "G") compute(count(item.id))).toList

@@ -305,19 +305,30 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   
   get("/artist/:id"){
     contentType = "text/html"
+      /**
+	  	 * fix data for the footer
+	  	 */
+	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+      
       
       val artistid = Integer.parseInt(params("id"))
     
       val artist = ArtWebSiteDataSourceObject.queryartistbyid(artistid)(0)
       
+      val authorpinxie = artist.authorpinxie
+      
+      val artistworklist = ArtWebSiteDataSourceObject.queryartistworkbyatuhorpinxie(authorpinxie)
       
       /**
        * peopleintroduce.mustache
        */
       mustache("peopleintroduce.mustache","layout" -> "",
+          "newestwork" -> newestworkres,
           "title" -> artist.title,
           "author" -> artist.author,
-          "authorpinxie" -> artist.authorpinxie
+          "authorpinxie" -> artist.authorpinxie,
+          "desc" -> artist.desc,
+          "artworklist" -> artistworklist
 	  	    
           )
   }
@@ -458,7 +469,8 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     contentType = formats("json")
 
     
-    ArtWebSiteDataSourceObject.querytest3
+//    ArtWebSiteDataSourceObject.querytest3
+    ArtWebSiteDataSourceObject.queryartistworkbyatuhorpinxie("maxiaoyu")
 	
     
   }
