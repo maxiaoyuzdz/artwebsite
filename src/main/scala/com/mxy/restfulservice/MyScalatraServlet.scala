@@ -302,6 +302,25 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
           )
     
   }
+  
+  get("/artist/:id"){
+    contentType = "text/html"
+      
+      val artistid = Integer.parseInt(params("id"))
+    
+      val artist = ArtWebSiteDataSourceObject.queryartistbyid(artistid)(0)
+      
+      
+      /**
+       * peopleintroduce.mustache
+       */
+      mustache("peopleintroduce.mustache","layout" -> "",
+          "title" -> artist.title,
+          "author" -> artist.author,
+          "authorpinxie" -> artist.authorpinxie
+	  	    
+          )
+  }
 //  notFound {
 //	  <h1>Not found. Bummer.</h1>
 //  }
