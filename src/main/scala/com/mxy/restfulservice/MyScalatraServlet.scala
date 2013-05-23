@@ -49,7 +49,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	
 	  	val famouspeopleres = ArtWebSiteDataSourceObject.querybestfamouspeopletable
 	  	
-	  	val indexbestworkshowres = ArtWebSiteDataSourceObject.querybestworkshowtable(9)
+	  	
 	  	
 	  	val indexguohualistres = ArtWebSiteDataSourceObject.queryartfromworkshowtable("G",4)
 	  	
@@ -61,7 +61,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	        "lemmonsliderrepo" -> sliderres,
 	        "newestwork" -> newestworkres,
 	        "famouspeople" -> famouspeopleres,
-	        "indexbestworkshow" -> indexbestworkshowres,
+	        
 	        "indexguohualist" -> indexguohualistres,
 	        "indexyouhualist" -> indexyouhualistres,
 	        "indexshufalist" -> indexshufalistres
@@ -153,7 +153,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	 
 	  	
 	  	
-	    mustache("show.mustache","layout" -> "",
+	    mustache("artshowlist.mustache","layout" -> "",
 	        "newestwork" -> newestworkres,
 	        "gallerylist" -> showworkres,
 	        "categorylist" -> categorylist,
@@ -176,8 +176,14 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       
       val workid = Integer.parseInt(params("workid"))
       
+      
+      
+      val reslist = ArtWebSiteDataSourceObject.getworkbyid(workid)
+      
+      if(reslist.length == 0) redirect("/error")
+      
 
-      val res = ArtWebSiteDataSourceObject.getworkbyid(workid)(0)
+      val res = reslist(0)
       
       
       
@@ -289,7 +295,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	
 	  	 
 	  	
-	  	mustache("people.mustache","layout" -> "",
+	  	mustache("peopleshowlist.mustache","layout" -> "",
 	  	    "newestwork" -> newestworkres,
 	  	    "categorylist" -> categorylist,
 	  	    "peoplelist" -> showpeoples,
@@ -312,10 +318,19 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       
       
       val artistid = Integer.parseInt(params("id"))
+      
+      
+      val reslist = ArtWebSiteDataSourceObject.queryartistbyid(artistid)
+      
+      if(reslist.length == 0) redirect("/error")
+      
     
-      val artist = ArtWebSiteDataSourceObject.queryartistbyid(artistid)(0)
+      val artist = reslist(0)
       
       val authorpinxie = artist.authorpinxie
+      
+      
+      
       
       val artistworklist = ArtWebSiteDataSourceObject.queryartistworkbyatuhorpinxie(authorpinxie)
       
@@ -332,6 +347,22 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	    
           )
   }
+  
+  get("/error"){
+    contentType = "text/html"
+      
+      /**
+	  	 * fix data for the footer
+	  	 */
+	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+      
+      
+    mustache("error.mustache","layout" -> "",
+        "newestwork" -> newestworkres
+          
+          )
+  }
+  
 //  notFound {
 //	  <h1>Not found. Bummer.</h1>
 //  }
@@ -358,36 +389,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     ArtWebSiteDataSourceObject.querylemmonslidertable
 
   }
-  get("/jsondata/querylemmonsliderdata1"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.querylemmonslidertable1
-
-  }
-  get("/jsondata/querylemmonsliderdata2"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.querylemmonslidertable2
-
-  }
-  get("/jsondata/querylemmonsliderdata3"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.querylemmonslidertable3
-
-  }
-  get("/jsondata/querylemmonsliderdata4"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.querylemmonslidertable4
-
-  }
-  get("/jsondata/querylemmonsliderdata5"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.querylemmonslidertable5
-
-  }
-  get("/jsondata/querylemmonsliderdata6"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.querylemmonslidertable6
-
-  }
+  
   /**
    * 
    */

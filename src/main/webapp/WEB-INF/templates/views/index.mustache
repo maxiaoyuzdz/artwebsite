@@ -143,12 +143,12 @@
     <div id="lemmon-slider" class="lemmon-slider">
         <ul id="indexslider">
             {{#lemmonsliderrepo}}
-                <li> <a href="{{href}}">
+                <li> <a href="/workshow/{{id}}">
                     <img src="{{imgsrc}}" alt="" /> </a>
                     <div class="summary">
-                        <a href="{{href}}">
-                            <h3>{{h}}</h3>
-                            <p>{{p}}</p>
+                        <a href="/workshow/{{id}}">
+                            <h3>{{name}}</h3>
+                            <p>{{category}}</p>
                         </a>
                     </div>
                 </li>
@@ -171,28 +171,20 @@
     <h3 class="short_headline"><span>签约名家推荐</span></h3>
     <div class="row-fluid">
         {{#famouspeople}}
-            <div class="span3"><div class="well"><h2>{{h0}}</h2><h3>{{h1}}</h3><p><img class="alignleft" src="{{imgsrc}}" />{{p}}</p><p class="right"><a href="{{href}}" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p></div></div>
+            <div class="span3"><div class="well"><h2>{{title}}</h2><h3>{{author}}</h3><p><img class="alignleft" src="/assets/peopleimg/{{authorpinxie}}_head.jpg" />{{shortdesc}}</p><p class="right"><a href="/artist/{{id}}" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p></div></div>
         {{/famouspeople}}
 
     </div>
     <!-- end row-fluid-->
 
-    <h3 class="short_headline"><span>力作推荐</span></h3>
-    <!-- begin equalHeights columns 3 -->
-    <div class="row-fluid equalHero">
-        {{#indexbestworkshow}}
-            <div class="span4"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
-        {{/indexbestworkshow}}
 
-    </div>
-    <!-- close #equalHeights .featured 3 columns -->
 
     <h3 class="short_headline"><span>国画</span></h3>
 
 
     <div class="row-fluid equalHero">
         {{#indexguohualist}}
-            <div class="span3"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
+            <div class="span3"> <a href="/workshow/{{id}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="/workshow/{{id}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
         {{/indexguohualist}}
     </div>
 
@@ -201,7 +193,7 @@
     <!-- close #equalHeights .featured 3 columns -->
     <div class="row-fluid equalHero">
         {{#indexyouhualist}}
-            <div class="span3"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
+            <div class="span3"> <a href="/workshow/{{id}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="/workshow/{{id}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
         {{/indexyouhualist}}
     </div>
 
@@ -210,7 +202,7 @@
     <!-- close #equalHeights .featured 3 columns -->
     <div  class="row-fluid equalHero">
         {{#indexshufalist}}
-            <div class="span3"> <a href="{{href}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="{{href}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
+            <div class="span3"> <a href="/workshow/{{id}}"><img src="{{imgsrc}}" class="aligncenter" alt="" /></a><h3><a href="/workshow/{{id}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
         {{/indexshufalist}}
 
     </div>

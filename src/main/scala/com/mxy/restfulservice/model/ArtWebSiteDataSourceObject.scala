@@ -10,15 +10,7 @@ import java.sql.Timestamp
 import org.squeryl.KeyedEntity
 
 
-case class LemmonSliderObeject(
-    val id:Int,
-    val href:String,
-    val imgsrc:String,
-    val h:String,
-    val p:String,
-    val datatype:String) extends KeyedEntity[Int]{
-  def this() = this(0,"","","","","A")
-}
+
 
 case class BestFamousPeopleObejct(
     val id:Int,
@@ -77,30 +69,16 @@ case class PeopleObject(
     val desc:String,
     val title:String,
     val category:String,
-    val categorypinxie:String) extends KeyedEntity[Int]{
-  def this() = this(0,"","","","","","","")
+    val categorypinxie:String,
+    val shortdesc:String) extends KeyedEntity[Int]{
+  def this() = this(0,"","","","","","","","")
   
 }
 
 
 object ArtWebSiteDataSourceObject extends Schema{
-  //lemmonslidertable
-  val lemmonslidertabledata = table[LemmonSliderObeject]("bestlemmonslidertable")
   
-  on(lemmonslidertabledata)(item =>declare(
-      item.id	is(primaryKey, autoIncremented)
-      )
-  )
   
-  def querylemmonslidertable = from(lemmonslidertabledata)((item) =>  where(item.datatype === "A") select(item)).toList
-  def querylemmonslidertable1 = from(lemmonslidertabledata)((item) =>  where(item.id === 1) select(item)).toList
-  def querylemmonslidertable2 = from(lemmonslidertabledata)((item) =>  where(item.id === 2) select(item)).toList
-  def querylemmonslidertable3 = from(lemmonslidertabledata)((item) =>  where(item.id === 3) select(item)).toList
-  def querylemmonslidertable4 = from(lemmonslidertabledata)((item) =>  where(item.id === 4) select(item)).toList
-  def querylemmonslidertable5 = from(lemmonslidertabledata)((item) =>  where(item.id === 5) select(item)).toList
-  def querylemmonslidertable6 = from(lemmonslidertabledata)((item) =>  where(item.id === 6) select(item)).toList
-  
-  //bestfamouspeopeltable bestfamouspeopletable
   val bestfamouspeopletabledata = table[BestFamousPeopleObejct]("bestfamouspeopletable")
   
   on(bestfamouspeopletabledata)(item =>declare(
@@ -108,9 +86,6 @@ object ArtWebSiteDataSourceObject extends Schema{
       )
   )
   
-  def querybestfamouspeopletable = from(bestfamouspeopletabledata)((item) =>  where(item.datatype === "A") select(item)).toList
-  
-  //
   val workshowtabledata = table[WorkShowObject]("workshowtable")
   
   
@@ -120,20 +95,53 @@ object ArtWebSiteDataSourceObject extends Schema{
       )
   )
   
+  val hrefandsmallimgsrcworkshowobjecttabledata = table[HrefAndSmallImgsrcWorkShowObject]("workshowtable")
+  
+  on(hrefandsmallimgsrcworkshowobjecttabledata)(item =>declare(
+      item.id	is(primaryKey, autoIncremented)
+      )
+  )
+  
+  //people
+  val peopleobjecttabledata = table[PeopleObject]("peopletable")
+  
+  on(peopleobjecttabledata)(item =>declare(
+      item.id	is(primaryKey, autoIncremented)
+      )
+  )
+  /**
+   * table define end
+   */
+  /**
+   * fix data
+   */
+  def newestworksmallshow(length:Int) = from(hrefandsmallimgsrcworkshowobjecttabledata)((w) =>  select((w)) orderBy(w.id desc)).page(0, length).toList
+  
+  
+  /**
+   * page: index
+   */
+  
+  def querylemmonslidertable = from(workshowtabledata)((item) =>  where(item.datatype === "A") select(item)).toList
+  
+  
+  //bestfamouspeopeltable bestfamouspeopletable
+  
+  
+  def querybestfamouspeopletable = from(peopleobjecttabledata)((item) =>   select(item) orderBy(item.id desc)).page(0, 4).toList
+  
+  //
+  
+  
   def querybestworkshowtable(rlevel:Int) = from(workshowtabledata)((item) =>  where((item.datatype === "A") and (item.level === rlevel) ) select(item)).toList
   
   
   def queryartfromworkshowtable(arttype:String,length:Int) = from(workshowtabledata)((item) => where(item.worktype === arttype) select(item) orderBy(item.id desc)).page(0, length).toList
   
   //
-  val hrefandsmallimgsrcworkshowobjecttabledata = table[HrefAndSmallImgsrcWorkShowObject]("workshowtable")
   
-  on(lemmonslidertabledata)(item =>declare(
-      item.id	is(primaryKey, autoIncremented)
-      )
-  )
   
-  def newestworksmallshow(length:Int) = from(hrefandsmallimgsrcworkshowobjecttabledata)((w) =>  select((w)) orderBy(w.id desc)).page(0, length).toList
+  
   
   //
   def querywork(worktype:String,pagenumber:Int,pagelength:Int) = from(workshowtabledata)((item) => where(item.worktype === worktype) select(item) orderBy(item.id desc)).page(pagenumber, pagelength).toList
@@ -152,13 +160,7 @@ object ArtWebSiteDataSourceObject extends Schema{
   //work show
   def getworkbyid(id:Int) = from(workshowtabledata)(item => where(item.id === id) select(item)).toList
       
-  //people
-  val peopleobjecttabledata = table[PeopleObject]("peopletable")
   
-  on(peopleobjecttabledata)(item =>declare(
-      item.id	is(primaryKey, autoIncremented)
-      )
-  )
   
   def querypeoplelistbyworktype(worktype:String,pagenumber:Int,pagelength:Int) = from(peopleobjecttabledata)((item => where(item.worktype === worktype) select(item))).page(pagenumber, pagelength).toList
   def querypeoplecategorylist(worktype:String) = from(peopleobjecttabledata)((item) => where(item.worktype === worktype) select(item.category,item.categorypinxie)).distinct.toList
