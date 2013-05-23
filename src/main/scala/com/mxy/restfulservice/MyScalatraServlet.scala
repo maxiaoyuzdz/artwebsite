@@ -46,22 +46,22 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	val sliderres = ArtWebSiteDataSourceObject.querylemmonslidertable
 	  	
 	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
-	  	
+//	  	
 	  	val famouspeopleres = ArtWebSiteDataSourceObject.querybestfamouspeopletable
-	  	
-	  	
-	  	
+//	  	
+//	  	
+//	  	
 	  	val indexguohualistres = ArtWebSiteDataSourceObject.queryartfromworkshowtable("G",4)
-	  	
+//	  	
 	  	val indexyouhualistres = ArtWebSiteDataSourceObject.queryartfromworkshowtable("Y",4)
-	  	
+//	  	
 	  	val indexshufalistres = ArtWebSiteDataSourceObject.queryartfromworkshowtable("S",4)
 
 	    mustache("index.mustache","layout" -> "",
 	        "lemmonsliderrepo" -> sliderres,
 	        "newestwork" -> newestworkres,
 	        "famouspeople" -> famouspeopleres,
-	        
+//	        
 	        "indexguohualist" -> indexguohualistres,
 	        "indexyouhualist" -> indexyouhualistres,
 	        "indexshufalist" -> indexshufalistres
@@ -172,7 +172,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	 * fix data for the footer
 	  	 */
 	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
-	  	
+	  
       
       val workid = Integer.parseInt(params("workid"))
       
@@ -185,6 +185,14 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 
       val res = reslist(0)
       
+      val authorpinxie = res.authorpinxie
+      
+      
+      val authoreslist = ArtWebSiteDataSourceObject.queryartistbyauthorpinxie(authorpinxie)
+      
+      var authorid = 0
+      
+      if(authoreslist.length != 0) authorid = authoreslist(0).id
       
       
       
@@ -197,7 +205,9 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	        "desc" -> res.desc,
 	        "author" -> res.author,
 	        "category" -> res.category,
-	        "price" -> res.price
+	        "price" -> res.price,
+	        "picid" -> res.id,
+	        "id" -> authorid
           )
     
   }
@@ -348,6 +358,39 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
           )
   }
   
+  get("/artist/searchby/:authorpinxie"){
+    contentType = "text/html"
+      val authorpinxieparameter = params("authorpinxie")
+      
+      //queryartistbyauthorpinxie
+      val reslist = ArtWebSiteDataSourceObject.queryartistbyauthorpinxie(authorpinxieparameter)
+      if(reslist.length == 0) redirect("/error")
+      val artist = reslist(0)
+      
+      val authorpinxie = artist.authorpinxie
+      
+      /**
+	  	 * fix data for the footer
+	  	 */
+	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  
+	  val artistworklist = ArtWebSiteDataSourceObject.queryartistworkbyatuhorpinxie(authorpinxie)
+	  
+	  /**
+       * peopleintroduce.mustache
+       */
+      mustache("peopleintroduce.mustache","layout" -> "",
+          "newestwork" -> newestworkres,
+          "title" -> artist.title,
+          "author" -> artist.author,
+          "authorpinxie" -> artist.authorpinxie,
+          "desc" -> artist.desc,
+          "artworklist" -> artistworklist
+	  	    
+          )
+  }
+  
+  
   get("/error"){
     contentType = "text/html"
       
@@ -397,13 +440,13 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     contentType = formats("json")
     ArtWebSiteDataSourceObject.querybestfamouspeopletable
   }
-  /**
-   * 
-   */
-  get("/jsondata/querybestworkshowdata"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.querybestworkshowtable(9)
-  }
+//  /**
+//   * 
+//   */
+//  get("/jsondata/querybestworkshowdata"){
+//    contentType = formats("json")
+//    ArtWebSiteDataSourceObject.querybestworkshowtable(9)
+//  }
   /**
    * 
    */
@@ -472,7 +515,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 
     
 //    ArtWebSiteDataSourceObject.querytest3
-    ArtWebSiteDataSourceObject.queryartistworkbyatuhorpinxie("maxiaoyu")
+//    ArtWebSiteDataSourceObject.queryartistbyatuhorpinxie("maxiaoyu")
 	
     
   }

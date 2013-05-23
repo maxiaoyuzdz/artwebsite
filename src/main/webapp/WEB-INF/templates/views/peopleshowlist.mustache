@@ -64,7 +64,7 @@
 
     <!--this is the login for the user-->
     <nav class="user clearfix ">
-        <a href="login.html">艺术家登陆</a>
+        <a href="#">艺术家登陆</a>
     </nav>
     <!--close user nav-->
     <!-- need to fix -->
@@ -112,7 +112,7 @@
                         <li><a href="blog-traditional-summary-3col.html">收购服务</a></li>
                     </ul>
                 </li>
-                <li><a href="contact.html">联系方式</a></li>
+                <li class="hidden"><a href="contact.html">联系方式</a></li>
             </ul>
         </nav>
         <!-- close / #main_menu -->
@@ -164,7 +164,7 @@
             {{#peoplelist}}
                 <li class="{{categorypinxie}}">
                     <a class="hover" href="/artist/{{id}}">
-                        <img src="/assets/peopleimg/{{authorpinxie}}_head.jpg" alt="" />
+                        <img src="http://mxypicstore1.b0.upaiyun.com/zeyazhai/artist/{{authorpinxie}}.jpg!width300" alt="" />
                         <span class="plus"></span>
                     </a>
                     <div class="entry-summary">
@@ -231,7 +231,7 @@
                     <h4>最新的作品</h4>
                     <ul class="image-widget clearfix">
                         {{#newestwork}}
-                            <li><a href="{{href}}"><img src="{{smallimgsrc}}" alt="" /></a></li>
+                            <li><a href="/workshow/{{id}}"><img src="{{imgsrc}}{{id}}.jpg!50x50" alt="" /></a></li>
                         {{/newestwork}}
 
                     </ul>

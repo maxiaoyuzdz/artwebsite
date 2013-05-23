@@ -64,7 +64,7 @@
 
     <!--this is the login for the user-->
     <nav class="user clearfix ">
-        <a href="login.html">艺术家登陆</a>
+        <a href="#">艺术家登陆</a>
     </nav>
     <!--close user nav-->
     <!-- need to fix -->
@@ -112,7 +112,7 @@
                         <li><a href="blog-traditional-summary-3col.html">收购服务</a></li>
                     </ul>
                 </li>
-                <li><a href="contact.html">联系方式</a></li>
+                <li  class="hidden"><a href="contact.html">联系方式</a></li>
             </ul>
         </nav>
         <!-- close / #main_menu -->
@@ -145,7 +145,7 @@
                 <div id="slider" class="flexslider">
                     <ul class="slides">
                         <li><!--for SINGLE IMAGES change fancyme to fancysingle and remove data-fancybox-group tag-->
-                            <a class="zoom-image " href="#">查看大图</a> <img src="{{imgsrc}}" alt=""></li>
+                            <a class="zoom-image " href="{{imgsrc}}{{picid}}.jpg!original">查看大图</a> <img src="{{imgsrc}}{{picid}}.jpg!width700" alt=""></li>
                     </ul>
                 </div>
                 <!-- End Slider -->
@@ -156,15 +156,15 @@
             <section class="span4 project-description" role="project-description">
                 <p>{{desc}}</p>
                 <h6>画家:</h6>
-                <p><a href="http://www.flickr.com/photos/adactio/5817823805/" target="_blank">{{author}}</a></p>
+                <p><a href="/artist/{{id}}" >{{author}}</a></p>
                 <h6>分类:</h6>
                 <p>{{category}}</p>
                 <h6>价格:</h6>
                 <p>{{price}} RMB</p>
 
-                <h6> <a href="#" class="btn btn-very-subtle">购买 &rarr;</a> </h6>
-                <h6> <a href="#" class="btn btn-very-subtle">寄存 &rarr;</a> </h6>
-                <h6> <a href="#" class="btn btn-very-subtle">赠送 &rarr;</a> </h6>
+                <h6> <a href="#" class="btn btn-very-subtle hidden">购买 &rarr;</a> </h6>
+                <h6> <a href="#" class="btn btn-very-subtle hidden">寄存 &rarr;</a> </h6>
+                <h6> <a href="#" class="btn btn-very-subtle hidden">赠送 &rarr;</a> </h6>
 
 
 
@@ -221,7 +221,7 @@
                         <h4>最新的作品</h4>
                         <ul class="image-widget clearfix">
                             {{#newestwork}}
-                                <li><a href="{{href}}"><img src="{{smallimgsrc}}" alt="" /></a></li>
+                                <li><a href="/workshow/{{id}}"><img src="{{imgsrc}}{{id}}.jpg!50x50" alt="" /></a></li>
                             {{/newestwork}}
 
                         </ul>

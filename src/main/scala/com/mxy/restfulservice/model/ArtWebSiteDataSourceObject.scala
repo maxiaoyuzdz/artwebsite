@@ -27,12 +27,12 @@ case class BestFamousPeopleObejct(
 
 case class WorkShowObject(
     val id:Int,
-    val href:String,
+//    val href:String,
     val imgsrc:String,
-    val smallimgsrc:String,
+//    val smallimgsrc:String,
     val name:String,
-    val price:Int,
-    val level:Int,
+    val price:String,
+//    val level:Int,
     val worktype:String,
     val datatype:String,
     val desc:String,
@@ -40,16 +40,16 @@ case class WorkShowObject(
     val author:String,
     val authorpinxie:String,
     val categorypinxie:String) extends KeyedEntity[Int]{
-  def this() = this(0,"","","","",0,5,"","A","some description","","","","")
+  def this() = this(0,"","","","","A","some description","","","","")
 }
 
 case class HrefAndSmallImgsrcWorkShowObject(
      val id:Int,
-    val href:String,
+//    val href:String,
     
-    val smallimgsrc:String
+    val imgsrc:String
     )extends KeyedEntity[Int]{
-  def this() = this(0,"","")
+  def this() = this(0,"")
 }
 
 case class PagenumberControlObject(
@@ -133,7 +133,7 @@ object ArtWebSiteDataSourceObject extends Schema{
   //
   
   
-  def querybestworkshowtable(rlevel:Int) = from(workshowtabledata)((item) =>  where((item.datatype === "A") and (item.level === rlevel) ) select(item)).toList
+//  def querybestworkshowtable(rlevel:Int) = from(workshowtabledata)((item) =>  where((item.datatype === "A") and (item.level === rlevel) ) select(item)).toList
   
   
   def queryartfromworkshowtable(arttype:String,length:Int) = from(workshowtabledata)((item) => where(item.worktype === arttype) select(item) orderBy(item.id desc)).page(0, length).toList
@@ -160,7 +160,7 @@ object ArtWebSiteDataSourceObject extends Schema{
   //work show
   def getworkbyid(id:Int) = from(workshowtabledata)(item => where(item.id === id) select(item)).toList
       
-  
+  def queryartistbyauthorpinxie(pinxie:String) = from(peopleobjecttabledata)(item => where(item.authorpinxie === pinxie) select(item)).toList
   
   def querypeoplelistbyworktype(worktype:String,pagenumber:Int,pagelength:Int) = from(peopleobjecttabledata)((item => where(item.worktype === worktype) select(item))).page(pagenumber, pagelength).toList
   def querypeoplecategorylist(worktype:String) = from(peopleobjecttabledata)((item) => where(item.worktype === worktype) select(item.category,item.categorypinxie)).distinct.toList
@@ -174,7 +174,7 @@ object ArtWebSiteDataSourceObject extends Schema{
   def queryartistworkbyatuhorpinxie(pinxie:String) = from(workshowtabledata)(item => where(item.authorpinxie === pinxie) select(item)).toList 
   
   // test for page
-  def querytest = from(workshowtabledata)((item) =>  select(item.id, item.href) orderBy(item.id desc)).page(0, 5).toList.map(item => (item._1, item._2.substring(0,9)))
+//  def querytest = from(workshowtabledata)((item) =>  select(item.id, item.href) orderBy(item.id desc)).page(0, 5).toList.map(item => (item._1, item._2.substring(0,9)))
   def querytest2 = from(workshowtabledata)(item => where(item.worktype === "G") compute(count(item.id))).toList
   def querytest3 = from(peopleobjecttabledata)((item => select(item))).toList
   

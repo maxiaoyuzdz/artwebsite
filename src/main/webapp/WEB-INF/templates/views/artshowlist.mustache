@@ -64,7 +64,7 @@
 
     <!--this is the login for the user-->
     <nav class="user clearfix ">
-        <a href="login.html">艺术家登陆</a>
+        <a href="#">艺术家登陆</a>
     </nav>
     <!--close user nav-->
     <!-- need to fix -->
@@ -112,7 +112,7 @@
                         <li><a href="blog-traditional-summary-3col.html">收购服务</a></li>
                     </ul>
                 </li>
-                <li><a href="contact.html">联系方式</a></li>
+                <li class="hidden"><a href="contact.html">联系方式</a></li>
             </ul>
         </nav>
         <!-- close / #main_menu -->
@@ -164,16 +164,16 @@
             {{#gallerylist}}
                 <li class="{{categorypinxie}}">
                     <a class="hover" href="/workshow/{{id}}">
-                        <img src="{{imgsrc}}" alt="" />
+                        <img src="{{imgsrc}}{{id}}.jpg!width300" alt="" />
                         <span class="plus"></span>
                     </a>
                     <div class="entry-summary">
-                        <h4><a href="{{href}}">{{name}}</a></h4>
+                        <h4><a href="/workshow/{{id}}">{{name}}</a></h4>
                         <p>价格：{{price}}RMB</p>
                         <div class="categories">
                             <a href="#">{{category}}</a>
                         </div>
-                        <span class="credit"><a href="http://www.flickr.com/photos/adactio/{{authorpinxie}}" target="_blank">作者：{{author}}</a></span>
+                        <span class="credit"><a href="/artist/searchby/{{authorpinxie}}" target="_blank">作者：{{author}}</a></span>
                     </div>
                 </li>
             {{/gallerylist}}
