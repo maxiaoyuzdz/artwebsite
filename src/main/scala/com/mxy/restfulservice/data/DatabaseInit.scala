@@ -12,7 +12,8 @@ trait DatabaseInit {
   val logger = LoggerFactory.getLogger(getClass)
 
   val databaseUsername = "root"
-  val databasePassword = "root"
+//  val databasePassword = "root"
+    val databasePassword = "zdz5973781"
   val databaseConnection = "jdbc:mysql://localhost:3306/artwebsitedb"
     //artwebsitedb
 
