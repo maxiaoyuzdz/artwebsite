@@ -45,7 +45,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	  //querylemmonslider
 	  	val sliderres = ArtWebSiteDataSourceObject.querylemmonslidertable
 	  	
-	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
 //	  	
 	  	val famouspeopleres = ArtWebSiteDataSourceObject.querybestfamouspeopletable
 //	  	
@@ -100,7 +100,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	/**
 	  	 * fix data for the footer
 	  	 */
-	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
 	  	/**
 	  	 * main content
 	  	 */
@@ -171,7 +171,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
 	  
       
       val workid = Integer.parseInt(params("workid"))
@@ -221,7 +221,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
 	  	/**
        * fix end
        */
@@ -324,7 +324,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
       
       
       val artistid = Integer.parseInt(params("id"))
@@ -372,7 +372,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
 	  
 	  val artistworklist = ArtWebSiteDataSourceObject.queryartistworkbyatuhorpinxie(authorpinxie)
 	  
@@ -397,7 +397,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(15)
+	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
       
       
     mustache("error.mustache","layout" -> "",
@@ -420,105 +420,35 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   /**
    * art
    */
-  get("/jsondata/querynewestworksmallshow"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.newestworksmallshow(12)
-  }
-  /**
-   * index page
-   */
-  get("/jsondata/querylemmonsliderdata"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.querylemmonslidertable
-
-  }
-  
-  /**
-   * 
-   */
-  get("/jsondata/querybestfamouspeopledata"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.querybestfamouspeopletable
-  }
-//  /**
-//   * 
-//   */
-//  get("/jsondata/querybestworkshowdata"){
-//    contentType = formats("json")
-//    ArtWebSiteDataSourceObject.querybestworkshowtable(9)
-//  }
-  /**
-   * 
-   */
-  get("/jsondata/queryguohuadata"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.queryartfromworkshowtable("G",4)
-  }
-  /**
-   * 
-   */
-  get("/jsondata/queryyouhuadata"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.queryartfromworkshowtable("Y",4)
-  }
-  /**
-   * 
-   */
-  get("/jsondata/queryshufadata"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.queryartfromworkshowtable("S",4)
-  }
-  /**
-   * 
-   */
-  //newestworksmallshow
-  get("/jsondata/querynewestworksmallshow"){
-    contentType = formats("json")
-    ArtWebSiteDataSourceObject.newestworksmallshow(12)
-  }
-  
-  
-  /**
-   * show page
-   */
   
 
   /**
    * format convert, anything be converted to JSON
    */
-  get("/jsondata/artshowdata/queryartwork/:worktype/:pagenumber"){
-    contentType = formats("json")
-
-    val worktype = params("worktype")//G Y S
-    val pagenumber = Integer.parseInt(params("pagenumber"))//1,2,3
-    
-
-    
-    ArtWebSiteDataSourceObject.querywork(worktype,pagenumber,15)
-    
-  }
+  
 //  before() {
 //    contentType = formats("json")
 //  }
-  get("/jsondata/artshowdata/test"){
-    contentType = formats("json")
-
-    
-    val tn = ArtWebSiteDataSourceObject.querytest2(0)
-    val tt:Int = tn.measures.toInt
-//    ArtWebSiteDataSourceObject.querypagenum
+  
+    get("/jsondata/test1"){
+	    contentType = formats("json")
 	
+	    ArtWebSiteDataSourceObject.querywork("G",0,16)
+
+    }
     
-  }
+    get("/jsondata/test2"){
+	    contentType = formats("json")
+	
+	    ArtWebSiteDataSourceObject.querywork("G",1,16)
+
+    }
     get("/jsondata/test3"){
-    contentType = formats("json")
-
-    
-//    ArtWebSiteDataSourceObject.querytest3
-//    ArtWebSiteDataSourceObject.queryartistbyatuhorpinxie("maxiaoyu")
+	    contentType = formats("json")
 	
-    
-  }
+	    ArtWebSiteDataSourceObject.querywork("G",2,16)
+
+    }
   
   protected implicit val jsonFormats: Formats = DefaultFormats
 }

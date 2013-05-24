@@ -11,10 +11,17 @@ trait DatabaseInit {
   
   val logger = LoggerFactory.getLogger(getClass)
 
-  val databaseUsername = "root"
+//  val databaseUsername = "root"
 //  val databasePassword = "root"
+//  val databaseConnection = "jdbc:mysql://localhost:3306/artwebsitedb"
+    
+    val databaseUsername = "root"
     val databasePassword = "zdz5973781"
-  val databaseConnection = "jdbc:mysql://localhost:3306/artwebsitedb"
+    val databaseConnection = "jdbc:mysql://10.10.3.25:3306/artwebsitedb"
+      
+      
+//  val databaseConnection = "jdbc:mysql://218.245.3.163:3306/artwebsitedb"
+//    val databaseConnection = "jdbc:mysql://localhost:3306/artwebsitedb"
     //artwebsitedb
 
   var cpds = new ComboPooledDataSource
