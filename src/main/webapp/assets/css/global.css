@@ -8,7 +8,7 @@
 @import url('portfolio.css'); /*portfolio */
 @import url('blog.css'); /*blog */
 @import url('gallery-folio-masonry.css'); /*isotope/masonry/grid css */
-@import url('../js/fancybox/source/jquery.fancybox.css'); /*combined buttons, thumbs and base fancybox*/
+@import url('/assets/js/fancybox/source/jquery.fancybox.css'); /*combined buttons, thumbs and base fancybox*/
 @import url('http://fonts.googleapis.com/css?family=Ubuntu:400,700,700italic,400italic');/*fonts*/
 @import url('http://fonts.googleapis.com/css?family=Raleway:300,500,600,700');/*fonts*/
 
@@ -351,7 +351,6 @@ code {
 pre {
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
     white-space: -o-pre-wrap;
     word-wrap: break-word;
 }
@@ -1053,7 +1052,7 @@ input[type="text"], input[type="password"], input[type="search"], input[type="em
 
 /******  contemporary 3 columns layout ******/
 .contemp-three-cols {
-    background-image: url(../images/rule.png), url(../images/rule.png);
+    background-image: url(../images/rule.png);
     background-position: 50.75% 0, 76% 0;
     background-repeat: repeat-y;
 }
@@ -1085,7 +1084,7 @@ input[type="text"], input[type="password"], input[type="search"], input[type="em
 }
 
 .holy-grail {
-    background-image: url(../images/rule.png), url(../images/rule.png);
+    background-image: url(../images/rule.png);
     background-position: 23.5% 0, 76.5% 0;
     background-repeat: repeat-y;
 }

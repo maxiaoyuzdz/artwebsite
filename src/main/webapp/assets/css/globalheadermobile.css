@@ -264,7 +264,7 @@
     #main_menu li ul li ul li a {
         height: auto;
         width: auto;
-        line-height: auto;
+        /*line-height: auto;*/
         background: #4c5966;
         padding: 8px 0 5px 20px;
     }

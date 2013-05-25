@@ -1339,7 +1339,7 @@ li.st-content-wrapper .st-content{
 table {
     border-spacing: 0px;
     border:1px solid #ddd;
-    border-collapse: colapse;
+    border-collapse: collapse;
     width:100%;
     margin-bottom:3%;
 }
@@ -2417,7 +2417,7 @@ only screen and (min-device-pixel-ratio: 2)
 #fancybox-loading,
 .fancybox-close,
 .fancybox-prev span,
-.fancybox-next span { background-image: url('fancy-new-sprite.png') }
+.fancybox-next span { background-image: url('/assets/js/fancybox/source/fancy-new-sprite.png') }
 #fancybox-loading {
     position: fixed;
     top: 50%;
@@ -2432,7 +2432,7 @@ only screen and (min-device-pixel-ratio: 2)
 #fancybox-loading div {
     width: 44px;
     height: 44px;
-    background: url('fancybox_loading.gif') center center no-repeat;
+    background: url('/assets/js/fancybox/source/fancybox_loading.gif') center center no-repeat;
 }
 .fancybox-close {
     position: absolute;
@@ -2451,7 +2451,7 @@ only screen and (min-device-pixel-ratio: 2)
     height: 100%;
     cursor: pointer;
     text-decoration: none;
-    background: transparent url('blank.gif');
+    background: transparent url('/assets/js/fancybox/source/blank.gif');
     /* helps IE */ -webkit-tap-highlight-color: rgba(0,0,0,0); z-index: 8040; ;
 }
 .fancybox-prev { left: -30px }
@@ -2490,7 +2490,7 @@ only screen and (min-device-pixel-ratio: 2)
     overflow: hidden;
     display: none;
     z-index: 8010;
-    background: url('fancybox_overlay.png');
+    background: url('/assets/js/fancybox/source/fancybox_overlay.png');
 }
 .fancybox-overlay-fixed {
     position: fixed;
@@ -2618,7 +2618,7 @@ only screen and (min-device-pixel-ratio: 2)
     width: 30px;
     height: 30px;
     text-indent: -9999px;
-    background-image: url('helpers/fancybox_buttons.png');
+    background-image: url('/assets/js/fancybox/source/helpers/fancybox_buttons.png');
     background-repeat: no-repeat;
     outline: none;
     opacity: 0.8;
@@ -2666,7 +2666,7 @@ only screen and (min-device-pixel-ratio: 2)
     .fancybox-close,
     .fancybox-prev span,
     .fancybox-next span {
-        background-image: url(fancy-new-sprite_@2x.png);
+        background-image: url(/assets/js/fancybox/source/fancy-new-sprite_@2x.png);
         -moz-background-size: 44px 152px;
         -ie-background-size: 44px 152px;
         -o-background-size: 44px 152px;
@@ -2674,7 +2674,7 @@ only screen and (min-device-pixel-ratio: 2)
         background-size: 44px 152px;
     }
     #fancybox-buttons a {
-        background-image: url(helpers/fancybox_buttons_@2x.png);
+        background-image: url(/assets/js/fancybox/source/helpers/fancybox_buttons_@2x.png);
         -moz-background-size: 90px 90px;
         -ie-background-size: 90px 90px;
         -o-background-size: 90px 90px;
@@ -3025,7 +3025,7 @@ code {
 pre {
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
+    /*white-space: -pre-wrap;*/
     white-space: -o-pre-wrap;
     word-wrap: break-word;
 }
@@ -3716,7 +3716,7 @@ input[type="text"], input[type="password"], input[type="search"], input[type="em
 
 /****** right sidebar layout ******/
 .sidebar-right {
-    background-image: url(../images/rule.png);
+    background-image: url(/assets/images/rule.png);
     background-position: 76.5% 0;
     background-repeat: repeat-y;
 }
@@ -3727,7 +3727,7 @@ input[type="text"], input[type="password"], input[type="search"], input[type="em
 
 /******  contemporary 3 columns layout ******/
 .contemp-three-cols {
-    background-image: url(../images/rule.png), url(../images/rule.png);
+    background-image: url(/assets/images/rule.png);
     background-position: 50.75% 0, 76% 0;
     background-repeat: repeat-y;
 }
@@ -3759,7 +3759,7 @@ input[type="text"], input[type="password"], input[type="search"], input[type="em
 }
 
 .holy-grail {
-    background-image: url(../images/rule.png), url(../images/rule.png);
+    background-image: url(../images/rule.png);
     background-position: 23.5% 0, 76.5% 0;
     background-repeat: repeat-y;
 }
@@ -6105,7 +6105,7 @@ body.tall-logo nav.user {
     #main_menu li ul li ul li a {
         height: auto;
         width: auto;
-        line-height: auto;
+        /*line-height: auto;*/
         background: #4c5966;
         padding: 8px 0 5px 20px;
     }

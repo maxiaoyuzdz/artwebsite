@@ -165,7 +165,7 @@
     height: 100%;
     width: 100%;
     display: block;
-    background: url(../images/video-icon-small.png) center center no-repeat;
+    background: url(/assets/images/video-icon-small.png) center center no-repeat;
 }
 .portfolio-detail #carousel li.flex-active-slide span { top: -3px }
 .portfolio-detail .video-wrapper {margin:0;}

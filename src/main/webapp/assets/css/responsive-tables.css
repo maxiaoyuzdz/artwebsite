@@ -22,7 +22,7 @@
 table {
 	border-spacing: 0px;
 	border:1px solid #ddd;
-	border-collapse: colapse;
+	border-collapse: collapse;
 	width:100%;
 	margin-bottom:3%;
 }
