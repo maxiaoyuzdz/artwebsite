@@ -26,22 +26,27 @@
     <!-- CSS ================ -->
 
 
-    <link rel="stylesheet" href="/assets/css/socialicoregular.min.css?v=20130000" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/font-awesome.min.css?v=20130000" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/hero-equal-thumb-gallery.min.css?v=20130000" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/tabs-toggle.min.css?v=20130000" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/responsive-tables.min.css?v=20130000" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/portfolio.min.css?v=20130000" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/blog.min.css?v=20130000" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/gallery-folio-masonry.min.css?v=20130000" type="text/css"/>
-    <link rel="stylesheet" href="/assets/js/fancybox/source/jquery.fancybox.min.css?v=20130000" type="text/css"/>
+    <!--<link rel="stylesheet" href="/assets/css/socialicoregular.min.css?v=20130000" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="/assets/css/font-awesome.min.css?v=20130000" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="/assets/css/hero-equal-thumb-gallery.min.css?v=20130000" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="/assets/css/tabs-toggle.min.css?v=20130000" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="/assets/css/responsive-tables.min.css?v=20130000" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="/assets/css/portfolio.min.css?v=20130000" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="/assets/css/blog.min.css?v=20130000" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="/assets/css/gallery-folio-masonry.min.css?v=20130000" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="/assets/js/fancybox/source/jquery.fancybox.min.css?v=20130000" type="text/css"/>-->
 
 
-    <link rel="stylesheet" href="/assets/css/global2.min.css?v=20130003" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/globalmobile.min.css?v=20130002" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/globalheader.min.css?v=20130002" type="text/css"/>
-    <link rel="stylesheet" href="/assets/css/globalheadermobile.min.css?v=20130002" type="text/css"/>
+    <!--<link rel="stylesheet" href="/assets/css/global2.min.css?v=20130003" type="text/css"/>-->
 
+    <!--<link rel="stylesheet" href="/assets/css/global3.min.css?v=20130000" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="/assets/css/globalmobile.min.css?v=20130002" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="/assets/css/globalheader.min.css?v=20130002" type="text/css"/>-->
+    <!--<link rel="stylesheet" href="/assets/css/globalheadermobile.min.css?v=20130002" type="text/css"/>-->
+
+
+    <link rel="stylesheet" href="/assets/css/global4.css?v=20130000" type="text/css"/>
+    <link rel="stylesheet" href="/assets/css/global4header.css?v=20130002" type="text/css"/>
 
     <!--<link rel="stylesheet" href="/assets/css/together.min.css?v=20130001" type="text/css"/>-->
     
@@ -133,14 +138,7 @@
                     </ul>
                 </li>
 
-                <li class="parent hidden"><a href="javascript:void(0)">特色服务<i></i></a>
-                    <ul>
-                        <li><a href="blog-traditional-summary.html">退货服务</a></li>
-                        <li><a href="blog-traditional-summary-3col.html">鉴宝服务</a></li>
-                        <li><a href="blog-traditional-summary-3col.html">收购服务</a></li>
-                    </ul>
-                </li>
-                <li class="hidden"><a href="contact.html">联系方式</a></li>
+
             </ul>
         </nav>
         <!-- close / #main_menu -->
@@ -167,7 +165,7 @@
         <ul id="indexslider">
             {{#lemmonsliderrepo}}
                 <li> <a href="/workshow/{{id}}">
-                    <img src="{{imgsrc}}{{id}}.jpg!indexslider" alt="" /> </a>
+                    <img src="{{imgsrc}}{{id}}.jpg!indexslider?v=20130000" alt="" /> </a>
                     <div class="summary">
                         <a href="/workshow/{{id}}">
                             <h3>{{name}}</h3>
@@ -194,7 +192,7 @@
     <h3 class="short_headline"><span>签约名家推荐</span></h3>
     <div class="row-fluid">
         {{#famouspeople}}
-            <div class="span3"><div class="well"><h2>{{title}}</h2><h3>{{author}}</h3><p><img class="alignleft" src="http://mxypicstore1.b0.upaiyun.com/zeyazhai/artist/{{authorpinxie}}.jpg!80X80" />{{shortdesc}}</p><p class="right"><a href="/artist/{{id}}" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p></div></div>
+            <div class="span3"><div class="well"><h2>{{title}}</h2><h3>{{author}}</h3><p><img class="alignleft" src="http://mxypicstore1.b0.upaiyun.com/zeyazhai/artist/{{authorpinxie}}.jpg!80X80?v=20130000" />{{shortdesc}}</p><p class="right"><a href="/artist/{{id}}" class="btn-primary btn no-under-line-btn">详细资料 &nbsp;<i class="icon-circle-arrow-right icon-white"></i></a></p></div></div>
         {{/famouspeople}}
 
     </div>
@@ -207,7 +205,7 @@
 
     <div class="row-fluid equalHero">
         {{#indexguohualist}}
-            <div class="span3"> <a href="/workshow/{{id}}"><img src="{{imgsrc}}{{id}}.jpg!width300" class="aligncenter" alt="" /></a><h3><a href="/workshow/{{id}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
+            <div class="span3"> <a href="/workshow/{{id}}"><img src="{{imgsrc}}{{id}}.jpg!width300?v=20130000" class="aligncenter" alt="" /></a><h3><a href="/workshow/{{id}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
         {{/indexguohualist}}
     </div>
 
@@ -216,7 +214,7 @@
     <!-- close #equalHeights .featured 3 columns -->
     <div class="row-fluid equalHero">
         {{#indexyouhualist}}
-            <div class="span3"> <a href="/workshow/{{id}}"><img src="{{imgsrc}}{{id}}.jpg!width300" class="aligncenter" alt="" /></a><h3><a href="/workshow/{{id}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
+            <div class="span3"> <a href="/workshow/{{id}}"><img src="{{imgsrc}}{{id}}.jpg!width300?v=20130000" class="aligncenter" alt="" /></a><h3><a href="/workshow/{{id}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
         {{/indexyouhualist}}
     </div>
 
@@ -225,7 +223,7 @@
     <!-- close #equalHeights .featured 3 columns -->
     <div  class="row-fluid equalHero">
         {{#indexshufalist}}
-            <div class="span3"> <a href="/workshow/{{id}}"><img src="{{imgsrc}}{{id}}.jpg!width300" class="aligncenter" alt="" /></a><h3><a href="/workshow/{{id}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
+            <div class="span3"> <a href="/workshow/{{id}}"><img src="{{imgsrc}}{{id}}.jpg!width300?v=20130000" class="aligncenter" alt="" /></a><h3><a href="/workshow/{{id}}">{{name}}</a></h3><p>价格：{{price}}RMB</p></div>
         {{/indexshufalist}}
 
     </div>
@@ -272,7 +270,7 @@
                     <h4>最新的作品</h4>
                     <ul class="image-widget clearfix">
                         {{#newestwork}}
-                            <li><a href="/workshow/{{id}}"><img src="{{imgsrc}}{{id}}.jpg!50x50" alt="" /></a></li>
+                            <li><a href="/workshow/{{id}}"><img src="{{imgsrc}}{{id}}.jpg!50x50?v=20130000" alt="" /></a></li>
                         {{/newestwork}}
 
                     </ul>
