@@ -43,7 +43,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/") {
 	  	contentType = "text/html"
 	  	  
-	  	val ng = scala.util.Random
+	  	
 //	  	val t = ng.nextInt
 	  	  
 //	  	val randomnumber = BigInt.probablePrime(100, scala.util.Random)
@@ -62,12 +62,16 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 //	  	
 	  	val indexshufalistres = ArtWebSiteDataSourceObject.queryartfromworkshowtable("S",4)
 
+	  	
+	  	val ng = scala.util.Random
 	    mustache("index.mustache","layout" -> "",
+	        "randomversion" -> ng.nextInt,
+	        
 	        "lemmonsliderrepo" -> sliderres,
 	        "newestwork" -> newestworkres,
 	        "famouspeople" -> famouspeopleres,
 //	        
-	        "randomversion" -> ng.nextInt,
+	        
 	        
 	        "indexguohualist" -> indexguohualistres,
 	        "indexyouhualist" -> indexyouhualistres,
@@ -81,7 +85,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   get("/artshow/:category/listpage/:pagenumber") {
 	  	contentType = "text/html"
 	  	  
-	  	val ng = scala.util.Random
+	  	
 	  	  
 	  	val eachpagehasnum = 16
 	  	
@@ -161,14 +165,16 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	
 	  	
 	  	 
-	  	
+	  	val ng = scala.util.Random
 	  	
 	    mustache("artshowlist.mustache","layout" -> "",
+	        "randomversion" -> ng.nextInt,
+	        
 	        "newestwork" -> newestworkres,
 	        "gallerylist" -> showworkres,
 	        "categorylist" -> categorylist,
 	        //page control
-	        "randomversion" -> ng.nextInt,
+	        
 	        
 	        "pageamountzongshu" -> pageamountzongshu,
 	        "currentpagenumber" -> currentpagenumber,
