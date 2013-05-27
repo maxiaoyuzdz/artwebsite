@@ -44,7 +44,8 @@ body.tall-logo nav.user {
 
 /* ie 7 fix*/
 .lt-ie8 #logo {
-    position: absolute !important : top : 0;
+    position: absolute !important;
+    top : 0;
     left: 0;
 }
 

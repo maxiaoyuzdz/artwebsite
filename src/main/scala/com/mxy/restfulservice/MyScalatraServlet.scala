@@ -42,6 +42,11 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 //  proecess "/" page . one get, one page 
   get("/") {
 	  	contentType = "text/html"
+	  	  
+	  	val ng = scala.util.Random
+//	  	val t = ng.nextInt
+	  	  
+//	  	val randomnumber = BigInt.probablePrime(100, scala.util.Random)
 	  	  //querylemmonslider
 	  	val sliderres = ArtWebSiteDataSourceObject.querylemmonslidertable
 	  	
@@ -62,9 +67,12 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	        "newestwork" -> newestworkres,
 	        "famouspeople" -> famouspeopleres,
 //	        
+	        "randomversion" -> ng.nextInt,
+	        
 	        "indexguohualist" -> indexguohualistres,
 	        "indexyouhualist" -> indexyouhualistres,
 	        "indexshufalist" -> indexshufalistres
+	        
 	        )
   }
   
@@ -72,6 +80,8 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   
   get("/artshow/:category/listpage/:pagenumber") {
 	  	contentType = "text/html"
+	  	  
+	  	val ng = scala.util.Random
 	  	  
 	  	val eachpagehasnum = 16
 	  	
@@ -158,6 +168,8 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	        "gallerylist" -> showworkres,
 	        "categorylist" -> categorylist,
 	        //page control
+	        "randomversion" -> ng.nextInt,
+	        
 	        "pageamountzongshu" -> pageamountzongshu,
 	        "currentpagenumber" -> currentpagenumber,
 	        "lastpagehref" -> lastpagehref,
@@ -195,10 +207,13 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       if(authoreslist.length != 0) authorid = authoreslist(0).id
       
       
-      
+      val ng = scala.util.Random
       
       
       mustache("artwork.mustache","layout" -> "",
+          "randomversion" -> ng.nextInt,
+          
+          
           "newestwork" -> newestworkres,
 	        "picname" -> res.name,
 	        "imgsrc" -> res.imgsrc,
@@ -304,8 +319,12 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	
 	  	
 	  	 
+	  	val ng = scala.util.Random
 	  	
 	  	mustache("peopleshowlist.mustache","layout" -> "",
+	  	    "randomversion" -> ng.nextInt,
+	  	    
+	  	    
 	  	    "newestwork" -> newestworkres,
 	  	    "categorylist" -> categorylist,
 	  	    "peoplelist" -> showpeoples,
@@ -347,7 +366,10 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
        * peopleintroduce.mustache
        */
+      val ng = scala.util.Random
       mustache("peopleintroduce.mustache","layout" -> "",
+          "randomversion" -> ng.nextInt,
+          
           "newestwork" -> newestworkres,
           "title" -> artist.title,
           "author" -> artist.author,
@@ -379,7 +401,11 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  /**
        * peopleintroduce.mustache
        */
+	  val ng = scala.util.Random
+	  
       mustache("peopleintroduce.mustache","layout" -> "",
+          "randomversion" -> ng.nextInt,
+          
           "newestwork" -> newestworkres,
           "title" -> artist.title,
           "author" -> artist.author,
@@ -399,8 +425,13 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	 */
 	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
       
+	  val ng = scala.util.Random
+
+	  
       
     mustache("error.mustache","layout" -> "",
+        "randomversion" -> ng.nextInt,
+        
         "newestwork" -> newestworkres
           
           )
