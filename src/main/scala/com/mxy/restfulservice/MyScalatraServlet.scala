@@ -25,6 +25,11 @@ import com.mxy.restfulservice.data.DatabaseSessionSupport
 import com.mxy.restfulservice.model.ArtWebSiteDataSourceObject
 import com.mxy.restfulservice.model.WorkShowObject
 
+//=========================================
+// email
+//=========================================
+
+
 
 class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with JacksonJsonSupport with DatabaseSessionSupport{
   
@@ -484,6 +489,8 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	    contentType = formats("json")
 	
 	    ArtWebSiteDataSourceObject.querywork("G",2,16)
+	    
+	    
 
     }
   

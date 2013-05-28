@@ -33,8 +33,9 @@ trait DatabaseInit {
     cpds.setPassword(databasePassword)
 
     cpds.setMinPoolSize(1)
-    cpds.setAcquireIncrement(1)
-    cpds.setMaxPoolSize(50)
+    cpds.setAcquireIncrement(10)
+    cpds.setMaxPoolSize(500)
+    
 
     SessionFactory.concreteFactory = Some(() => connection)
 
