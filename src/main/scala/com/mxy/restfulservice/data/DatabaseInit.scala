@@ -36,6 +36,8 @@ trait DatabaseInit {
     cpds.setAcquireIncrement(10)
     cpds.setMaxPoolSize(500)
     
+    cpds.setIdleConnectionTestPeriod(60)
+    
 
     SessionFactory.concreteFactory = Some(() => connection)
 

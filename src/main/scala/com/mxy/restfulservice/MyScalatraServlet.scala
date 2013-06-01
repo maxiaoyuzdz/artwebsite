@@ -44,15 +44,11 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   }
   
 
-//  proecess "/" page . one get, one page 
   get("/") {
 	  	contentType = "text/html"
 	  	  
 	  	
-//	  	val t = ng.nextInt
-	  	  
-//	  	val randomnumber = BigInt.probablePrime(100, scala.util.Random)
-	  	  //querylemmonslider
+
 	  	val sliderres = ArtWebSiteDataSourceObject.querylemmonslidertable
 	  	
 	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
@@ -362,7 +358,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       
       val reslist = ArtWebSiteDataSourceObject.queryartistbyid(artistid)
       
-      if(reslist.length == 0) redirect("/error")
+      if(reslist.length == 0) redirect("/notfoundartist")
       
     
       val artist = reslist(0)
@@ -397,7 +393,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       
       //queryartistbyauthorpinxie
       val reslist = ArtWebSiteDataSourceObject.queryartistbyauthorpinxie(authorpinxieparameter)
-      if(reslist.length == 0) redirect("/error")
+      if(reslist.length == 0) redirect("/notfoundartist")
       val artist = reslist(0)
       
       val authorpinxie = artist.authorpinxie
@@ -441,6 +437,26 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  
       
     mustache("error.mustache","layout" -> "",
+        "randomversion" -> ng.nextInt,
+        
+        "newestwork" -> newestworkres
+          
+          )
+  }
+  
+    get("/notfoundartist"){
+    contentType = "text/html"
+      
+      /**
+	  	 * fix data for the footer
+	  	 */
+	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+      
+	  val ng = scala.util.Random
+
+	  
+      
+    mustache("notfoundartist.mustache","layout" -> "",
         "randomversion" -> ng.nextInt,
         
         "newestwork" -> newestworkres
