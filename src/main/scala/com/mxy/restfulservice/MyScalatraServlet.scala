@@ -424,6 +424,45 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   }
   
   
+  get("/buywork/:workid"){
+    contentType = "text/html"
+      /**
+	  	 * fix data for the footer
+	  	 */
+	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+	  
+      
+      val workid = Integer.parseInt(params("workid"))
+      
+      
+      
+      val reslist = ArtWebSiteDataSourceObject.getworkbyid(workid)
+      
+      if(reslist.length == 0) redirect("/error")
+      
+      val res = reslist(0)
+      
+      
+      val ng = scala.util.Random
+      
+      
+      mustache("buywork.mustache","layout" -> "",
+          "randomversion" -> ng.nextInt,
+          
+          
+          "newestwork" -> newestworkres,
+	        "picname" -> res.name,
+	        "imgsrc" -> res.imgsrc,
+	        "desc" -> res.desc,
+	        "author" -> res.author,
+	        "category" -> res.category,
+	        "price" -> res.price,
+	        "picid" -> res.id
+          )
+      
+  }
+  
+  
   get("/error"){
     contentType = "text/html"
       
