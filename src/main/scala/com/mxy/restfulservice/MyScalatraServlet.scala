@@ -29,6 +29,7 @@ import com.mxy.restfulservice.model.WorkShowObject
 // email
 //=========================================
 
+case class TObj(name:String, age:Int)
 
 
 class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with JacksonJsonSupport with DatabaseSessionSupport{
@@ -501,6 +502,28 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
         "newestwork" -> newestworkres
           
           )
+  }
+    
+    
+    //===========================================================================================
+  post("/jsondata/insertproductinfo"){
+    contentType = formats("json")
+    try{
+//      println(request.body);
+      
+    	val p1 = parse(request.body).extract[TObj]
+    	println(p1.name)
+//	    val p2 = new ProductInfoTable(p1.id,p1.name,p1.info)
+//	    
+//	    EbusinessStore.insertproductinfo(p2)
+      
+    }catch {
+      case e:Exception =>
+        e.printStackTrace()
+        
+    }
+    
+    ArtWebSiteDataSourceObject.querywork("G",0,16)
   }
   
 //  notFound {

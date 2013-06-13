@@ -5,6 +5,32 @@
  * Time: 下午6:04
  * To change this template use File | Settings | File Templates.
  */
-window.onload = function() {
-    document.getElementById("myMessage").innerHTML = "Hello, Cleveland!";
-}
+
+
+$(function(){
+    $("#submitorderbtn").on("click",function(){
+        var json = '{"person" : {"age" : 20, "name" : "Jack"}}';
+
+        var json2 = '{"name" : "jack", "age" : 20}';
+
+        var ds = "1223";
+
+        var parsed = JSON.parse(json2);
+
+
+        $.ajax(
+            {
+                url: "/jsondata/insertproductinfo",
+                data: JSON.stringify({name: 'Jack', age : 20}),
+                processData: false,
+                type: 'POST',
+                contentType: 'application/json',
+                "success": function(data){
+                    alert("ok");
+                }
+            }
+        );
+
+
+    });
+});
