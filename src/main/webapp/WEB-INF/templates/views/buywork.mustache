@@ -156,42 +156,42 @@
                     <fieldset>
                         <legend>请填写收货信息</legend>
                         <div class="control-group">
-                            <label class="control-label" for="input01">收货人</label>
+                            <label class="control-label" for="shouhuoren">收货人</label>
                             <div class="controls">
-                                <input type="text" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-validation="validate_max_length length50" >
+                                <input type="text" id="shouhuoren" class="span3" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-validation="validate_max_length length50" >
 
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="input01">联系电话或手机</label>
+                            <label class="control-label" for="lianxidianhua">联系电话或手机</label>
                             <div class="controls">
-                                <input type="text" class="input-xlarge" id="input01" data-validation="validate_max_length length50" >
+                                <input type="text" id="lianxidianhua" class="input-xlarge"  data-validation="validate_max_length length50" >
 
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="input01">电子邮箱(可选)</label>
+                            <label class="control-label" for="dianziyoujian">电子邮箱(可选)</label>
                             <div class="controls">
-                                <input type="text" class="input-xlarge" id="input01" data-validation="validate_email" >
-
-                            </div>
-
-                        </div>
-
-                        <div class="control-group">
-                            <label class="control-label" for="input01">邮编(可选)</label>
-                            <div class="controls">
-                                <input type="text" class="input-xlarge" id="input01" data-validation="validate_max_length length20" >
+                                <input type="text" id="dianziyoujian" class="input-xlarge" data-validation="validate_email" >
 
                             </div>
 
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="textarea">详细收货地址</label>
+                            <label class="control-label" for="youbian">邮编(可选)</label>
                             <div class="controls">
-                                <textarea class="input-xlarge" id="textarea" rows="3" data-validation="validate_max_length length200" ></textarea>
+                                <input type="text" class="input-xlarge" id="youbian" data-validation="validate_max_length length20" >
+
+                            </div>
+
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="shouhuodizhi">详细收货地址</label>
+                            <div class="controls">
+                                <textarea class="input-xlarge" id="shouhuodizhi" rows="3" data-validation="validate_max_length length200" ></textarea>
                             </div>
                         </div>
 
@@ -214,17 +214,17 @@
                     <legend>请填写支付宝信息</legend>
 
                     <div class="control-group">
-                        <label class="control-label" for="input01">支付宝的邮箱或者手机</label>
+                        <label class="control-label" for="zhifubao">支付宝的邮箱或者手机</label>
                         <div class="controls">
-                            <input type="text" class="input-xlarge" style="margin: 0 auto;" data-validation="validate_max_length length50" >
+                            <input id="zhifubao" type="text" class="input-xlarge" style="margin: 0 auto;" data-validation="validate_max_length length50" >
                         </div>
                     </div>
 
 
                     <div class="control-group">
-                        <label class="control-label" for="textarea">备注</label>
+                        <label class="control-label" for="beizhu">备注</label>
                         <div class="controls">
-                            <textarea class="input-xlarge" id="textarea" rows="3" data-validation="validate_max_length length200" ></textarea>
+                            <textarea class="input-xlarge" id="beizhu" rows="3" data-validation="validate_max_length length200" ></textarea>
                         </div>
                     </div>
 

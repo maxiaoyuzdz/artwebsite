@@ -24,12 +24,12 @@ import com.mxy.restfulservice.data.DatabaseSessionSupport
 //==================================================
 import com.mxy.restfulservice.model.ArtWebSiteDataSourceObject
 import com.mxy.restfulservice.model.WorkShowObject
-
+import com.mxy.restfulservice.model.OrderFormObj
 //=========================================
 // email
 //=========================================
 
-case class TObj(name:String, age:Int)
+
 
 
 class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with JacksonJsonSupport with DatabaseSessionSupport{
@@ -511,8 +511,8 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     try{
 //      println(request.body);
       
-    	val p1 = parse(request.body).extract[TObj]
-    	println(p1.name)
+    	val p1 = parse(request.body).extract[OrderFormObj]
+    	println(p1.beizhu)
 //	    val p2 = new ProductInfoTable(p1.id,p1.name,p1.info)
 //	    
 //	    EbusinessStore.insertproductinfo(p2)

@@ -9,7 +9,13 @@ import java.util.Date
 import java.sql.Timestamp
 import org.squeryl.KeyedEntity
 
-
+case class OrderFormObj(shouhuoren:String, 
+    lianxidianhua:String,
+    dianziyoujian:String,
+    youbian:String,
+    shouhuodizhi:String,
+    zhifubao:String,
+    beizhu:String)
 
 
 case class BestFamousPeopleObejct(

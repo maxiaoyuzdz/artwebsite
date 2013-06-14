@@ -49,17 +49,50 @@ $(function(){
 
         if($("#payinfoform").validate()){
             paycheckok = true;
+            console.log("l1");
+
+        } else{
+            console.log("l11");
         };
 
         if($("#receivevheckok").validate()){
-            paycheckok = true;
+            receivevheckok = true;
+            console.log("l2");
+        } else{
+            console.log("l22");
         };
 
         if( receivevheckok &&  paycheckok){
+            console.log("333");
+
+            var pay_zhifubao = $("#zhifubao").val();
+
+            var pay_beizhu = $("#beizhu").val();
+
+
+            var rec_shouhuoren = $("#shouhuoren").val();
+
+
+            var rec_lianxidianhua  =$("#lianxidianhua").val();
+
+            var rec_dianziyoujian  =$("#dianziyoujian").val();
+
+            var rec_youbian  =$("#youbian").val();
+
+            var rec_shouhuodizhi  =$("#shouhuodizhi").val();
+
+
+
             $.ajax(
                 {
                     url: "/jsondata/insertproductinfo",
-                    data: JSON.stringify({name: 'Jack', age : 20}),
+                    data: JSON.stringify({shouhuoren: rec_shouhuoren,
+                        lianxidianhua : rec_lianxidianhua,
+                        dianziyoujian : rec_dianziyoujian,
+                        youbian : rec_youbian,
+                        shouhuodizhi : rec_shouhuodizhi,
+                        zhifubao: pay_zhifubao,
+                        beizhu: pay_beizhu}),
                     processData: false,
                     type: 'POST',
                     contentType: 'application/json',
