@@ -49,21 +49,19 @@ $(function(){
 
         if($("#payinfoform").validate()){
             paycheckok = true;
-//            console.log("l1");
-
         } else{
-//            console.log("l11");
+
         };
 
         if($("#receivevheckok").validate()){
             receivevheckok = true;
-//            console.log("l2");
+
         } else{
-//            console.log("l22");
+
         };
 
         if( receivevheckok &&  paycheckok){
-//            console.log("333");
+
 
             var pay_zhifubao = $("#zhifubao").val();
 
@@ -85,7 +83,7 @@ $(function(){
 
             $.ajax(
                 {
-                    url: "/jsondata/insertproductinfo",
+                    url: "/jsondata/insertworkorder",
                     data: JSON.stringify({shouhuoren: rec_shouhuoren,
                         lianxidianhua : rec_lianxidianhua,
                         dianziyoujian : rec_dianziyoujian,
@@ -97,8 +95,13 @@ $(function(){
                     type: 'POST',
                     contentType: 'application/json',
                     "success": function(data){
-//                        alert("ok");
-                        window.location = "/";
+//                        window.location = "/";
+
+                        if(data.res == true){
+                            console.log("insert ok");
+                        }else{
+                            console.log("insert fail");
+                        };
                     }
                 }
             );

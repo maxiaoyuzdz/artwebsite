@@ -506,8 +506,11 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     
     
     //===========================================================================================
-  post("/jsondata/insertproductinfo"){
+    case class	TempRes(var res:Boolean)
+  post("/jsondata/insertworkorder"){
     contentType = formats("json")
+    val insertres = new TempRes(true)
+    
     try{
 
       
@@ -520,9 +523,11 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       case e:Exception =>
         e.printStackTrace()
         
+        insertres.res = false
+        
     }
     
-    true
+    insertres
   }
   
 //  notFound {
