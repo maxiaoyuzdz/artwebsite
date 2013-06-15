@@ -49,21 +49,21 @@ $(function(){
 
         if($("#payinfoform").validate()){
             paycheckok = true;
-            console.log("l1");
+//            console.log("l1");
 
         } else{
-            console.log("l11");
+//            console.log("l11");
         };
 
         if($("#receivevheckok").validate()){
             receivevheckok = true;
-            console.log("l2");
+//            console.log("l2");
         } else{
-            console.log("l22");
+//            console.log("l22");
         };
 
         if( receivevheckok &&  paycheckok){
-            console.log("333");
+//            console.log("333");
 
             var pay_zhifubao = $("#zhifubao").val();
 
@@ -97,7 +97,8 @@ $(function(){
                     type: 'POST',
                     contentType: 'application/json',
                     "success": function(data){
-                        alert("ok");
+//                        alert("ok");
+                        window.location = "/";
                     }
                 }
             );

@@ -9,13 +9,7 @@ import java.util.Date
 import java.sql.Timestamp
 import org.squeryl.KeyedEntity
 
-case class OrderFormObj(shouhuoren:String, 
-    lianxidianhua:String,
-    dianziyoujian:String,
-    youbian:String,
-    shouhuodizhi:String,
-    zhifubao:String,
-    beizhu:String)
+
 
 
 case class BestFamousPeopleObejct(
@@ -79,6 +73,25 @@ case class PeopleObject(
     val shortdesc:String) extends KeyedEntity[Int]{
   def this() = this(0,"","","","","","","","")
   
+}
+
+case class OrderFormObj(shouhuoren:String, 
+    lianxidianhua:String,
+    dianziyoujian:String,
+    youbian:String,
+    shouhuodizhi:String,
+    zhifubao:String,
+    beizhu:String)
+    
+case class WorkOrderObject(id:Int,
+    shouhuoren:String, 
+    lianxidianhua:String,
+    dianziyoujian:String,
+    youbian:String,
+    shouhuodizhi:String,
+    zhifubao:String,
+    beizhu:String) extends KeyedEntity[Int]{
+  def this() = this(0,"","","","","","","")
 }
 
 
@@ -184,6 +197,25 @@ object ArtWebSiteDataSourceObject extends Schema{
   def querytest2 = from(workshowtabledata)(item => where(item.worktype === "G") compute(count(item.id))).toList
   def querytest3 = from(peopleobjecttabledata)((item => select(item))).toList
   
+  //workordertable
+  val workordertabledata = table[WorkOrderObject]("WorkOrderTable")
+  
+  on(workordertabledata)(item =>declare(
+      item.id	is(primaryKey, autoIncremented)
+      )
+  )
+  
+  def workordertable_insert(orderobj:OrderFormObj) = {
+//    println("step2")
+    workordertabledata.insert(new WorkOrderObject(0,
+        orderobj.shouhuoren,
+        orderobj.lianxidianhua,
+        orderobj.dianziyoujian,
+        orderobj.youbian,
+        orderobj.shouhuodizhi,
+        orderobj.zhifubao,
+        orderobj.beizhu))
+  }
   
 
 }

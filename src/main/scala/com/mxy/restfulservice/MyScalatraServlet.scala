@@ -509,13 +509,12 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
   post("/jsondata/insertproductinfo"){
     contentType = formats("json")
     try{
-//      println(request.body);
+
       
     	val p1 = parse(request.body).extract[OrderFormObj]
     	println(p1.beizhu)
-//	    val p2 = new ProductInfoTable(p1.id,p1.name,p1.info)
-//	    
-//	    EbusinessStore.insertproductinfo(p2)
+    	ArtWebSiteDataSourceObject.workordertable_insert(p1)
+
       
     }catch {
       case e:Exception =>
@@ -523,7 +522,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
         
     }
     
-    ArtWebSiteDataSourceObject.querywork("G",0,16)
+    true
   }
   
 //  notFound {
