@@ -92,6 +92,14 @@ case class WorkOrderObject(id:Int,
     zhifubao:String,
     beizhu:String) extends KeyedEntity[Int]{
   def this() = this(0,"","","","","","","")
+  
+  def this(obj:OrderFormObj) = this(0,obj.shouhuoren,
+      obj.lianxidianhua,
+      obj.dianziyoujian,
+      obj.youbian,
+      obj.shouhuodizhi,
+      obj.zhifubao,
+      obj.beizhu)
 }
 
 
@@ -206,15 +214,11 @@ object ArtWebSiteDataSourceObject extends Schema{
   )
   
   def workordertable_insert(orderobj:OrderFormObj) = {
-//    println("step2")
-    workordertabledata.insert(new WorkOrderObject(0,
-        orderobj.shouhuoren,
-        orderobj.lianxidianhua,
-        orderobj.dianziyoujian,
-        orderobj.youbian,
-        orderobj.shouhuodizhi,
-        orderobj.zhifubao,
-        orderobj.beizhu))
+
+    
+    workordertabledata.insert(new WorkOrderObject(orderobj))
+        
+    
   }
   
 
