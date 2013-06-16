@@ -79,6 +79,8 @@ $(function(){
 
             var rec_shouhuodizhi  =$("#shouhuodizhi").val();
 
+            var workid = $("#workid").attr("value");
+
 
 
             $.ajax(
@@ -90,7 +92,8 @@ $(function(){
                         youbian : rec_youbian,
                         shouhuodizhi : rec_shouhuodizhi,
                         zhifubao: pay_zhifubao,
-                        beizhu: pay_beizhu}),
+                        beizhu: pay_beizhu,
+                        workid : workid}),
                     processData: false,
                     type: 'POST',
                     contentType: 'application/json',
@@ -106,6 +109,14 @@ $(function(){
                 }
             );
         };
+
+    });
+
+
+    $("#canclebtn").on("click",function(){
+        var workid = $("#workid").attr("value");
+
+        console.log(workid);
 
     });
 });

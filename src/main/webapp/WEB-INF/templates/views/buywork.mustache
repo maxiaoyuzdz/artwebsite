@@ -138,7 +138,7 @@
 <div id="page">
     <div class="hero-unit">
         <div class="container">
-            <h2>购买作品 {{picname}}</h2>
+            <h2 id="workid" value="{{picid}}">购买作品 {{picname}}</h2>
         </div>
         <!--close container-->
     </div>
@@ -257,7 +257,7 @@
                     <div class="form-actions">
                         <p  class="btn btn-primary" id="submitorderbtn">提交订单</p>
 
-                        <p type="reset" class="btn" ><a href="/workshow/1"></a>返回</p>
+                        <p type="reset" class="btn" id="canclebtn"><a href="/workshow/1"></a>返回</p>
                     </div>
                 </fieldset>
             </form>
