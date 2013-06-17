@@ -82,7 +82,7 @@ case class OrderFormObj(shouhuoren:String,
     shouhuodizhi:String,
     zhifubao:String,
     beizhu:String,
-    workid:String)
+    workid:Int)
     
 case class WorkOrderObject(id:Int,
     shouhuoren:String, 
@@ -92,8 +92,8 @@ case class WorkOrderObject(id:Int,
     shouhuodizhi:String,
     zhifubao:String,
     beizhu:String,
-    workid:String) extends KeyedEntity[Int]{
-  def this() = this(0,"","","","","","","","")
+    workid:Int) extends KeyedEntity[Int]{
+  def this() = this(0,"","","","","","","",0)
   
   def this(obj:OrderFormObj) = this(0,
       obj.shouhuoren,

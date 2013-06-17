@@ -515,7 +515,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 
       
     	val p1 = parse(request.body).extract[OrderFormObj]
-    	println(p1.beizhu)
+    	
     	ArtWebSiteDataSourceObject.workordertable_insert(p1)
 
       

@@ -79,7 +79,10 @@ $(function(){
 
             var rec_shouhuodizhi  =$("#shouhuodizhi").val();
 
-            var workid = $("#workid").attr("value");
+            var workid = parseInt($("#workid").attr("value"));
+
+
+
 
 
 
@@ -115,6 +118,13 @@ $(function(){
 
     $("#canclebtn").on("click",function(){
         var workid = $("#workid").attr("value");
+        console.log(typeof workid);
+
+        var ii = parseInt(workid);
+
+        console.log(typeof ii);
+
+
 
         console.log(workid);
 
