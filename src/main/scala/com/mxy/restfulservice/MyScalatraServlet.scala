@@ -504,6 +504,26 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
           )
   }
     
+    get("/buysuccess"){
+    contentType = "text/html"
+      
+      /**
+	  	 * fix data for the footer
+	  	 */
+	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+      
+	  val ng = scala.util.Random
+
+	  
+      
+    mustache("buysuccessful.mustache","layout" -> "",
+        "randomversion" -> ng.nextInt,
+        
+        "newestwork" -> newestworkres
+          
+          )
+  }
+    
     
     //===========================================================================================
     case class	TempRes(var res:Boolean)

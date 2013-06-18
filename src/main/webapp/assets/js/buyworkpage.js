@@ -104,9 +104,9 @@ $(function(){
 //                        window.location = "/";
 
                         if(data.res == true){
-                            console.log("insert ok");
+                            window.location = "/buysuccess";
                         }else{
-                            console.log("insert fail");
+                            window.location = "/error";
                         };
                     }
                 }
