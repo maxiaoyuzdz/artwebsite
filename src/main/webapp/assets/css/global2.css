@@ -1991,3 +1991,9 @@ html[xmlns] .slides, .no-js .slides > li:first-child {
     transition-property: transform, opacity;
 }
 
+
+ .embedvideo{
+    width: 480px;
+    height: 360px;
+}
+
