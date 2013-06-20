@@ -383,7 +383,9 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
           "author" -> artist.author,
           "authorpinxie" -> artist.authorpinxie,
           "desc" -> artist.desc,
+          "videoref" -> artist.videoref,
           "artworklist" -> artistworklist
+          
 	  	    
           )
   }

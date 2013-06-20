@@ -70,8 +70,9 @@ case class PeopleObject(
     val title:String,
     val category:String,
     val categorypinxie:String,
-    val shortdesc:String) extends KeyedEntity[Int]{
-  def this() = this(0,"","","","","","","","")
+    val shortdesc:String,
+    val videoref:String) extends KeyedEntity[Int]{
+  def this() = this(0,"","","","","","","","","")
   
 }
 
