@@ -50,19 +50,19 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	  
 	  	
 
-	  	val sliderres = ArtWebSiteDataSourceObject.querylemmonslidertable
+	  	val sliderres = ArtWebSiteDataSourceObject.queryLemmonSliderDataForShowingGoodWork
 	  	
-	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+	  	val newestworkres = ArtWebSiteDataSourceObject.queryNewestWorkForSmallShowing(5)
 //	  	
-	  	val famouspeopleres = ArtWebSiteDataSourceObject.querybestfamouspeopletable
+	  	val famouspeopleres = ArtWebSiteDataSourceObject.queryNewestPeople
 //	  	
 //	  	
 //	  	
-	  	val indexguohualistres = ArtWebSiteDataSourceObject.queryartfromworkshowtable("G",4)
+	  	val indexguohualistres = ArtWebSiteDataSourceObject.queryArtWorkByTypeAndLength("G",4)
 //	  	
-	  	val indexyouhualistres = ArtWebSiteDataSourceObject.queryartfromworkshowtable("Y",4)
+	  	val indexyouhualistres = ArtWebSiteDataSourceObject.queryArtWorkByTypeAndLength("Y",4)
 //	  	
-	  	val indexshufalistres = ArtWebSiteDataSourceObject.queryartfromworkshowtable("S",4)
+	  	val indexshufalistres = ArtWebSiteDataSourceObject.queryArtWorkByTypeAndLength("S",4)
 
 	  	
 	  	val ng = scala.util.Random
@@ -116,21 +116,21 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	/**
 	  	 * fix data for the footer
 	  	 */
-	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+	  	val newestworkres = ArtWebSiteDataSourceObject.queryNewestWorkForSmallShowing(5)
 	  	/**
 	  	 * main content
 	  	 */
-	  	val showworkres = ArtWebSiteDataSourceObject.querywork(pagecontentcategory,currentpagenumber - 1,eachpagehasnum)
+	  	val showworkres = ArtWebSiteDataSourceObject.queryArtWorkByTypeAndPageNumberAndLength(pagecontentcategory,currentpagenumber - 1,eachpagehasnum)
 	  	/**
 	  	 * category list match main content
 	  	 */
-	  	val categorylist = ArtWebSiteDataSourceObject.querycategorypinxie(pagecontentcategory)
+	  	val categorylist = ArtWebSiteDataSourceObject.queryArtWorkCategoryPinxie(pagecontentcategory)
 	  	
 	  	/**
 	  	 * make the page number list
 	  	 */
 	  	//get the entercounter worktype has how many works
-	  	val workamount = ArtWebSiteDataSourceObject.queryartworkpagenumberrange(pagecontentcategory)(0).measures.toInt
+	  	val workamount = ArtWebSiteDataSourceObject.queryPageNumberRangeOfArtWork(pagecontentcategory)(0).measures.toInt
 	  	
 	  	val pageamountyushu = workamount % eachpagehasnum match{
 	  	  case 0 => 0
@@ -191,14 +191,14 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+	  val newestworkres = ArtWebSiteDataSourceObject.queryNewestWorkForSmallShowing(5)
 	  
       
       val workid = Integer.parseInt(params("workid"))
       
       
       
-      val reslist = ArtWebSiteDataSourceObject.getworkbyid(workid)
+      val reslist = ArtWebSiteDataSourceObject.queryWorkById(workid)
       
       if(reslist.length == 0) redirect("/error")
       
@@ -244,7 +244,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  	val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+	  	val newestworkres = ArtWebSiteDataSourceObject.queryNewestWorkForSmallShowing(5)
 	  	/**
        * fix end
        */
@@ -351,7 +351,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+	  val newestworkres = ArtWebSiteDataSourceObject.queryNewestWorkForSmallShowing(5)
       
       
       val artistid = Integer.parseInt(params("id"))
@@ -404,7 +404,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+	  val newestworkres = ArtWebSiteDataSourceObject.queryNewestWorkForSmallShowing(5)
 	  
 	  val artistworklist = ArtWebSiteDataSourceObject.queryartistworkbyatuhorpinxie(authorpinxie)
 	  
@@ -432,14 +432,14 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+	  val newestworkres = ArtWebSiteDataSourceObject.queryNewestWorkForSmallShowing(5)
 	  
       
       val workid = Integer.parseInt(params("workid"))
       
       
       
-      val reslist = ArtWebSiteDataSourceObject.getworkbyid(workid)
+      val reslist = ArtWebSiteDataSourceObject.queryWorkById(workid)
       
       if(reslist.length == 0) redirect("/error")
       
@@ -472,7 +472,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+	  val newestworkres = ArtWebSiteDataSourceObject.queryNewestWorkForSmallShowing(5)
       
 	  val ng = scala.util.Random
 
@@ -492,7 +492,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+	  val newestworkres = ArtWebSiteDataSourceObject.queryNewestWorkForSmallShowing(5)
       
 	  val ng = scala.util.Random
 
@@ -512,7 +512,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       /**
 	  	 * fix data for the footer
 	  	 */
-	  val newestworkres = ArtWebSiteDataSourceObject.newestworksmallshow(5)
+	  val newestworkres = ArtWebSiteDataSourceObject.queryNewestWorkForSmallShowing(5)
       
 	  val ng = scala.util.Random
 
@@ -579,20 +579,20 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
     get("/jsondata/test1"){
 	    contentType = formats("json")
 	
-	    ArtWebSiteDataSourceObject.querywork("G",0,16)
+	    ArtWebSiteDataSourceObject.queryArtWorkByTypeAndPageNumberAndLength("G",0,16)
 
     }
     
     get("/jsondata/test2"){
 	    contentType = formats("json")
 	
-	    ArtWebSiteDataSourceObject.querywork("G",1,16)
+	    ArtWebSiteDataSourceObject.queryArtWorkByTypeAndPageNumberAndLength("G",1,16)
 
     }
     get("/jsondata/test3"){
 	    contentType = formats("json")
 	
-	    ArtWebSiteDataSourceObject.querywork("G",2,16)
+	    ArtWebSiteDataSourceObject.queryArtWorkByTypeAndPageNumberAndLength("G",2,16)
 	    
 	    
 
