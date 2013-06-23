@@ -198,7 +198,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       
       
       
-      val reslist = ArtWebSiteDataSourceObject.queryWorkById(workid)
+      val reslist = ArtWebSiteDataSourceObject.queryArtWorkById(workid)
       
       if(reslist.length == 0) redirect("/error")
       
@@ -208,7 +208,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       val authorpinxie = res.authorpinxie
       
       
-      val authoreslist = ArtWebSiteDataSourceObject.queryartistbyauthorpinxie(authorpinxie)
+      val authoreslist = ArtWebSiteDataSourceObject.queryArtistByAuthorPinxie(authorpinxie)
       
       var authorid = 0
       
@@ -279,18 +279,18 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	/**
 	  	 * main content
 	  	 */
-	  	val showpeoples = ArtWebSiteDataSourceObject.querypeoplelistbyworktype(pagecontentcategory,currentpagenumber - 1,eachpagehasnum)
+	  	val showpeoples = ArtWebSiteDataSourceObject.queryPeopleListByWorkType(pagecontentcategory,currentpagenumber - 1,eachpagehasnum)
 	  	
 	  	/**
 	  	 * category list match main content
 	  	 */
-	  	val categorylist = ArtWebSiteDataSourceObject.querypeoplecategorylist(pagecontentcategory)
+	  	val categorylist = ArtWebSiteDataSourceObject.queryPeopleCategoryList(pagecontentcategory)
 	  	
 	  	/**
 	  	 * make the page number list
 	  	 */
 	  	//get the entercounter worktype has how many works
-	  	val workamount = ArtWebSiteDataSourceObject.querypeoplepagenumberrange(pagecontentcategory)(0).measures.toInt
+	  	val workamount = ArtWebSiteDataSourceObject.queryPageNumberRangeOfPeopleList(pagecontentcategory)(0).measures.toInt
 	  	
 	  	val pageamountyushu = workamount % eachpagehasnum match{
 	  	  case 0 => 0
@@ -357,7 +357,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       val artistid = Integer.parseInt(params("id"))
       
       
-      val reslist = ArtWebSiteDataSourceObject.queryartistbyid(artistid)
+      val reslist = ArtWebSiteDataSourceObject.queryArtistById(artistid)
       
       if(reslist.length == 0) redirect("/notfoundartist")
       
@@ -369,7 +369,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       
       
       
-      val artistworklist = ArtWebSiteDataSourceObject.queryartistworkbyatuhorpinxie(authorpinxie)
+      val artistworklist = ArtWebSiteDataSourceObject.queryArtistWorkByAtuhorPinxie(authorpinxie)
       
       /**
        * peopleintroduce.mustache
@@ -395,7 +395,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       val authorpinxieparameter = params("authorpinxie")
       
       //queryartistbyauthorpinxie
-      val reslist = ArtWebSiteDataSourceObject.queryartistbyauthorpinxie(authorpinxieparameter)
+      val reslist = ArtWebSiteDataSourceObject.queryArtistByAuthorPinxie(authorpinxieparameter)
       if(reslist.length == 0) redirect("/notfoundartist")
       val artist = reslist(0)
       
@@ -406,7 +406,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
 	  	 */
 	  val newestworkres = ArtWebSiteDataSourceObject.queryNewestWorkForSmallShowing(5)
 	  
-	  val artistworklist = ArtWebSiteDataSourceObject.queryartistworkbyatuhorpinxie(authorpinxie)
+	  val artistworklist = ArtWebSiteDataSourceObject.queryArtistWorkByAtuhorPinxie(authorpinxie)
 	  
 	  /**
        * peopleintroduce.mustache
@@ -439,7 +439,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       
       
       
-      val reslist = ArtWebSiteDataSourceObject.queryWorkById(workid)
+      val reslist = ArtWebSiteDataSourceObject.queryArtWorkById(workid)
       
       if(reslist.length == 0) redirect("/error")
       
@@ -538,7 +538,7 @@ class MyScalatraServlet extends RestfulserviceStack with ScalateSupport with Jac
       
     	val p1 = parse(request.body).extract[OrderFormObj]
     	
-    	ArtWebSiteDataSourceObject.workordertable_insert(p1)
+    	ArtWebSiteDataSourceObject.insertWorkOrderTable(p1)
 
       
     }catch {

@@ -205,41 +205,44 @@ object ArtWebSiteDataSourceObject extends Schema{
   
   def queryPageNumberRangeOfArtWork(worktype:String) = from(workshowtable_data)(item => where(item.worktype === worktype) compute(count(item.id))).toList
   //work show
-  def queryWorkById(id:Int) = from(workshowtable_data)(item => where(item.id === id) select(item)).toList
+  def queryArtWorkById(id:Int) = from(workshowtable_data)(item => where(item.id === id) select(item)).toList
       
-  def queryartistbyauthorpinxie(pinxie:String) = from(peopletable_data)(item => where(item.authorpinxie === pinxie) select(item)).toList
+  def queryArtistByAuthorPinxie(pinxie:String) = from(peopletable_data)(item => where(item.authorpinxie === pinxie) select(item)).toList
   
-  def querypeoplelistbyworktype(worktype:String,pagenumber:Int,pagelength:Int) = from(peopletable_data)((item => where(item.worktype === worktype) select(item))).page(pagenumber * pagelength, pagelength).toList
-  def querypeoplecategorylist(worktype:String) = from(peopletable_data)((item) => where(item.worktype === worktype) select(item.category,item.categorypinxie)).distinct.toList
-  def querypeoplelistpagenumberamount(worktype:String) = from(peopletable_data)(item => where(item.worktype === worktype) compute(count(item.id))).toList
-  def querypeoplepagenumberrange(worktype:String) = from(peopletable_data)(item => where(item.worktype === worktype) compute(count(item.id))).toList
+  def queryPeopleListByWorkType(worktype:String,pagenumber:Int,pagelength:Int) = from(peopletable_data)((item => where(item.worktype === worktype) select(item))).page(pagenumber * pagelength, pagelength).toList
+  def queryPeopleCategoryList(worktype:String) = from(peopletable_data)((item) => where(item.worktype === worktype) select(item.category,item.categorypinxie)).distinct.toList
+//  def queryPageNumberAmountOfPeopleList(worktype:String) = from(peopletable_data)(item => where(item.worktype === worktype) compute(count(item.id))).toList
+  def queryPageNumberRangeOfPeopleList(worktype:String) = from(peopletable_data)(item => where(item.worktype === worktype) compute(count(item.id))).toList
   
   /**
    * show artist by id
    */
-  def queryartistbyid(id:Int) = from(peopletable_data)(item => where(item.id === id) select(item)).toList
-  def queryartistworkbyatuhorpinxie(pinxie:String) = from(workshowtable_data)(item => where(item.authorpinxie === pinxie) select(item)).toList 
+  def queryArtistById(id:Int) = from(peopletable_data)(item => where(item.id === id) select(item)).toList
+  def queryArtistWorkByAtuhorPinxie(pinxie:String) = from(workshowtable_data)(item => where(item.authorpinxie === pinxie) select(item)).toList 
+  
+  
+  //workordertable
+  val workordertable_data = table[WorkOrderObject]("WorkOrderTable")
+  
+  on(workordertable_data)(item =>declare(
+      item.id	is(primaryKey, autoIncremented)
+      )
+  )
+  
+  def insertWorkOrderTable(orderobj:OrderFormObj) = {
+
+    
+    workordertable_data.insert(new WorkOrderObject(orderobj))
+        
+    
+  }
+  
   
   // test for page
 //  def querytest = from(workshowtabledata)((item) =>  select(item.id, item.href) orderBy(item.id desc)).page(0, 5).toList.map(item => (item._1, item._2.substring(0,9)))
   def querytest2 = from(workshowtable_data)(item => where(item.worktype === "G") compute(count(item.id))).toList
   def querytest3 = from(peopletable_data)((item => select(item))).toList
   
-  //workordertable
-  val workordertabledata = table[WorkOrderObject]("WorkOrderTable")
-  
-  on(workordertabledata)(item =>declare(
-      item.id	is(primaryKey, autoIncremented)
-      )
-  )
-  
-  def workordertable_insert(orderobj:OrderFormObj) = {
-
-    
-    workordertabledata.insert(new WorkOrderObject(orderobj))
-        
-    
-  }
   
 
 }
