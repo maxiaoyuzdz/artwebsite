@@ -12,18 +12,7 @@ import org.squeryl.KeyedEntity
 
 
 
-//case class BestFamousPeopleObejct(
-//    val id:Int,
-//    val h0:String,
-//    val h1:String,
-//    val imgsrc:String,
-//    val p:String,
-//    val href:String,
-//    val datatype:String) extends KeyedEntity[Int]{
-//  
-//  def this() = this(0,"","","","","","A")
-//  
-//}
+
 /**
  * common work show
  */
@@ -52,13 +41,7 @@ case class HrefAndSmallImgsrcWorkShowObject(
   def this() = this(0,"")
 }
 
-//case class PagenumberControlObject(
-//    val id:Int,
-//    var iscurrentpage:Boolean,
-//    var isnotcurrentpage:Boolean,
-//    var href:String) extends KeyedEntity[Int]{
-//  def this() = this(0,false,true,"")
-//}
+
 
 /**
  * used for people
@@ -115,12 +98,7 @@ case class WorkOrderObject(id:Int,
 object ArtWebSiteDataSourceObject extends Schema{
   
   
-//  val bestfamouspeopletabledata = table[BestFamousPeopleObejct]("bestfamouspeopletable")
-//  
-//  on(bestfamouspeopletabledata)(item =>declare(
-//      item.id	is(primaryKey, autoIncremented)
-//      )
-//  )
+
   
   /**
    * show art work
@@ -169,15 +147,10 @@ object ArtWebSiteDataSourceObject extends Schema{
   def queryLemmonSliderDataForShowingGoodWork = from(workshowtable_data)((item) =>  where(item.datatype === "A") select(item)).toList
   
   
-  //bestfamouspeopeltable bestfamouspeopletable
   
   
   def queryNewestPeople = from(peopletable_data)((item) =>   select(item) orderBy(item.id desc)).page(0, 4).toList
   
-  //
-  
-  
-//  def querybestworkshowtable(rlevel:Int) = from(workshowtabledata)((item) =>  where((item.datatype === "A") and (item.level === rlevel) ) select(item)).toList
   
   /**
    * index
@@ -185,23 +158,11 @@ object ArtWebSiteDataSourceObject extends Schema{
    */
   def queryArtWorkByTypeAndLength(arttype:String, length:Int) = from(workshowtable_data)((item) => where(item.worktype === arttype) select(item) orderBy(item.id desc)).page(0, length).toList
   
-  //
   
-  
-  
-  
-  //
   def queryArtWorkByTypeAndPageNumberAndLength(worktype:String, pagenumber:Int, pagelength:Int) = from(workshowtable_data)((item) => where(item.worktype === worktype) select(item) orderBy(item.id desc)).page(pagenumber * pagelength, pagelength).toList
   
   def queryArtWorkCategoryPinxie(worktype:String) = from(workshowtable_data)((item) => where(item.worktype === worktype) select(item.category,item.categorypinxie)).distinct.toList
   
-  //page control
-//  val pagenumbercontroldata = table[PagenumberControlObject]("workshowpagenumcontroltable")
-//  on(pagenumbercontroldata)(item =>declare(
-//      item.id	is(primaryKey, autoIncremented)
-//      )
-//  )
-//  def querypagenum(limit:Int) = from(pagenumbercontroldata)(item => where(item.id lte limit) select(item)).toList
   
   def queryPageNumberRangeOfArtWork(worktype:String) = from(workshowtable_data)(item => where(item.worktype === worktype) compute(count(item.id))).toList
   //work show
@@ -211,7 +172,7 @@ object ArtWebSiteDataSourceObject extends Schema{
   
   def queryPeopleListByWorkType(worktype:String,pagenumber:Int,pagelength:Int) = from(peopletable_data)((item => where(item.worktype === worktype) select(item))).page(pagenumber * pagelength, pagelength).toList
   def queryPeopleCategoryList(worktype:String) = from(peopletable_data)((item) => where(item.worktype === worktype) select(item.category,item.categorypinxie)).distinct.toList
-//  def queryPageNumberAmountOfPeopleList(worktype:String) = from(peopletable_data)(item => where(item.worktype === worktype) compute(count(item.id))).toList
+
   def queryPageNumberRangeOfPeopleList(worktype:String) = from(peopletable_data)(item => where(item.worktype === worktype) compute(count(item.id))).toList
   
   /**
