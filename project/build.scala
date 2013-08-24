@@ -29,6 +29,7 @@ object RestfulserviceBuild extends Build {
 		"c3p0" % "c3p0" % "0.9.1.2",
 		//===============logger=====================================
 		"org.clapper" % "grizzled-slf4j_2.10" % "1.0.1",
+		"org.slf4j" % "slf4j-log4j12" % "1.7.5",
 		//===============json=======================================
 		"org.apache.commons" % "commons-digester3" % "3.0",
 		//===============json=====================================
